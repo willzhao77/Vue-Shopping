@@ -6,34 +6,33 @@
 
 
     <!-- center area -->
-
+    <router-view></router-view>
 
 
 
     <!-- bottom -->
-<mt-tabbar v-model="selected" fixed>
-  <mt-tab-item id="tab1">
-    <img slot="icon" src="images/1.png">
-    tab1
-  </mt-tab-item>
-  <mt-tab-item id="tab2">
-    <img slot="icon" src="images/2.png">
-    tab2
-  </mt-tab-item>
-  <mt-tab-item id="tab3">
-    <img slot="icon" src="images/3.png">
-    tab3
-  </mt-tab-item>
-  <mt-tab-item id="tab4">
-    <img slot="icon" src="images/4.png">
-    tab4
-  </mt-tab-item>
-</mt-tabbar>
+    <nav class="mui-bar mui-bar-tab">
+			<router-link class="mui-tab-item" to="/home">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">Home</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/member">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">Member</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/shopcart">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="badge">0</span></span>
+				<span class="mui-tab-label">Cart</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/search">
+				<span class="mui-icon mui-icon-search"></span>
+				<span class="mui-tab-label">Search</span>
+			</router-link>
+		</nav>
 
     
 
 
-    <h1>这是app组件</h1>
 
   
 
