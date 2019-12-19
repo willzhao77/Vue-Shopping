@@ -26,6 +26,12 @@ Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
 
+//import vue-resource
+import VueResource from 'vue-resource'
+// use vue-resource
+Vue.use(VueResource)
+
+
 //import App component
 import app from './App.vue'
 

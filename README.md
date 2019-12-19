@@ -12,3 +12,8 @@ Home Page:
 
 update tabbar to router-link
 
+# load pictures for slides.
+1. use vue-resource
+2. use vue-resource this.$http.get get slide info
+3. save data
+4. use v-for render slide item
