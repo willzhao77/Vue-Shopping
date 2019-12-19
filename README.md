@@ -17,3 +17,6 @@ update tabbar to router-link
 2. use vue-resource this.$http.get get slide info
 3. save data
 4. use v-for render slide item
+
+
+update grid area
