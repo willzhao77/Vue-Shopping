@@ -8,9 +8,10 @@
 
         <!-- gride  -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <router-link to="/home/newslist">
                             <img  src="/images/menu1.png" alt="">
-		                    <div class="mui-media-body">News</div></a></li>
+		                    <div class="mui-media-body">News</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 		                    <img  src="/images/menu2.png" alt="">
 		                    <div class="mui-media-body">Share</div></a></li>
@@ -47,7 +48,7 @@ export default {
     },
     methods:{
         getSlidePictures(){ //get pictures for slides
-            this.$http.get('http://localhost:3000/lunbo').then(result =>{
+            this.$http.get('lunbo').then(result =>{
                 // console.log(result.body);
                 if(result.body.status === 0){
                     this.slideList = result.body.message  //success 

@@ -20,3 +20,11 @@ update tabbar to router-link
 
 
 update grid area
+
+
+update News route
+
+# create news page
+1. create page  (use media-list from MUI)
+2. use vue-resouce get data
+3. render real data

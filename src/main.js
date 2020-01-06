@@ -31,6 +31,8 @@ import VueResource from 'vue-resource'
 // use vue-resource
 Vue.use(VueResource)
 
+//set root path
+Vue.http.options.root = 'http://localhost:3000';
 
 //import App component
 import app from './App.vue'
