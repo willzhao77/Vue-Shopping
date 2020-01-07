@@ -1,55 +1,46 @@
 <template>
     <div>
         <ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
 					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="https://www.bp.com/etc/designs/refresh/bp/images/navigation/bp-logo.svg">
+						<img class="mui-media-object mui-pull-left" :src="item.img_url">
 						<div class="mui-media-body">
-							<h1>Lucky</h1>
+							<h1>{{ item.title }}</h1>
 							<p class='mui-ellipsis'>
-                                <span>Time: 2012-12-12 12:12:12</span>
-                                <span>Clicked: 0 Times</span>
+                                <span>Time: {{ item.add_time }}</span>
+                                <span>Clicked: {{ item.click }} Times</span>
                             </p>
 						</div>
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="https://www.bp.com/etc/designs/refresh/bp/images/navigation/bp-logo.svg">
-						<div class="mui-media-body">
-							<h1>Lucky</h1>
-							<p class='mui-ellipsis'>
-                                <span>Time: 2012-12-12 12:12:12</span>
-                                <span>Clicked: 0 Times</span>
-                            </p>
-						</div>
-					</a>
-				</li>
-                <li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="https://www.bp.com/etc/designs/refresh/bp/images/navigation/bp-logo.svg">
-						<div class="mui-media-body">
-							<h1>Lucky</h1>
-							<p class='mui-ellipsis'>
-                                <span>Time: 2012-12-12 12:12:12</span>
-                                <span>Clicked: 0 Times</span>
-                            </p>
-						</div>
-					</a>
-				</li>
+		
 
 			</ul>
     </div>
 </template>
 
 <script>
+import { Toast } from "mint-ui";
+
 export default {
     data(){
-        return {}
+        return {
+            newslist: [] //news List
+        };
+    },
+    created(){
+        this.getNewsList()
     },
     methods:{
         getNewsList(){ //get news list
-            //this.$http.get('')
+            this.$http.get('getnewslist').then(result => {
+                if(result.body.status === 0){
+                    //if get data from server, save data
+                    this.newslist = result.body.message;
+                }else{
+                    Toast("Load news list faild...")
+                }
+            })
         }
     }
     
