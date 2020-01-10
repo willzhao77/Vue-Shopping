@@ -28,3 +28,11 @@ update News route
 1. create page  (use media-list from MUI)
 2. use vue-resouce get data
 3. render real data
+
+# display news detail page
+1. update each item to router-link.  use ID to identify the page
+2. create component for detail page  NewsInfo.vue
+3. create route
+
+# create news detail page
+
