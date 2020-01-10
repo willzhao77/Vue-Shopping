@@ -7,7 +7,7 @@
 						<div class="mui-media-body">
 							<h1>{{ item.title }}</h1>
 							<p class='mui-ellipsis'>
-                                <span>Time: {{ item.add_time }}</span>
+                                <span>Time: {{ item.add_time | dateFormat }}</span>
                                 <span>Clicked: {{ item.click }} Times</span>
                             </p>
 						</div>

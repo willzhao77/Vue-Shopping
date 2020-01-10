@@ -31,6 +31,17 @@ import VueResource from 'vue-resource'
 // use vue-resource
 Vue.use(VueResource)
 
+
+// import time plugin
+import moment from 'moment'
+
+//define globle filter
+Vue.filter('dateFormat', function(dataStr, pattern="YYYY-MM-DD HH:mm:ss"){
+  return moment(dataStr).format(pattern)
+})
+
+
+
 //set root path
 Vue.http.options.root = 'http://localhost:3000';
 
