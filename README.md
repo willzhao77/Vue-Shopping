@@ -34,5 +34,11 @@ update News route
 2. create component for detail page  NewsInfo.vue
 3. create route
 
-# create news detail page
+# create news detail page and render data
 
+# create comment component "comment.vue" 
+1. create comment.vue component template
+2. manually import comment component when need this component
+   + `import comment  from './comment.vue`'
+3. regist comment component on 'components' 
+4. create new name when regist sub component. and use this name on page

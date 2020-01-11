@@ -1,16 +1,26 @@
 <template>
     <div class="newsinfo-container">
+        <!-- title -->
         <h3 class="title">{{ newsinfo.title }}</h3>
+        <!-- subtitle -->
         <p class="subtitle">
             <span>Time:{{ newsinfo.add_time | dateFormat }}</span>
             <span>Clicked: {{newsinfo.click }}</span>
         </p>
         <hr>
+        <!-- content -->
         <div class="content" v-html="newsinfo.content"></div>
+
+        <!-- comment component -->
+        <comment-box></comment-box>
     </div>
 </template>
 
 <script>
+//import sub component
+import comment from '../subcomponents/comment.vue'
+
+
 export default {
     data(){
         return{
@@ -32,6 +42,10 @@ export default {
                 }
             })
         }
+    },
+
+    components:{
+        'comment-box': comment
     }
     
 }
