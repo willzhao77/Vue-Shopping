@@ -42,3 +42,11 @@ update News route
    + `import comment  from './comment.vue`'
 3. regist comment component on 'components' 
 4. create new name when regist sub component. and use this name on page
+
+# get all comments and display
+
+
+# show more comments
+1. bind Click event for "more" button, request next page's data
+2. click button "more", let pageIndex++, then use this.getComments() get new data
+3. use "concat" method to add new comments. (keep old comments)

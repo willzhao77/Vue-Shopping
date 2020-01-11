@@ -7,44 +7,50 @@
     
 
     <div class="cmt-list">
-      <div class="cmt-item">
+      <div class="cmt-item" v-for="(item, i) in comments" :key="item.add_time">
         <div class="cmt-title">
-          1 &nbsp;&nbsp; Name: None &nbsp;&nbsp; Time: 2012-12-12 12:12:12
+          {{ i+1 }} &nbsp;&nbsp; Name: {{ item.user_name }} &nbsp;&nbsp; Time: {{ item.add_time | dateFormat }}
         </div>
         <div class="cmt-body">
-          This is test commoent
+          {{ item.content === 'undefined' ? 'no conment from this user' : item.content }}
         </div>
       </div>
-
-      <div class="cmt-item">
-        <div class="cmt-title">
-          1 &nbsp;&nbsp; Name: None &nbsp;&nbsp; Time: 2012-12-12 12:12:12
-        </div>
-        <div class="cmt-body">
-          This is test commoent
-        </div>
-      </div>
-      <div class="cmt-item">
-        <div class="cmt-title">
-          1 &nbsp;&nbsp; Name: None &nbsp;&nbsp; Time: 2012-12-12 12:12:12
-        </div>
-        <div class="cmt-body">
-          This is test commoent
-        </div>
-      </div>
-
-
-
-
-
     </div>
 
-    <mt-button type="danger" size="large" plain>Show More...</mt-button>
+    <mt-button type="danger" size="large" plain @click="getMore">Show More...</mt-button>
   </div>
 </template>
 <script>
+import { Toast } from "mint-ui"
 export default {
-  
+  data(){
+    return {
+      pageIndex : 1, // display the first page by default
+      comments:[] //all comments
+    }
+  },
+  created(){
+    this.getComments()
+  },
+  methods:{
+    getComments(){  //get comments
+      this.$http.get("api/getcomments/"+this.id+"?pageindex=" + this.pageIndex).then(result => {
+        if(result.body.status === 0){
+          // this.comments = result.body.message
+          //keep old comment when click 'more'
+          this.comments = this.comments.concat(result.body.message)
+        }else{
+          Toast('load comments faild...')
+        }
+      })
+    },
+
+    getMore(){ //get more data
+      this.pageIndex++
+      this.getComments()
+    }
+  },
+  props:["id"]
 }
 </script>
 <style lang="scss" scoped>

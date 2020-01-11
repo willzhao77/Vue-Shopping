@@ -21,6 +21,11 @@ var news14 = {"status":0,"message":[{"id":14,"title":"买房还是炒股，2015�
 var news15 = {"status":0,"message":[{"id":15,"title":"抢先实拍猎豹CS10 霸气时尚2.0T涡轮增压","click":1,"add_time":"2016-12-07T08:49:04.000Z","content":"\"<p>\r\n 在SUV当道的天下，许多自主品牌相继推出了旗下多款SUV，想要在这个大市场划分一块田地。此次，作为多年生产硬派越野车的汽车企业猎豹汽车也紧随其后，即将推出量产SUV-猎豹CS10，这一越野车型会不会在市场上掀起波澜？又是否能真正帮助猎豹品牌在市场重塑地位？这一切我们不得而知，只能静静等待上海车展之后它的表现。无论怎样，先来看看这次小编抢先实拍到的量产猎豹CS10吧。\r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218547905.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p>\r\n <strong>&nbsp;&gt;&gt;&gt;外观实拍：</strong> \r\n</p>\r\n<p>\r\n 外观方面，猎豹CS10采用了最新的家族式前脸设计，中网进气格栅采用蜂窝状设计，前大灯组内还配备了LED日间行车灯。此外，前保险杠下方的进气口大嘴式的造型凸显凶猛。\r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218550401.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218551181.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218551649.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218552117.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218552585.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218553053.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218553521.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218553989.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p align=\"\"center\"\">\r\n <img class=\"\"imgborder\"\" alt=\"\"\"\" src=\"http://ofv795nmp.bkt.clouddn.com//upload/201504/16/201504161218554457.jpg\" border=\"\"1\"\" /> \r\n</p>\r\n<p>\r\n <strong>&gt;&gt;&gt;外观小结：</strong> \r\n</p>\r\n<p>\r\n 此次猎豹一改此之前车型硬朗的设计风格，开始主打家用与时尚牌，第一眼见到猎豹CS10时，你或许会觉得这是一款合资品牌SUV车型，整体的外观设计非常成功。从猎豹汽车对于该车外观下的功夫，我们可以给点个赞。\r\n</p>\""}]}
 
 
+var comment13 = {"status":0,"message":[{"user_name":"匿名用户","add_time":"2020-01-11T09:06:16.000Z","content":"123"},{"user_name":"匿名用户","add_time":"2020-01-11T09:05:35.000Z","content":"2123"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:50.000Z","content":"44"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:47.000Z","content":"333"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:44.000Z","content":"222"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:42.000Z","content":"11111"},{"user_name":"匿名用户","add_time":"2020-01-11T08:19:34.000Z","content":"一剑曾当百万师"},{"user_name":"匿名用户","add_time":"2020-01-11T07:55:56.000Z","content":"撒擦服务"},{"user_name":"匿名用户","add_time":"2020-01-11T07:54:35.000Z","content":"法则发"},{"user_name":"匿名用户","add_time":"2020-01-11T07:53:01.000Z","content":"1"}]}
+
+var comment13_2 = {"status":0,"message":[{"user_name":"匿名用户","add_time":"2020-01-11T07:38:41.000Z","content":"12233"},{"user_name":"匿名用户","add_time":"2020-01-11T07:38:21.000Z","content":"哈哈"},{"user_name":"匿名用户","add_time":"2020-01-11T07:37:51.000Z","content":"哈哈"},{"user_name":"匿名用户","add_time":"2020-01-11T07:36:23.000Z","content":"滚"},{"user_name":"匿名用户","add_time":"2020-01-11T07:30:09.000Z","content":"测试测试"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:47.000Z","content":"aaa"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:43.000Z","content":"是"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:27.000Z","content":"我"},{"user_name":"匿名用户","add_time":"2020-01-11T07:17:49.000Z","content":"25678"},{"user_name":"匿名用户","add_time":"2020-01-11T07:16:51.000Z","content":"2333"}]}
+
+
 
 
 
@@ -53,11 +58,22 @@ var server = http.createServer(function(req, res){
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(news14))
   }
-  
+
   if(req.url === '/getnews/15'){
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(news15))
+  }
+
+  if(req.url === '/api/getcomments/13?pageindex=1'){
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(JSON.stringify(comment13))
+  }
+  if(req.url === '/api/getcomments/13?pageindex=2'){
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(JSON.stringify(comment13_2))
   }
 
 
