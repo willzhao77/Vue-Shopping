@@ -24,7 +24,7 @@ export default {
 
     methods:{
         getNewsInfo(){  //get news details
-            this.$http.get('getnews' + this.id).then(result => {
+            this.$http.get('getnews/' + this.id).then(result => {
                 if(result.body.status === 0 ){
                     this.newsinfo = result.body.message[0];
                 }else{
