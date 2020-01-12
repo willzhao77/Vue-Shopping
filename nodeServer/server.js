@@ -75,6 +75,12 @@ var server = http.createServer(function(req, res){
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(comment13_2))
   }
+  // add comment
+  if(req.url === '/api/postcomment/13'){
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(JSON.stringify(comment13))
+  }
 
 
 

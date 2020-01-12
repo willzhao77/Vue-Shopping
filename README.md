@@ -50,3 +50,12 @@ update News route
 1. bind Click event for "more" button, request next page's data
 2. click button "more", let pageIndex++, then use this.getComments() get new data
 3. use "concat" method to add new comments. (keep old comments)
+
+# create comments
+1. two-way data bindings on textarea
+2. bind click even for button
+3. check comment content. if empty, "Toast" messasge and let user edit content.
+4. use vue-resource send a request to server
+5. if send comment success. Refresh comments, show new comment.
+    + if use getComments methods. may only get the last page comment.
+    + so, manually add the latest comment. Then, use unshit method add new data to comments.

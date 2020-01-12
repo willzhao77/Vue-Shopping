@@ -45,6 +45,9 @@ Vue.filter('dateFormat', function(dataStr, pattern="YYYY-MM-DD HH:mm:ss"){
 //set root path
 Vue.http.options.root = 'http://localhost:3000';
 
+//set global format
+Vue.http.options.emulateJSON = true;
+
 //import App component
 import app from './App.vue'
 

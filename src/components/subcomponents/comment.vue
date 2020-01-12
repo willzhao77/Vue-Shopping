@@ -1,8 +1,8 @@
 <template>
   <div class="cmt-container">
     <h3>Create Comment</h3>
-    <textarea placeholder="Please enter your comment (max 10)" maxlength="10"></textarea>
-    <mt-button type="primary" size="large">Send Comment</mt-button>
+    <textarea placeholder="Please enter your comment (max 10)" maxlength="10" v-model="msg"></textarea>
+    <mt-button type="primary" size="large" @click="postComment">Send Comment</mt-button>
 
     
 
@@ -26,7 +26,8 @@ export default {
   data(){
     return {
       pageIndex : 1, // display the first page by default
-      comments:[] //all comments
+      comments:[], //all comments
+      msg: '', //comment content
     }
   },
   created(){
@@ -48,7 +49,31 @@ export default {
     getMore(){ //get more data
       this.pageIndex++
       this.getComments()
-    }
+    },
+
+    postComment(){ // send comment
+      //check if comment is empty
+      if(this.msg.trim().length == 0){
+        return Toast("Please enter comment!")
+      }
+
+
+      //parameter 1: URL
+      //parameter 2: object to server { content: this.msg }
+      //parameter 3: format for form { emulateJSON:true }
+      this.$http.post('api/postcomment/' + this.$route.params.id, {content:this.msg.trim()}).then(function(result){
+        if(result.body.status === 0){
+          // create a new comment object
+          var cmt = {
+            user_name: 'None',
+            add_time: Date.now(),
+            content: this.msg.trim()
+          }
+          this.comments.unshift(cmt)
+          this.msg=''
+        }
+      })
+    },
   },
   props:["id"]
 }
