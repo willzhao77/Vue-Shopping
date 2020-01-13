@@ -4,15 +4,23 @@
         <div id="slider" class="mui-slider">
 				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<div class="mui-scroll">
-						<a :class="['mui-control-item', item.id == 0 ? 'mui-active' : '']" v-for="item in cates" :key=item.id>
+						<a :class="['mui-control-item', item.id == 0 ? 'mui-active' : '']" v-for="item in cates" 
+						:key=item.id @click="getPhotoListByCateId(item.id)">
 							{{ item.title }}
 						</a>
 						
 					</div>
 				</div>
+		</div>
+		<!-- Photo list -->
+		<ul>
+			<li v-for="item in list" :key="item.id">
+				<img v-lazy="item.img_url">
+			</li>
+		</ul>
 
-			</div>
     </div>
+
 </template>
 
 <script>
@@ -22,12 +30,15 @@ import mui from '../../lib/mui/js/mui.min.js'
 export default {
     data(){
 			return{
-				cates: []  // category list
+				cates: [],  // category list
+				list: []  // photo list
 			}
 		},
 
 		created(){
-			this.getAllCategory()
+			this.getAllCategory();
+			//request all photos by default. 0 means all in category.
+			this.getPhotoListByCateId(0);
 		},
 		
 		mounted(){
@@ -38,15 +49,25 @@ export default {
 		});
 		},
     methods:{
-			getAllCategory(){
-				this.$http.get("api/getimgcategory").then(result => {
-					if(result.body.status === 0 ){
-						//manually create a full category list
-						result.body.message.unshift({ title: "All", id: 0 })
-						this.cates = result.body.message
-					}
-				})
-			}
+		getAllCategory(){
+			this.$http.get("api/getimgcategory").then(result => {
+				if(result.body.status === 0 ){
+					//manually create a full category list
+					result.body.message.unshift({ title: "All", id: 0 })
+					this.cates = result.body.message
+				}
+			})
+		},
+
+		getPhotoListByCateId(cateId){
+			//get photo list by category ID
+			this.$http.get('api/getimages/' + cateId).then(result => {
+				if(result.body.status === 0 )
+				this.list = result.body.message
+			})
+		}
+
+
     }
 }
 </script>
@@ -54,5 +75,11 @@ export default {
 <style lang="scss" scoped>
 *{
 	touch-action: pan-y
+}
+
+img[lazy=loading] {
+  width: 40px;
+  height: 300px;
+  margin: auto;
 }
 </style>
