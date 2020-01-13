@@ -59,3 +59,17 @@ update News route
 5. if send comment success. Refresh comments, show new comment.
     + if use getComments methods. may only get the last page comment.
     + so, manually add the latest comment. Then, use unshit method add new data to comments.
+
+# change Share button to route link and display related component
+
+# create photo list,  component page, and related style
+1. top nav bar
+    + use tab-top-webview-main.html from MUI
+    + remove mui-fullscreen Class
+    + slide not working. Need JS component. 
+        1. import mui.js
+        2. check MUI website and init 
+    + import mui.js. But receive error: TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them. Webpack should use strict mode on bundle.js.
+    + solution. 
+2. create photo list
+
