@@ -11,7 +11,7 @@ import router from './router.js'
 
 
 // import MUI css
-import './lib/mui/css/mui.min.css'
+import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
 
 //import 

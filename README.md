@@ -70,6 +70,10 @@ update News route
         1. import mui.js
         2. check MUI website and init 
     + import mui.js. But receive error: TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them. Webpack should use strict mode on bundle.js.
-    + solution. 
+    + solution:
+        1. install @babel/plugin-transform-modules-commonjs @babel/plugin-transform-strict-mode
+        2. .babelrc add `["@babel/plugin-transform-modules-commonjs", { "strictMode": false }]`
+    + top slide bar not working when enter from home page. should init slide after DOM load. So, move related code to "mounted"
+    + at the bottom, the tabbar not working. because the sytel mui-tab-item conflict. rename this Class at App.vue and lib/mui/css/mui.css
 2. create photo list
 

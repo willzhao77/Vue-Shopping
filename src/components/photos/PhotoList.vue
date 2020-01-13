@@ -29,15 +29,21 @@
 <script>
 //import MUI JS
 import mui from '../../lib/mui/js/mui.min.js'
-// init  
-mui('.mui-scroll-wrapper').scroll({
-	deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
-});
 
 export default {
     data(){
+			return{
 
-    },
+			}
+		},
+		
+		mounted(){
+			// init 
+			// if need control element, it is better control at this moment. the DOM is the newest.
+			mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		});
+		},
     methods:{
 
     }
@@ -45,5 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+*{
+	touch-action: pan-y
+}
 </style>
