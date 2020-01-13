@@ -4,21 +4,10 @@
         <div id="slider" class="mui-slider">
 				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<div class="mui-scroll">
-						<a class="mui-control-item mui-active" href="#item1mobile" data-wid="tab-top-subpage-1.html">
-							推荐
+						<a :class="['mui-control-item', item.id == 0 ? 'mui-active' : '']" v-for="item in cates" :key=item.id>
+							{{ item.title }}
 						</a>
-						<a class="mui-control-item" href="#item2mobile" data-wid="tab-top-subpage-2.html">
-							热点
-						</a>
-						<a class="mui-control-item" href="#item3mobile" data-wid="tab-top-subpage-3.html">
-							北京
-						</a>
-						<a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html">
-							社会
-						</a>
-						<a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html">
-							娱乐
-						</a>
+						
 					</div>
 				</div>
 
@@ -33,8 +22,12 @@ import mui from '../../lib/mui/js/mui.min.js'
 export default {
     data(){
 			return{
-
+				cates: []  // category list
 			}
+		},
+
+		created(){
+			this.getAllCategory()
 		},
 		
 		mounted(){
@@ -45,7 +38,15 @@ export default {
 		});
 		},
     methods:{
-
+			getAllCategory(){
+				this.$http.get("api/getimgcategory").then(result => {
+					if(result.body.status === 0 ){
+						//manually create a full category list
+						result.body.message.unshift({ title: "All", id: 0 })
+						this.cates = result.body.message
+					}
+				})
+			}
     }
 }
 </script>

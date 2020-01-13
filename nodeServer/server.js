@@ -25,7 +25,7 @@ var comment13 = {"status":0,"message":[{"user_name":"匿名用户","add_time":"2
 
 var comment13_2 = {"status":0,"message":[{"user_name":"匿名用户","add_time":"2020-01-11T07:38:41.000Z","content":"12233"},{"user_name":"匿名用户","add_time":"2020-01-11T07:38:21.000Z","content":"哈哈"},{"user_name":"匿名用户","add_time":"2020-01-11T07:37:51.000Z","content":"哈哈"},{"user_name":"匿名用户","add_time":"2020-01-11T07:36:23.000Z","content":"滚"},{"user_name":"匿名用户","add_time":"2020-01-11T07:30:09.000Z","content":"测试测试"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:47.000Z","content":"aaa"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:43.000Z","content":"是"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:27.000Z","content":"我"},{"user_name":"匿名用户","add_time":"2020-01-11T07:17:49.000Z","content":"25678"},{"user_name":"匿名用户","add_time":"2020-01-11T07:16:51.000Z","content":"2333"}]}
 
-
+var imgcategory = {"status":0,"message":[{"title":"家居生活","id":14},{"title":"摄影设计","id":15},{"title":"明星美女","id":16},{"title":"空间设计","id":17},{"title":"户型装饰","id":18},{"title":"广告摄影","id":19},{"title":"摄影学习","id":20},{"title":"摄影器材","id":21},{"title":"明星写真","id":22},{"title":"清纯甜美","id":23},{"title":"古典美女","id":24}]}
 
 
 
@@ -82,6 +82,12 @@ var server = http.createServer(function(req, res){
     res.end(JSON.stringify(comment13))
   }
 
+  //add share photo category
+  if(req.url === '/api/getimgcategory'){
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(JSON.stringify(imgcategory))
+  }
 
 
 }).listen(3000, function(){
