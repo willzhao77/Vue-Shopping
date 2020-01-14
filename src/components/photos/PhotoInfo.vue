@@ -2,13 +2,13 @@
     <div class="photoinfo-container">
         <h3>{{ photoinfo.title }}</h3>
         <p class="subtitle">
-            <span>Time: {{ photoinfo.add_time | dateformat }}</span>
+            <span>Time: {{ photoinfo.add_time | dateFormat }}</span>
             <span>Clicked: {{ photoinfo.click }}</span>
         </p>
         <hr>
 
         <!-- small picture area -->
-
+        <vue-preview :slides="slide1" @close="handleClose"></vue-preview>
 
         <!-- picture content -->
         <div class="content" v-html="photoinfo.content"></div>
@@ -28,21 +28,42 @@ export default {
     data(){
         return {
             id: this.$route.params.id, // get ID from URL
-            photoinfo: {} //picture detail
+            photoinfo: {}, //picture detail
+            slide1: [] // preview picture array
         }
     },
     created(){
-       this.getPhotoInfo(); 
+       this.getPhotoInfo();
+       this.getThumbs(); 
     },
     methods:{
         getPhotoInfo(){ //get picture detail
-        this.$http.get('api/getimageInfo/' + this.id).then(result => {
-            if(result.body.status === 0 ){
-                this.photoinfo = result.body.message[0]
-            }
-        })
+            this.$http.get('api/getimageInfo/' + this.id).then(result => {
+                if(result.body.status === 0 ){
+                    this.photoinfo = result.body.message[0]
+                }
+            })
+        },
 
+        getThumbs(){
+            this.$http.get('api/getthumimages/' + this.id).then(result =>{
+                if(result.body.status === 0 ){
+                    //loop all pictures and all w and h
+                    result.body.message.forEach(item => {
+                        item.msrc = item.src
+                        item.w = 600;
+                        item.h = 400;
+                    });
+                    this.slide1 = result.body.message
+                }
+            })
+        },
+
+        handleClose () {
+            console.log('close event')
         }
+
+
     },
 
     components:{
@@ -52,7 +73,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .photoinfo-container{
     padding: 3px;
     h3{
@@ -72,5 +93,19 @@ export default {
         font-size: 13px;
         line-height: 30px;
     }
+
+    img {
+        height: 80px;
+        margin: 10px;
+        
+        box-shadow: 0 0 8px #999;
+    }
+
+   figure{
+       display: inline-block;
+       margin: 0;
+     
+   }
+
 }
 </style>

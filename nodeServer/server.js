@@ -51,6 +51,11 @@ var photodetail38 = {"status":0,"message":[{"id":38,"title":"很美的落地大�
 var photodetail39 = {"status":0,"message":[{"id":39,"title":"西班牙阿拉尔孔郊区的80平米一室一厅的公寓","click":0,"add_time":"2015-04-18T04:41:37.000Z","content":"这是一套在西班牙阿拉尔孔郊区的80平米一室一厅的公寓，用一道墙分隔出了客厅与厨房，虽然整体来看室内设计有些混搭风，但似乎某些空间和角度去看又会有着自己的主题。"}]}
 
 
+var thumbpic37 = {"status":0,"message":[{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181230434303.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181230437111.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181230439139.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181230440387.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181230444755.jpg"}]}
+
+var thumbpic38 = {"status":0,"message":[{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181237019134.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181237020070.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181237021942.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181237023658.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181237029898.jpg"}]}
+
+var thumbpic39 = {"status":0,"message":[{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241259978.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241262318.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241264190.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241265438.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241266686.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241268246.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241270898.jpg"}]}
 
 
 
@@ -162,6 +167,27 @@ if(req.url === '/api/getimageInfo/39'){
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photodetail39))
 }
+
+// response thumb picture
+if(req.url === '/api/getthumimages/37'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(thumbpic37))
+}
+if(req.url === '/api/getthumimages/38'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(thumbpic38))
+}
+if(req.url === '/api/getthumimages/39'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(thumbpic39))
+}
+
+
+
+
 
 
 

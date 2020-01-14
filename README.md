@@ -86,7 +86,10 @@ update News route
 
 # create picture detail page and render date.
 
-
+# show preview picture
+1. use vue-preview plugin
+2. get all pictures list, use v-for render data
+3. picture data should have w and h
 
 
 

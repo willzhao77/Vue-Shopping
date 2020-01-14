@@ -30,6 +30,11 @@ import 'mint-ui/lib/style.css'
 import MintUI from 'mint-ui'
 Vue.use(MintUI)
 
+// install picture preview
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+
+
 
 
 //import vue-resource
