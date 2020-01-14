@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h3>Title</h3>
+    <div class="photoinfo-container">
+        <h3>{{ photoinfo.title }}</h3>
         <p class="subtitle">
-            <span>Time:</span>
-            <span>Clicked:</span>
+            <span>Time: {{ photoinfo.add_time | dateformat }}</span>
+            <span>Clicked: {{ photoinfo.click }}</span>
         </p>
         <hr>
 
@@ -11,15 +11,19 @@
 
 
         <!-- picture content -->
-        <div class="content"></div>
+        <div class="content" v-html="photoinfo.content"></div>
 
         <!-- comment -->
-
+        <cmt-box :id="id"></cmt-box>
 
     </div>
 </template>
 
 <script>
+//import comment component
+import comment from '../subcomponents/comment.vue'
+
+
 export default {
     data(){
         return {
@@ -39,10 +43,34 @@ export default {
         })
 
         }
+    },
+
+    components:{
+        // register comment component
+        "cmt-box": comment
     }
 }
 </script>
 
 <style lang="scss" scoped>
+.photoinfo-container{
+    padding: 3px;
+    h3{
+        color: #26A2FF;
+        font-size: 15px;
+        text-align: center;
+        margin: 15px 0 ;
+    }
+    
+    .subtitle{
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+    }
 
+    .content{
+        font-size: 13px;
+        line-height: 30px;
+    }
+}
 </style>
