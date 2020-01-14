@@ -77,8 +77,16 @@ update News route
     + at the bottom, the tabbar not working. because the sytel mui-tab-item conflict. rename this Class at App.vue and lib/mui/css/mui.css
     + render category list
 # create photo list
-    1. user lazy load. Use Mint-UI  component 'lazy-load'
-    2. user lazy load document.
+    1. use lazy load. Use Mint-UI  component 'lazy-load'
+    2. use lazy load document.
+    3. set lazy load style.
+
+# list picture to detail page
+1. change li to router-link
+
+# create picture detail page and render date.
+
+
 
 
 
