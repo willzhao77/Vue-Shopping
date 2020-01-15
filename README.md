@@ -94,3 +94,6 @@ update News route
 
 # create shopping list page
 
+# Test project on mobile device
+1. Mobile and PC should be in same network. (mobile can visit PC IP)
+2. In project, open package.json. At "dev" script, add --host. set --host value (PC IP)
