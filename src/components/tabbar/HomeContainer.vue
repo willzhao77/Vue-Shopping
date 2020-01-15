@@ -16,9 +16,10 @@
                         <router-link to="/home/photolist">
 		                    <img  src="/images/menu2.png" alt="">
 		                    <div class="mui-media-body">Share</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <router-link to="/home/goodslist">
 		                    <img  src="/images/menu3.png" alt="">
-		                    <div class="mui-media-body">Shopping</div></a></li>
+		                    <div class="mui-media-body">Shopping</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 		                    <img  src="/images/menu4.png" alt="">
 		                    <div class="mui-media-body">Feedback</div></a></li>
