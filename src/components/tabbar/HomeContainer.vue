@@ -1,10 +1,11 @@
 <template>
     <div>
-        <mt-swipe :auto="4000">
+        <!-- <mt-swipe :auto="4000">
             <mt-swipe-item v-for="item in slideList" :key="item.img">
                 <img :src="item.img" alt="">
             </mt-swipe-item>
-        </mt-swipe>
+        </mt-swipe> -->
+        <SlideShow :slidelist="slidelist" :isfull="true"></SlideShow>     
 
         <!-- gride  -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -36,13 +37,13 @@
 </template>
 
 <script>
-
+import SlideShow from '../subcomponents/SlideShow.vue'
 import { Toast } from 'mint-ui'
 
 export default {
     data(){
         return{
-            slideList:[] // save slide pictures
+            slidelist:[] // save slide pictures
         }
     },
     created(){
@@ -53,36 +54,22 @@ export default {
             this.$http.get('lunbo').then(result =>{
                 // console.log(result.body);
                 if(result.body.status === 0){
-                    this.slideList = result.body.message  //success 
+                    this.slidelist = result.body.message  //success 
                 }else{
                     Toast('Slide pictures loading faild')
                 }
             })
         }
+    },
+
+    components:{
+        SlideShow
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe{
-    height:200px;
-    .mint-swipe-item{
-        &:nth-child(1){
-            background: red;
-        }
-        &:nth-child(2){
-            background:blue;
-        }
-        &:nth-child(3){
-            background: cyan;
-        }
 
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
-}
 
 .mui-grid-view.mui-grid-9{
     background-color: #fff;

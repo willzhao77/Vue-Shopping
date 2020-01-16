@@ -4,7 +4,7 @@
         <div class="mui-card">
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-                    这是一个最简单的卡片视图控件；卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、点赞数量等
+                    <SlideShow :slidelist="slide" :isfull="false"></SlideShow>
                 </div>
             </div>
         </div>
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import SlideShow from '../subcomponents/SlideShow.vue'
+
 export default {
     data(){
         return{
@@ -49,11 +51,18 @@ export default {
         getSlidePictures(){
             this.$http.get("api/getthumimages/" + this.id).then(result => {
                 if(result.body.status === 0 ){
+                    result.body.message.forEach( item => {
+                        item.img = item.src
+                    })
                     this.slide = result.body.message
                 }
             })
         }
     },
+
+    components:{
+        SlideShow
+    }
 }
 </script>
 
