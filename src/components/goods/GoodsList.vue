@@ -1,7 +1,7 @@
 <template>
     
     <div class="goods-list">
-        <div class="goods-item" v-for="item in goodslist" :key=item.id>
+        <!-- <router-link class="goods-item" v-for="item in goodslist" :key=item.id :to="'/home/goodsinfo/' + item.id" tag="div">
             <img :src="item.img_url" alt="">
             <h1 class="title">{{ item.title }}</h1>
             <div class="info">
@@ -14,7 +14,26 @@
                     <span>left {{ item.stock_quantity }}</span>
                 </p>
             </div>
+        </router-link> -->
+
+        <div class="goods-item" v-for="item in goodslist" :key=item.id @click="goDetail(item.id)">
+            <img :src="item.img_url" alt="" tag="div">
+            <h1 class="title">{{ item.title }}</h1>
+            <div class="info">
+                <p class="price">
+                    <span class="now">${{ item.sell_price }}</span>
+                    <span class="old">${{ item.market_price }}</span>
+                </p>
+                <p class="sell">
+                    <span>Selling</span>
+                    <span>left {{ item.stock_quantity }}</span>
+                </p>
+            </div>
         </div>
+
+
+
+
         <mt-button type="danger" size="large" @click="getMore">Show More...</mt-button>
     </div>
     
@@ -47,6 +66,11 @@ export default {
             this.pageindex ++
             this.getGoodsList()
 
+        },
+
+        goDetail(id){
+            // use JS route
+            this.$router.push('/home/goodsinfo/' + id)
         }
 }
 }
