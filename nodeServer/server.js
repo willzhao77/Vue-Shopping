@@ -58,6 +58,17 @@ var thumbpic38 = {"status":0,"message":[{"src":"http://demo.dtcms.net/upload/201
 var thumbpic39 = {"status":0,"message":[{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241259978.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241262318.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241264190.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241265438.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241266686.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241268246.jpg"},{"src":"http://demo.dtcms.net/upload/201504/18/thumb_201504181241270898.jpg"}]}
 
 
+//goods list
+
+var goodspage1 = {"status":0,"message":[{"id":87,"title":"华为（HUAWEI）荣耀6Plus 16G双4G版","add_time":"2015-04-19T16:51:03.000Z","zhaiyao":"荣耀6 Plus，该机型分为两款型号，分别为PE-","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg","sell_price":2195,"market_price":2499,"stock_quantity":60},{"id":88,"title":"苹果Apple iPhone 6 Plus 16G 4G手机（联通三网版）","add_time":"2015-04-19T17:00:58.000Z","zhaiyao":"iPhone 6 Plus设计上和iPhone 6","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200059017695.jpg","sell_price":5780,"market_price":6388,"stock_quantity":200},{"id":89,"title":"小米（Mi）小米Note 16G双网通版","add_time":"2015-04-19T17:19:30.000Z","zhaiyao":"小米Note此次采用的5.7英寸夏普/JDI分辨率","click":4,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200119256512.jpg","sell_price":2199,"market_price":2699,"stock_quantity":60},{"id":90,"title":"佳能（Canon） EOS 700D 单反套机","add_time":"2015-04-19T17:54:36.000Z","zhaiyao":"◆ 佳能普及型单反新旗舰记忆的片段，偶然的相遇，铭","click":1,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200154277661.jpg","sell_price":4799,"market_price":5099,"stock_quantity":100},{"id":91,"title":"尼康(Nikon)D3300套机（18-55mm f/3.5-5.6G VRII）（黑色）","add_time":"2015-04-19T18:14:52.000Z","zhaiyao":"作为D3200的升级版，尼康D3300最大特点即是","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200214471783.jpg","sell_price":3180,"market_price":3150,"stock_quantity":10},{"id":92,"title":"联想（Lenovo） G510AM 15.6英寸笔记本电脑","add_time":"2015-04-19T18:25:14.000Z","zhaiyao":"G系列全面支持Windows 8 简体中文版，在秉","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200225107390.jpg","sell_price":2999,"market_price":4599,"stock_quantity":100},{"id":93,"title":"Apple iMac MF883CH/A 21.5英寸一体机电脑","add_time":"2015-04-19T18:33:05.000Z","zhaiyao":"—— iMac —— 锋锐设计，锋芒表现。iMac","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/201504200341260763.jpg","sell_price":7200,"market_price":7988,"stock_quantity":10},{"id":94,"title":"金士顿（Kingston） DataTraveler SE9 32GB 金属U盘","add_time":"2015-04-19T18:39:32.000Z","zhaiyao":"品名：金士顿颜色：银色容量：32GB USB2.0","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200239192345.jpg","sell_price":79,"market_price":99,"stock_quantity":100},{"id":95,"title":"惠普（HP）LaserJet 2035商用黑白激光打印机（黑色）","add_time":"2015-04-19T18:43:39.000Z","zhaiyao":"全新hp laserjet p2035系列激光打印","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200242250674.jpg","sell_price":1899,"market_price":2099,"stock_quantity":100},{"id":96,"title":"惠普(HP) Officejet Pro 8610商用彩色喷墨一体机","add_time":"2015-04-19T18:53:06.000Z","zhaiyao":"专业彩色打印件的单页成本比激光打印机低 50%，从","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200253026047.jpg","sell_price":1999,"market_price":2099,"stock_quantity":100}]}
+
+var goodspage2 = {"status":0,"message":[{"id":97,"title":"三星（SAMSUNG）UA40HU5920JXXZ 40英寸4K超高清","add_time":"2015-04-19T19:01:38.000Z","zhaiyao":"三星（SAMSUNG）UA40HU5920JXXZ","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200258403759.jpg","sell_price":3299,"market_price":3599,"stock_quantity":100},{"id":98,"title":"奔腾（BNTN） 380功放+纽约至尊 套装家庭影院","add_time":"2015-04-19T19:14:44.000Z","zhaiyao":"奔腾（BNTN） 380功放+纽约至尊 套装家庭影","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200314272543.jpg","sell_price":4880,"market_price":5880,"stock_quantity":10},{"id":99,"title":"飞利浦（PHILIPS）DVP3690 全高清DVD影碟机播放器","add_time":"2015-04-19T19:19:48.000Z","zhaiyao":"2D电影系列在家中体验3D电影带来的刺激感，采用最","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200318534459.jpg","sell_price":399,"market_price":499,"stock_quantity":100},{"id":100,"title":"霍尼韦尔（Honeywel）HM-F1020-A-B HDMI高清数据线","add_time":"2015-04-19T19:27:39.000Z","zhaiyao":"霍尼韦尔（Honeywel）HM-F1020-A-","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200327369421.jpg","sell_price":49,"market_price":59,"stock_quantity":50},{"id":101,"title":"Shinco/新科 S2300 无线麦克风 无线手持话筒 双手麦 KTV 舞台","add_time":"2015-04-19T19:34:55.000Z","zhaiyao":"Shinco/新科 S2300 无线麦克风 无线手","click":0,"img_url":"http://demo.dtcms.net/upload/201504/20/thumb_201504200333240710.jpg","sell_price":199,"market_price":269,"stock_quantity":20}]}
+
+
+
+
+
+
 
 
 
@@ -186,7 +197,16 @@ if(req.url === '/api/getthumimages/39'){
 }
 
 
-
+//response goods request
+if(req.url === '/api/getgoods?pageindex=1'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(goodspage1))
+}if(req.url === '/api/getgoods?pageindex=2'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(goodspage2))
+}
 
 
 
