@@ -72,7 +72,9 @@ var slide88 = {"status":0,"message":[{"src":"http://demo.dtcms.net/upload/201504
 
 var slide89 = {"status":0,"message":[{"src":"http://demo.dtcms.net/upload/201504/20/thumb_201504200119256512.jpg"},{"src":"http://demo.dtcms.net/upload/201504/20/thumb_201504200119262837.jpg"}]}
 
-
+var itemdetails87 = {"status":0,"message":[{"id":87,"title":"华为（HUAWEI）荣耀6Plus 16G双4G版","add_time":"2015-04-19T16:51:03.000Z","goods_no":"SD9102356032","stock_quantity":60,"market_price":2499,"sell_price":2195}]}
+var itemdetails88 = {"status":0,"message":[{"id":88,"title":"苹果Apple iPhone 6 Plus 16G 4G手机（联通三网版）","add_time":"2015-04-19T17:00:58.000Z","goods_no":"SD7159810321","stock_quantity":200,"market_price":6388,"sell_price":5780}]}
+var itemdetails89 = {"status":0,"message":[{"id":89,"title":"小米（Mi）小米Note 16G双网通版","add_time":"2015-04-19T17:19:30.000Z","goods_no":"SD2932214404","stock_quantity":60,"market_price":2699,"sell_price":2199}]}
 
 
 
@@ -232,6 +234,22 @@ if(req.url === '/api/getthumimages/89'){
 }
 
 
+//response goods itemdetails87
+if(req.url === '/api/goods/getinfo/87'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(itemdetails87))
+}
+if(req.url === '/api/goods/getinfo/88'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(itemdetails88))
+}
+if(req.url === '/api/goods/getinfo/89'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(itemdetails89))
+}
 
 
 
