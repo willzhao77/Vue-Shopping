@@ -1,7 +1,8 @@
 <template>
-    <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+    <!-- use watch check max value from parent component -->
+    <div class="mui-numbox" data-numbox-min='1'>
         <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-            <input id="test" class="mui-input-numbox" type="number" value="1" />
+            <input id="test" class="mui-input-numbox" type="number" value="1" @change="countChanged" ref="numbox" />
         <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 	</div>
 </template>
@@ -11,6 +12,24 @@ import mui from '../../lib/mui/js/mui.min.js';
 export default { 
     mounted(){
         mui(".mui-numbox").numbox();
+        console.log(this.max)
+    },
+
+    methods:{
+        countChanged(){
+            // send number to parent component when number change
+            // console.log(this.$refs.numbox.value)
+            this.$emit('getcount', parseInt(this.$refs.numbox.value))
+        }
+    },
+
+    props:["max"],
+
+    watch:{
+        'max': function(newVal, oldVal){
+            // use JS API set numbox max value
+            mui(".mui-numbox").numbox().setOption('max', newVal)
+        }
     }
 }
 </script>

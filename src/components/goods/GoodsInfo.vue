@@ -1,5 +1,9 @@
 <template>
     <div class="goodsinfo-container">
+        <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+            <div class="ball" v-show="ballFlag" ref="ball"></div>
+        </transition>
+        
         <!-- slide pictures -->
         <div class="mui-card">
             <div class="mui-card-content">
@@ -17,10 +21,10 @@
 						<p class="price">
                             Market Price: <del>${{ goodsinfo.market_price }}</del>&nbsp;&nbsp; Our Price: <span class="now_price">${{ goodsinfo.sell_price }}</span>
                         </p>
-                        <p>Quantity:<numbox></numbox></p>
+                        <p>Quantity:<numbox @getcount="getSelectedCount" :max="goodsinfo.stock_quantity"></numbox></p>
                         <p>
                             <mt-button type="primary" size="small">Buy It Now</mt-button>
-                            <mt-button type="danger" size="small">Add To Cart</mt-button>
+                            <mt-button type="danger" size="small" @click="addToShopCart">Add To Cart</mt-button>
                         </p>
 					</div>
 				</div>
@@ -36,8 +40,8 @@
 					</div>
 				</div>
 				<div class="mui-card-footer">
-                    <mt-button type="primary" size="large" plain>Item Details</mt-button>
-                    <mt-button type="danger" size="large" plain>Item Comment</mt-button>
+                    <mt-button type="primary" size="large" plain @click="goDesc(id)">Item Details</mt-button>
+                    <mt-button type="danger" size="large" plain @click="goComment(id)">Item Comment</mt-button>
                 </div>
 			</div>
 
@@ -53,7 +57,9 @@ export default {
         return{
             id: this.$route.params.id, // save item id
             slide: [], // slide pictures 
-            goodsinfo: {}   //item details
+            goodsinfo: {},   //item details
+            ballFlag: false,  // control ball display
+            selectedCount: 1  // save user selected item's quantity
         }
     },
 
@@ -80,7 +86,50 @@ export default {
                     this.goodsinfo = result.body.message[0]
                 }
             })
+        },
+
+        goDesc(id){ //go to description page
+            this.$router.push({ name: "goodsdesc", params:{ id }})
+        },
+
+        goComment(id){
+            this.$router.push({ name: "goodscomment", params:{ id }})
+        },
+
+        addToShopCart(){
+            this.ballFlag = !this.ballFlag
+        },
+
+        beforeEnter(el){
+            el.style.transform = "translate(0, 0)"
+        },
+
+        enter(el, done){
+            el.offsetWidth
+
+            // get ball position
+            const ballPostion = this.$refs.ball.getBoundingClientRect();
+            // get cart icon postion
+            const badgePosition = document.getElementById('badge').getBoundingClientRect();
+
+            const xDiff = badgePosition.left - ballPostion.left
+            const yDiff = badgePosition.top - ballPostion.top
+
+            el.style.transform = `translate(${xDiff}px, ${yDiff}px)`
+            el.style.transition = "all 0.5s cubic-bezier(.4,-0.3,1,0.68)"
+            done()
+        },
+
+        afterEnter(el){
+            this.ballFlag = !this.ballFlag
+        },
+
+        getSelectedCount(count){
+            this.selectedCount = count
+            // console.log('get number from sub-component ' + this.selectedCount)
         }
+
+
     },
 
     components:{
@@ -106,6 +155,17 @@ export default {
         button{
              margin: 15px 0;
         }
+    }
+
+    .ball{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        z-index: 99;
+        top: 390px;
+        left: 136px;
     }
 }
 </style>

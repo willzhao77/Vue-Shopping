@@ -25,6 +25,19 @@ var comment13 = {"status":0,"message":[{"user_name":"匿名用户","add_time":"2
 
 var comment13_2 = {"status":0,"message":[{"user_name":"匿名用户","add_time":"2020-01-11T07:38:41.000Z","content":"12233"},{"user_name":"匿名用户","add_time":"2020-01-11T07:38:21.000Z","content":"哈哈"},{"user_name":"匿名用户","add_time":"2020-01-11T07:37:51.000Z","content":"哈哈"},{"user_name":"匿名用户","add_time":"2020-01-11T07:36:23.000Z","content":"滚"},{"user_name":"匿名用户","add_time":"2020-01-11T07:30:09.000Z","content":"测试测试"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:47.000Z","content":"aaa"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:43.000Z","content":"是"},{"user_name":"匿名用户","add_time":"2020-01-11T07:28:27.000Z","content":"我"},{"user_name":"匿名用户","add_time":"2020-01-11T07:17:49.000Z","content":"25678"},{"user_name":"匿名用户","add_time":"2020-01-11T07:16:51.000Z","content":"2333"}]}
 
+var comment87 ={"status":0,"message":[{"user_name":"匿名用户","add_time":"2020-01-11T09:05:35.000Z","content":"87 87 87"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:50.000Z","content":"44"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:47.000Z","content":"333"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:44.000Z","content":"222"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:42.000Z","content":"11111"},{"user_name":"匿名用户","add_time":"2020-01-11T08:19:34.000Z","content":"一剑曾当百万师"}]}
+
+var comment88 ={"status":0,"message":[{"user_name":"匿名用户","add_time":"2020-01-11T09:05:35.000Z","content":"88 88 88"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:50.000Z","content":"44"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:47.000Z","content":"333"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:44.000Z","content":"222"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:42.000Z","content":"11111"},{"user_name":"匿名用户","add_time":"2020-01-11T08:19:34.000Z","content":"一剑曾当百万师"}]}
+
+var comment89 ={"status":0,"message":[{"user_name":"匿名用户","add_time":"2020-01-11T09:05:35.000Z","content":"89 89 89"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:50.000Z","content":"44"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:47.000Z","content":"333"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:44.000Z","content":"222"},{"user_name":"匿名用户","add_time":"2020-01-11T08:47:42.000Z","content":"11111"},{"user_name":"匿名用户","add_time":"2020-01-11T08:19:34.000Z","content":"一剑曾当百万师"}]}
+
+
+
+
+
+
+
+
 var imgcategory = {"status":0,"message":[{"title":"家居生活","id":14},{"title":"摄影设计","id":15},{"title":"明星美女","id":16},{"title":"空间设计","id":17},{"title":"户型装饰","id":18},{"title":"广告摄影","id":19},{"title":"摄影学习","id":20},{"title":"摄影器材","id":21},{"title":"明星写真","id":22},{"title":"清纯甜美","id":23},{"title":"古典美女","id":24}]}
 
 
@@ -76,7 +89,12 @@ var itemdetails87 = {"status":0,"message":[{"id":87,"title":"华为（HUAWEI）�
 var itemdetails88 = {"status":0,"message":[{"id":88,"title":"苹果Apple iPhone 6 Plus 16G 4G手机（联通三网版）","add_time":"2015-04-19T17:00:58.000Z","goods_no":"SD7159810321","stock_quantity":200,"market_price":6388,"sell_price":5780}]}
 var itemdetails89 = {"status":0,"message":[{"id":89,"title":"小米（Mi）小米Note 16G双网通版","add_time":"2015-04-19T17:19:30.000Z","goods_no":"SD2932214404","stock_quantity":60,"market_price":2699,"sell_price":2199}]}
 
+// goods desc
+var goodsdesc87 = {"status":0,"message":[{"title":"华为（HUAWEI）荣耀6Plus 16G双4G版","content":"<p>\r\n\t荣耀6 Plus，该机型分为两款型号，分别为PE-TL10和PE-UL00的新机型，并且根据工信部设备认证中心公布的信息显示，移动版本PE-TL20和PE-TL00M也已经拿到了入网许可证，拥有7.5mm的纤薄机身，支持TDD-LTE/TD-SCDMA/GSM网络。双800万后置摄像头+800万前置摄像头。采用5.5英寸1080p分辨率显示屏，搭载1.8GHz麒麟925八核处理器，内置3GB RAM+32GB ROM存储组合，支持存储卡扩展。\r\n</p>\r\n<p align=\"center\">\r\n\t<span style=\"color:#FF0000;font-size:16px;\"><img class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/bbcimg/productDesc/descImg/201503/desc04/A0004794664/3997361.jpg\" /></span> \r\n</p>"}]}
 
+var goodsdesc88 = {"status":0,"message":[{"title":"苹果Apple iPhone 6 Plus 16G 4G手机（联通三网版）","content":"<p>\r\n\tiPhone 6 Plus设计上和iPhone 6一致，做工延续了苹果的高标准。\r\n</p>\r\n<p>\r\n\t和前几代不同的是，与前几代iPhone有棱有角的设计相比，它从屏幕边缘到边框都是弧形设计，玻璃与边框贴合的十分紧凑，两者衔接的地方过度十分自然，更像是unibody一体式的设计。它一改以往的设计风格，也使得手机十分圆滑，不太容易掌控。\r\n</p>\r\n<p>\r\n\tTechCrunch和Engadget都提到，iPhone 6 Plus让人想起了iPad mini，尤其是后者的侧边也是弧形设计。iPhone 6 Plus同样需要双手来操作，想要单手模式的话，轻拍两下Home键（不是按下去），显示内容会下移大约一半的尺寸。\r\n</p>\r\n<p>\r\n\t<br />\r\n</p>\r\n<p align=\"center\">\r\n\t<img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_02.jpg\" /> <img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img6.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_03.jpg\" /> \r\n</p>\r\n<p align=\"center\">\r\n\t<img width=\"750\" height=\"370\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_04.jpg\" /> \r\n</p>\r\n<p align=\"center\">\r\n\t<img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img6.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_05.jpg\" /> <img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_06.jpg\" /> <img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_07.jpg\" /> <img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_08.jpg\" /> <img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img6.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_09.jpg\" /> <img width=\"750\" height=\"370\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img6.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_10.jpg\" /> <img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img6.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_11.jpg\" /> <img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_12.jpg\" /> \r\n</p>\r\n<p align=\"center\">\r\n\t<img width=\"750\" height=\"371\" class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/prodimg/productDesc/descImg/201503/desc1226/1122290268/1_13.jpg\" /> \r\n</p>"}]}
+
+var goodsdesc89 = {"status":0,"message":[{"title":"小米（Mi）小米Note 16G双网通版","content":"<p>\r\n\t小米Note此次采用的5.7英寸夏普/JDI分辨率为1920X1080的屏幕。小米Note配置方面，CPU采用的是高通骁龙801四核2.5GHZ处理器，3GB的运行内存。\r\n</p>\r\n<p>\r\n\t4G双卡双待，1300万像素后置摄像头和400万前置摄像头组合，首次加入HiFi模块，高保真音质，电池容量为3000mAh。\r\n</p>\r\n<p>\r\n\t小米Note顶配版升级了CPU、屏幕、运行内存，采用的5.7英寸夏普/JDI分辨率为2560 x 1440的2K屏，CPU采用的是高通骁龙810八核64位处理器，4GB的运行内存。\r\n</p>\r\n<p align=\"center\">\r\n\t<img class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/bbcimg/productDesc/descImg/201501/desc04/A0005143105/3851475.jpg\" /> \r\n</p>"}]}
 
 
 
@@ -125,6 +143,27 @@ var server = http.createServer(function(req, res){
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(comment13_2))
   }
+
+  if(req.url === '/api/getcomments/87?pageindex=1'){
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(JSON.stringify(comment87))
+  }
+
+  if(req.url === '/api/getcomments/88?pageindex=1'){
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(JSON.stringify(comment88))
+  }
+
+  if(req.url === '/api/getcomments/89?pageindex=1'){
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(JSON.stringify(comment89))
+  }
+
+
+
   // add comment
   if(req.url === '/api/postcomment/13'){
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
@@ -249,6 +288,23 @@ if(req.url === '/api/goods/getinfo/89'){
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(itemdetails89))
+}
+
+// response goods desc
+if(req.url === '/api/goods/getdesc/87'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(goodsdesc87))
+}
+if(req.url === '/api/goods/getdesc/88'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(goodsdesc88))
+}
+if(req.url === '/api/goods/getdesc/89'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(goodsdesc89))
 }
 
 
