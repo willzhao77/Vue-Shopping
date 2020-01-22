@@ -8,6 +8,58 @@ Vue.use(VueRouter)
 // import router
 import router from './router.js'
 
+//import Vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+
+var cart = JSON.parse(localStorage.getItem('cart') || '[]')
+
+
+var store = new Vuex.Store({
+  state: {  //this.$store.stat..***
+    cart: cart // data from cart.  Like: { id: item ID, count: quantity, price: sale_price, selected: true }
+  },
+  mutations: {  // this.$store.commit('***', 'paramiter')
+    addToCart(state, goodsinfo){
+      // click add cart. save item info to cart
+      // if already have same item, only need add quantity
+      // if no, push item data to cart.
+
+      //default, no item in cart
+      var flag = false
+      state.cart.some( item => {
+        if(item.id == goodsinfo.id ){
+          item.count += parseInt(goodsinfo.count)
+          flag = true
+          return true
+        }
+      })
+      
+      //if no same item in cart. Add this item.
+      if(!flag){
+        state.cart.push(goodsinfo)
+      }
+
+      // save cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+      
+    }
+  },
+  getters:{ // this.$store.getters.****
+            // like computed
+            // like filter
+      getAllCount(state){
+        var c = 0;
+        state.cart.forEach( item => {
+          c += item.count
+        })
+        return c
+      }
+
+  }
+})
+
 
 
 // import MUI css
@@ -65,5 +117,6 @@ import app from './App.vue'
 var vm = new Vue({
   el: '#app',
   render: c => c(app),
-  router //use router
+  router, //use router
+  store,  // use store
 })

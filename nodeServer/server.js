@@ -97,6 +97,12 @@ var goodsdesc88 = {"status":0,"message":[{"title":"苹果Apple iPhone 6 Plus 16G
 var goodsdesc89 = {"status":0,"message":[{"title":"小米（Mi）小米Note 16G双网通版","content":"<p>\r\n\t小米Note此次采用的5.7英寸夏普/JDI分辨率为1920X1080的屏幕。小米Note配置方面，CPU采用的是高通骁龙801四核2.5GHZ处理器，3GB的运行内存。\r\n</p>\r\n<p>\r\n\t4G双卡双待，1300万像素后置摄像头和400万前置摄像头组合，首次加入HiFi模块，高保真音质，电池容量为3000mAh。\r\n</p>\r\n<p>\r\n\t小米Note顶配版升级了CPU、屏幕、运行内存，采用的5.7英寸夏普/JDI分辨率为2560 x 1440的2K屏，CPU采用的是高通骁龙810八核64位处理器，4GB的运行内存。\r\n</p>\r\n<p align=\"center\">\r\n\t<img class=\"gomeImgLoad\" alt=\"\" src=\"http://img5.gomein.net.cn/image/bbcimg/productDesc/descImg/201501/desc04/A0005143105/3851475.jpg\" /> \r\n</p>"}]}
 
 
+// cart Data
+var cartdata = {"status":0,"message":[{"cou":1,"id":87,"title":"华为（HUAWEI）荣耀6Plus 16G双4G版","sell_price":2195,"thumb_path":"http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg"},{"cou":1,"id":88,"title":"苹果Apple iPhone 6 Plus 16G 4G手机（联通三网版）","sell_price":5780,"thumb_path":"http://demo.dtcms.net/upload/201504/20/thumb_201504200059017695.jpg"},{"cou":1,"id":89,"title":"小米（Mi）小米Note 16G双网通版","sell_price":2199,"thumb_path":"http://demo.dtcms.net/upload/201504/20/thumb_201504200119256512.jpg"}]}
+
+
+
+
 
 
 //2. 创建一个 http 服务对象
@@ -305,6 +311,19 @@ if(req.url === '/api/goods/getdesc/89'){
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(goodsdesc89))
+}
+
+
+// response shoppint cart data
+if(req.url === '/api/goods/getshopcartlist/88,87'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(cartdata))
+}
+if(req.url === '/api/goods/getshopcartlist/87,88'){
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(cartdata))
 }
 
 

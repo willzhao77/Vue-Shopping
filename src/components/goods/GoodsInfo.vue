@@ -98,6 +98,12 @@ export default {
 
         addToShopCart(){
             this.ballFlag = !this.ballFlag
+            // { id: item ID, count: quantity, price: sale_price, selected: true }
+            // create an obj to save in Store -- cart
+            var goodsinfo = { id: this.id, count: this.selectedCount, price: this.goodsinfo.sell_price, selected: true }
+
+            // call mutations from store, save item to cart
+            this.$store.commit('addToCart', goodsinfo)
         },
 
         beforeEnter(el){

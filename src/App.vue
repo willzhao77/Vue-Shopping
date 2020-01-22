@@ -24,7 +24,7 @@
 					<span class="mui-tab-label">Member</span>
 				</router-link>
 				<router-link class="mui-tab-item-b" to="/shopcart">
-					<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="badge">0</span></span>
+					<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="badge">{{ $store.getters.getAllCount }}</span></span>
 					<span class="mui-tab-label">Cart</span>
 				</router-link>
 				<router-link class="mui-tab-item-b" to="/search">
