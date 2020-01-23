@@ -44,6 +44,41 @@ var store = new Vuex.Store({
       // save cart to localStorage
       localStorage.setItem('cart', JSON.stringify(state.cart))
       
+    },
+
+    updateGoodsInfo(state, goodsinfo){ //update goods qantity on cart
+      // update quantity
+      state.cart.some(item=> {
+        if(item.id == goodsinfo.id) {
+          item.count = parseInt(goodsinfo.count)
+          return true
+        }
+      })
+
+      // update quantity, save data to localStorage
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+
+    removeFromCart(state, id){  // remove item from store
+      state.cart.some((item, i) => {
+        if(item.id == id){
+          state.cart.splice(i, 1)
+          return true;
+        }
+      })
+
+      // save cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+
+    updateGoodsSelected(state, info){
+      state.cart.some(item => {
+        if(item.id == info.id){
+          item.selected = info.selected
+        }
+      })
+      // update status, save data to localStorage
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     }
   },
   getters:{ // this.$store.getters.****
@@ -55,6 +90,36 @@ var store = new Vuex.Store({
           c += item.count
         })
         return c
+      },
+
+      getGoodsCount(state){
+        var o = {}
+        state.cart.forEach( item => {
+          o[item.id] = item.count
+        })
+        return o
+      },
+
+      getGoodsSelected(state){
+        var o = {}
+        state.cart.forEach( item => {
+          o[item.id] = item.selected
+        })
+        return o
+      },
+
+      getGoodsCountAndAmount(state){
+        var o = {
+          count: 0,   // selected quantity
+          amount: 0   // totoal price
+        }
+        state.cart.forEach( item=> {
+          if(item.selected){
+            o.count += item.count
+            o.amount += item.price * item.count
+          }
+        })
+        return o
       }
 
   }

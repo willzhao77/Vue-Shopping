@@ -2,8 +2,12 @@
 	<div class="app-container">
 
 		<!-- top head -->
-			<mt-header fixed title="Vue Project"></mt-header>
-
+			<mt-header fixed title="Vue Project">
+				<span to="/" slot="left" @click="goBack" v-show="flag">
+					<mt-button icon="back">Back</mt-button>
+				</span>
+			</mt-header>
+			
 
 		<!-- center area -->
 		<transition>
@@ -40,10 +44,31 @@ export default {
   name: 'page-tabbar',
   data() {
     return {
-      selected: 'tab1'
-    };
+	flag : false
+    }
+  },
+  
+  created(){
+	  this.flag = this.$route.path === '/home' ? false : true
+  },
+
+  methods:{
+	goBack(){
+		//click go back
+		this.$router.go(-1)
+	}
+  },
+
+  watch:{
+	  "$route.path": function(newVal){
+		  if (newVal === "/home"){
+			  this.flag = false
+		  }else{
+			  this.flag = true
+		  }
+	  }
   }
-};
+}
 
 
 </script>

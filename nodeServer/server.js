@@ -109,61 +109,61 @@ var cartdata = {"status":0,"message":[{"cou":1,"id":87,"title":"华为（HUAWEI�
 var server = http.createServer(function(req, res){
 
   if(req.url === '/lunbo' || req.url === '/index'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.end(JSON.stringify(lunbo))
 
   }
 
   if(req.url === '/getnewslist'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(newsList))
 
   }
 
   if(req.url === '/getnews/13'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(news13))
   }
 
   if(req.url === '/getnews/14'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(news14))
   }
 
   if(req.url === '/getnews/15'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(news15))
   }
 
   if(req.url === '/api/getcomments/13?pageindex=1'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(comment13))
   }
   if(req.url === '/api/getcomments/13?pageindex=2'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(comment13_2))
   }
 
   if(req.url === '/api/getcomments/87?pageindex=1'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(comment87))
   }
 
   if(req.url === '/api/getcomments/88?pageindex=1'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(comment88))
   }
 
   if(req.url === '/api/getcomments/89?pageindex=1'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(comment89))
   }
@@ -172,41 +172,41 @@ var server = http.createServer(function(req, res){
 
   // add comment
   if(req.url === '/api/postcomment/13'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(comment13))
   }
 
   //add share photo category
   if(req.url === '/api/getimgcategory'){
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+    res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end(JSON.stringify(imgcategory))
   }
 
 //response for photo list
 if(req.url === '/api/getimages/0'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photolist0))
 }
 if(req.url === '/api/getimages/17'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photolist17))
 }
 if(req.url === '/api/getimages/18'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photolist18))
 }
 if(req.url === '/api/getimages/19'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photolist19))
 }
 if(req.url === '/api/getimages/20'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photolist20))
 }
@@ -214,37 +214,37 @@ if(req.url === '/api/getimages/20'){
 //response photodetails
 
 if(req.url === '/api/getimageInfo/37'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photodetail37))
 }
 
 
 if(req.url === '/api/getimageInfo/38'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photodetail38))
 }
 
 if(req.url === '/api/getimageInfo/39'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(photodetail39))
 }
 
 // response thumb picture
 if(req.url === '/api/getthumimages/37'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(thumbpic37))
 }
 if(req.url === '/api/getthumimages/38'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(thumbpic38))
 }
 if(req.url === '/api/getthumimages/39'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(thumbpic39))
 }
@@ -252,28 +252,28 @@ if(req.url === '/api/getthumimages/39'){
 
 //response goods request
 if(req.url === '/api/getgoods?pageindex=1'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(goodspage1))
 }if(req.url === '/api/getgoods?pageindex=2'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(goodspage2))
 }
 
 // response goods slide picture
 if(req.url === '/api/getthumimages/87'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(slide87))
 }
 if(req.url === '/api/getthumimages/88'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(slide88))
 }
 if(req.url === '/api/getthumimages/89'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(slide89))
 }
@@ -281,50 +281,46 @@ if(req.url === '/api/getthumimages/89'){
 
 //response goods itemdetails87
 if(req.url === '/api/goods/getinfo/87'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(itemdetails87))
 }
 if(req.url === '/api/goods/getinfo/88'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(itemdetails88))
 }
 if(req.url === '/api/goods/getinfo/89'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(itemdetails89))
 }
 
 // response goods desc
 if(req.url === '/api/goods/getdesc/87'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(goodsdesc87))
 }
 if(req.url === '/api/goods/getdesc/88'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(goodsdesc88))
 }
 if(req.url === '/api/goods/getdesc/89'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(goodsdesc89))
 }
 
 
 // response shoppint cart data
-if(req.url === '/api/goods/getshopcartlist/88,87'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
+if(req.url === '/api/goods/getshopcartlist/87,88,89'){
+  res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(cartdata))
 }
-if(req.url === '/api/goods/getshopcartlist/87,88'){
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // 设置可访问的源
-  res.setHeader("Content-Type", "application/json; charset=utf-8");
-  res.end(JSON.stringify(cartdata))
-}
+
 
 
 
