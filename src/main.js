@@ -171,7 +171,7 @@ Vue.filter('dateFormat', function(dataStr, pattern="YYYY-MM-DD HH:mm:ss"){
 
 
 //set root path
-Vue.http.options.root = 'http://localhost:3000';
+Vue.http.options.root = 'http://localhost:8000';
 
 //set global format
 Vue.http.options.emulateJSON = true;

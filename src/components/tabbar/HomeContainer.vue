@@ -51,7 +51,7 @@ export default {
     },
     methods:{
         getSlidePictures(){ //get pictures for slides
-            this.$http.get('lunbo').then(result =>{
+            this.$http.get('api/slideshow').then(result =>{
                 // console.log(result.body);
                 if(result.body.status === 0){
                     this.slidelist = result.body.message  //success 
