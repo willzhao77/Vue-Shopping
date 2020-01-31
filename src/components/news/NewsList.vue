@@ -3,12 +3,12 @@
         <ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
 					<router-link :to="'/home/newsinfo/' + item.id">
-						<img class="mui-media-object mui-pull-left" :src="item.img_url">
+						<img class="mui-media-object mui-pull-left" :src="item.img">
 						<div class="mui-media-body">
 							<h1>{{ item.title }}</h1>
 							<p class='mui-ellipsis'>
                                 <span>Time: {{ item.add_time | dateFormat }}</span>
-                                <span>Clicked: {{ item.click }} Times</span>
+                                <span>Clicked: {{ item.clicked }} Times</span>
                             </p>
 						</div>
 					</router-link>
@@ -33,7 +33,7 @@ export default {
     },
     methods:{
         getNewsList(){ //get news list
-            this.$http.get('getnewslist').then(result => {
+            this.$http.get('api/newslist').then(result => {
                 if(result.body.status === 0){
                     //if get data from server, save data
                     this.newslist = result.body.message;

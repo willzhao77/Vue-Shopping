@@ -4,8 +4,8 @@
         <h3 class="title">{{ newsinfo.title }}</h3>
         <!-- subtitle -->
         <p class="subtitle">
-            <span>Time:{{ newsinfo.add_time | dateFormat }}</span>
-            <span>Clicked: {{newsinfo.click }}</span>
+            <span>Time:{{ newsinfo.created_at | dateFormat }}</span>
+            <span>Clicked: {{newsinfo.clicked }}</span>
         </p>
         <hr>
         <!-- content -->
@@ -34,9 +34,9 @@ export default {
 
     methods:{
         getNewsInfo(){  //get news details
-            this.$http.get('getnews/' + this.id).then(result => {
+            this.$http.get('api/newsinfo/' + this.id).then(result => {
                 if(result.body.status === 0 ){
-                    this.newsinfo = result.body.message[0];
+                    this.newsinfo = result.body.message;
                 }else{
                     Toast('Load news details faild.')
                 }
