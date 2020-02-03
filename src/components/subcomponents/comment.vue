@@ -45,7 +45,6 @@ export default {
         }
       })
     },
-
     getMore(){ //get more data
       this.page++
       this.getComments()
@@ -61,8 +60,9 @@ export default {
       //parameter 1: URL
       //parameter 2: object to server { content: this.msg }
       //parameter 3: format for form { emulateJSON:true }
-      this.$http.post('api/postcomment/' + this.$route.params.id, {content:this.msg.trim()}).then(function(result){
-        if(result.body.status === 0){
+      this.$http.post('api/newscomment/', {newsid:1, name:"none", content:this.msg.trim()}).then(function(result){
+        if(result.status === 200){
+          
           // create a new comment object
           var cmt = {
             user_name: 'None',
