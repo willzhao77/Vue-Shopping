@@ -9,7 +9,7 @@
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item, i) in comments" :key="item.add_time">
         <div class="cmt-title">
-          {{ i+1 }} &nbsp;&nbsp; Name: {{ item.user_name }} &nbsp;&nbsp; Time: {{ item.created_at | dateFormat }}
+          {{ i+1 }} &nbsp;&nbsp; Name: {{ item.name }} &nbsp;&nbsp; Time: {{ item.created_at | dateFormat }}
         </div>
         <div class="cmt-body">
           {{ item.content === 'undefined' ? 'no conment from this user' : item.content }}
@@ -35,7 +35,7 @@ export default {
   },
   methods:{
     getComments(){  //get comments
-      this.$http.get("api/newscomment/"+this.id+"?page=" + this.page).then(result => {
+      this.$http.get("api/" + this.whichcomment + "/"+this.id+"?page=" + this.page).then(result => {
         if(result.body.status === 0){
           // this.comments = result.body.message
           //keep old comment when click 'more'
@@ -60,7 +60,7 @@ export default {
       //parameter 1: URL
       //parameter 2: object to server { content: this.msg }
       //parameter 3: format for form { emulateJSON:true }
-      this.$http.post('api/newscomment/', {newsid:1, name:"none", content:this.msg.trim()}).then(function(result){
+      this.$http.post('api/' + this.whichcomment, {newsid: this.id, name:"none", content:this.msg.trim()}).then(function(result){
         if(result.status === 200){
           
           // create a new comment object
@@ -75,7 +75,7 @@ export default {
       })
     },
   },
-  props:["id"]
+  props:["id", "whichcomment"]
 }
 </script>
 <style lang="scss" scoped>

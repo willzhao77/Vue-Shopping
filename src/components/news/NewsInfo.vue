@@ -12,7 +12,7 @@
         <div class="content" v-html="newsinfo.content"></div>
 
         <!-- comment component -->
-        <comment-box :id="this.id"></comment-box>
+        <comment-box :id="this.id" :whichcomment="'newscomment'"></comment-box>
     </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
     data(){
         return{
             id: this.$route.params.id,  //save URL's ID to Data. 
-            newsinfo: {}    // news object
+            newsinfo: {},    // news object
         }
     },
     created(){
