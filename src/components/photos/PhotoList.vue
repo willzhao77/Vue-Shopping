@@ -54,7 +54,7 @@ export default {
 		},
     methods:{
 		getAllCategory(){
-			this.$http.get("api/getimgcategory").then(result => {
+			this.$http.get("api/sharecategory").then(result => {
 				if(result.body.status === 0 ){
 					//manually create a full category list
 					result.body.message.unshift({ title: "All", id: 0 })
