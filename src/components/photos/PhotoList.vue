@@ -15,10 +15,10 @@
 		<!-- Photo list -->
 		<ul class="photo-list">
 			<router-link v-for="item in list" :key="item.id" :to="'/home/photoinfo/' + item.id" tag="li">
-				<img v-lazy="item.img_url">
+				<img v-lazy="item.img">
 				<div class="info">
 					<h1 class="info-title">{{ item.title }}</h1>
-					<div class="info-body">{{ item.zhaiyao }}</div>
+					<div class="info-body">{{ item.description }}</div>
 				</div>
 			</router-link>
 		</ul>
@@ -65,7 +65,7 @@ export default {
 
 		getPhotoListByCateId(cateId){
 			//get photo list by category ID
-			this.$http.get('api/getimages/' + cateId).then(result => {
+			this.$http.get('api/sharelist/' + cateId).then(result => {
 				if(result.body.status === 0 )
 				this.list = result.body.message
 			})

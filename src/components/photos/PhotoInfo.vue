@@ -2,8 +2,8 @@
     <div class="photoinfo-container">
         <h3>{{ photoinfo.title }}</h3>
         <p class="subtitle">
-            <span>Time: {{ photoinfo.add_time | dateFormat }}</span>
-            <span>Clicked: {{ photoinfo.click }}</span>
+            <span>Time: {{ photoinfo.created_at| dateFormat }}</span>
+            <span>Clicked: {{ photoinfo.clicked }}</span>
         </p>
         <hr>
 
@@ -11,7 +11,7 @@
         <vue-preview :slides="slide1" @close="handleClose"></vue-preview>
 
         <!-- picture content -->
-        <div class="content" v-html="photoinfo.content"></div>
+        <div class="content" v-html="photoinfo.description"></div>
 
         <!-- comment -->
         <cmt-box :id="id"></cmt-box>
@@ -38,15 +38,15 @@ export default {
     },
     methods:{
         getPhotoInfo(){ //get picture detail
-            this.$http.get('api/getimageInfo/' + this.id).then(result => {
+            this.$http.get('api/shareitem/' + this.id).then(result => {
                 if(result.body.status === 0 ){
-                    this.photoinfo = result.body.message[0]
+                    this.photoinfo = result.body.message
                 }
             })
         },
 
         getThumbs(){
-            this.$http.get('api/getthumimages/' + this.id).then(result =>{
+            this.$http.get('api/shareitemimgs/' + this.id).then(result =>{
                 if(result.body.status === 0 ){
                     //loop all pictures and all w and h
                     result.body.message.forEach(item => {
