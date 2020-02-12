@@ -60,7 +60,7 @@ export default {
       //parameter 1: URL
       //parameter 2: object to server { content: this.msg }
       //parameter 3: format for form { emulateJSON:true }
-      this.$http.post('api/' + this.whichcomment, {newsid: this.id, name:"none", content:this.msg.trim()}).then(function(result){
+      this.$http.post('api/' + this.whichcomment, {id: this.id, name:"none", content:this.msg.trim()}).then(function(result){
         if(result.status === 200){
           
           // create a new comment object

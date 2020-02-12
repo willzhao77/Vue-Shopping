@@ -17,7 +17,7 @@
         </router-link> -->
 
         <div class="goods-item" v-for="item in goodslist" :key=item.id @click="goDetail(item.id)">
-            <img :src="item.img_url" alt="" tag="div">
+            <img :src="item.img" alt="" tag="div">
             <h1 class="title">{{ item.title }}</h1>
             <div class="info">
                 <p class="price">
@@ -44,7 +44,7 @@
 export default {
     data(){
         return{  
-           pageindex: 1, // by default, display first page
+           page: 1, // by default, display first page
            goodslist: []  // save items array.
         }
     },
@@ -55,15 +55,15 @@ export default {
     methods:{
         getGoodsList(){
             // get item list
-            this.$http.get("api/getgoods?pageindex=" + this.pageindex).then(result => {
+            this.$http.get("api/shoplist?page=" + this.page).then(result => {
                 if(result.body.status === 0 ){
-                    this.goodslist = this.goodslist.concat(result.body.message)
+                    this.goodslist = this.goodslist.concat(result.body.message.data)
                 }
             })
         },
 
         getMore(){
-            this.pageindex ++
+            this.page ++
             this.getGoodsList()
 
         },

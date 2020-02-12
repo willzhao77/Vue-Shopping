@@ -14,7 +14,7 @@
         <div class="content" v-html="photoinfo.description"></div>
 
         <!-- comment -->
-        <cmt-box :id="id"></cmt-box>
+        <cmt-box :id="id" :whichcomment="'sharecomment'"></cmt-box>
 
     </div>
 </template>
