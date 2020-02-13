@@ -70,7 +70,7 @@ export default {
 
     methods:{
         getSlidePictures(){
-            this.$http.get("api/getthumimages/" + this.id).then(result => {
+            this.$http.get("api/shopitemimgs/" + this.id).then(result => {
                 if(result.body.status === 0 ){
                     result.body.message.forEach( item => {
                         item.img = item.src
@@ -81,9 +81,9 @@ export default {
         },
 
         getGoodsInfo(){
-            this.$http.get('api/goods/getinfo/' + this.id).then(result => {
+            this.$http.get('api/shopitem/' + this.id).then(result => {
                 if(result.body.status === 0 ){
-                    this.goodsinfo = result.body.message[0]
+                    this.goodsinfo = result.body.message
                 }
             })
         },

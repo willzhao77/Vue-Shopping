@@ -12,7 +12,9 @@
 export default {
     data(){
         return{
-            info: {}  // item datails
+            info: {},  // item datails
+            test:'',
+
         }
     },
 
@@ -22,9 +24,13 @@ export default {
 
     methods:{
         getGoodsDesc(){
-            this.$http.get('api/goods/getdesc/' + this.$route.params.id).then(result => {
+            this.$http.get('api/shopitemdetails/' + this.$route.params.id).then(result => {
                 if(result.body.status === 0 ){
-                    this.info = result.body.message[0]
+                    this.info = result.body.message
+                   
+                    
+                    console.log(this.info.content)
+                    console.log(this.test)
                 }
         })
         }
