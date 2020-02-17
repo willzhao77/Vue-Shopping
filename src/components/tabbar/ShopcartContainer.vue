@@ -8,13 +8,13 @@
 						<mt-switch v-model="$store.getters.getGoodsSelected[item.id]"
                             @change="selectedChanged(item.id, $store.getters.getGoodsSelected[item.id])"
                         ></mt-switch>
-                        <img :src="item.thumb_path" alt="">
+                        <img :src="item.img" alt="">
                         <div class="info">
                             <h1>{{ item.title }}</h1>
                             <p>
                                 <span class="price">${{ item.sell_price }}</span>
                                 <numbox :initcount="$store.getters.getGoodsCount[item.id]" :goodsid="item.id"></numbox>
-                                <a href="" @click.prevent="remove(item.id, i)">del</a>
+                                <a href="" @click.prevent="remove(item.id, i)">Del</a>
                             </p>
                         </div>
 					</div>
@@ -60,7 +60,7 @@ export default {
                 return
             }
 
-            this.$http.get('api/goods/getshopcartlist/' + idArr.join(",")).then(result => {
+            this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
                 if(result.body.status === 0 ){
                     this.goodslist = result.body.message
                 }

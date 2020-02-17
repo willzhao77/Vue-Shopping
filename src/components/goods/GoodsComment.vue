@@ -1,6 +1,6 @@
 <template>
     <div>
-        <cmtbox :id="$route.params.id"></cmtbox> 
+        <cmtbox :id="$route.params.id" :whichcomment="'shopitemcomment'"></cmtbox> 
     </div>
 </template>
 

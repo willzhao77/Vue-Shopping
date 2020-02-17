@@ -1,7 +1,7 @@
 <template>
   <div class="cmt-container">
     <h3>Create Comment</h3>
-    <textarea placeholder="Please enter your comment (max 10)" maxlength="10" v-model="msg"></textarea>
+    <textarea placeholder="Please enter your comment (max 100)" maxlength="100" v-model="msg"></textarea>
     <mt-button type="primary" size="large" @click="postComment">Send Comment</mt-button>
 
     
