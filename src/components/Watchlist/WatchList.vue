@@ -1,20 +1,9 @@
 <template>
-    <div>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		
-        <form class="search">
-            <div class="d-table-cell w-100">
-                <input class="form-control"  v-model="keyword">
-            </div>
-            <div class="d-table-cell align-middle">
-                <button class="btn btn-primary" @click.prevent="getGoodsList">Search</button>
-            </div>
-        </form>
-
-        <div class="searchlist-container">
-        <div class="search-list">
+    <div class="watchlist-container">
+        <h3>Watch list</h3>
+        <div class="watch-list">
             <!-- item list -->
-            <div class="mui-card" v-for="(item, i) in goodslist" :key=item.id @click="goDetail(item.id)">
+            <div class="mui-card" v-for="(item, i) in goodslist" :key=item.id>
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
 
@@ -23,6 +12,7 @@
                             <h1>{{ item.title }}</h1>
                             <p>
                                 <span class="price">${{ item.sell_price }}</span>
+                                <a href="" @click.prevent="remove(item.id, i)">Del</a>
                             </p>
                         </div>
 					</div>
@@ -30,56 +20,64 @@
 			</div>
         </div>
     </div>
-
-    </div>
 </template>
 
 <script>
+import numbox from '../subcomponents/shopcart_numbox.vue'
 export default {
-    name: 'searchComponent',
     data(){
       return {
-          goodslist: [],  // all item data from cart
-          keyword: [], // user type keyword
+          goodslist: []  // all item data from cart
       }
     },
 
-    // created() {
-    //     this.getGoodsList()
-    // }, 
+    created() {
+        this.getGoodsList()
+    }, 
 
     methods:{
         getGoodsList(){
             // get all items' ID
+            var idArr = []
+            this.$store.state.watchList.forEach( item => idArr.push(item.id))
+            if(idArr.length <= 0) {
+                return
+            }
 
-            // this.$http.get('api/getshopcartlist/' + 1)).then(result => {
-            this.$http.get('http://localhost:8000/api/searchlist/' + this.keyword ).then(result => {
+            this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
                 if(result.body.status === 0 ){
                     this.goodslist = result.body.message
                 }
             })
         },
 
-        goDetail(id){
-            // use JS route
-            this.$router.push('/home/goodsinfo/' + id)
+        remove(id, index){  // use ID remove store,  use index, remove goodslist
+            this.goodslist.splice(index, 1)
+            this.$store.commit('removeFromWatchList', id)
+        },
+
+        selectedChanged(id, val){  //sync switch status to store
+            // console.log( id + '------' + val)
+            this.$store.commit('updateGoodsSelected', {id, selected:val})
         }
+    },
+
+    components:{
+        numbox
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.search{
-    margin: 15px;
+h3{
+    text-align: center;
+    padding: 10px;
+    color:#1668b5;
 }
-button{
-    margin-left: 5px;
-}
-
-.searchlist-container{
+.watchlist-container{
     background-color: #eee;
     overflow: hidden;
-    .search-list{
+    .watch-list{
         .mui-card-content-inner{
             display: flex;
             align-items: center;
@@ -110,6 +108,4 @@ button{
       }
     }
 }
-
-
 </style>

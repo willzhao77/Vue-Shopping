@@ -11,7 +11,9 @@
 
 		<!-- center area -->
 		<transition>
+			<keep-alive include="searchComponent">
 			<router-view></router-view>
+			</keep-alive>
 		</transition>
 		
 
@@ -23,10 +25,10 @@
 					<span class="mui-icon mui-icon-home"></span>
 					<span class="mui-tab-label">Home</span>
 				</router-link>
-				<router-link class="mui-tab-item-b" to="/member">
+				<!-- <router-link class="mui-tab-item-b" to="/member">
 					<span class="mui-icon mui-icon-contact"></span>
 					<span class="mui-tab-label">Member</span>
-				</router-link>
+				</router-link> -->
 				<router-link class="mui-tab-item-b" to="/shopcart">
 					<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="badge">{{ $store.getters.getAllCount }}</span></span>
 					<span class="mui-tab-label">Cart</span>
@@ -35,7 +37,11 @@
 					<span class="mui-icon mui-icon-search"></span>
 					<span class="mui-tab-label">Search</span>
 				</router-link>
-		</nav>       
+				<router-link class="mui-tab-item-b" to="/person">
+					<span class="mui-icon mui-icon-person"></span>
+					<span class="mui-tab-label">me</span>
+				</router-link>
+		</nav>
 	</div>
 </template>
 

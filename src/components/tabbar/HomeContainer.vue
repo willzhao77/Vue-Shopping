@@ -21,15 +21,18 @@
                         <router-link to="/home/goodslist">
 		                    <img  src="/images/menu3.png" alt="">
 		                    <div class="mui-media-body">Shopping</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="#">
 		                    <img  src="/images/menu4.png" alt="">
-		                    <div class="mui-media-body">Feedback</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <div class="mui-media-body">Message</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <router-link to="/home/watchlist">
 		                    <img  src="/images/menu5.png" alt="">
-		                    <div class="mui-media-body">Video</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <div class="mui-media-body">Watchlist</div></router-link></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <router-link to="/home/contactus">
 		                    <img  src="/images/menu6.png" alt="">
-		                    <div class="mui-media-body">Contact us</div></a></li>
+		                    <div class="mui-media-body">Contact us</div></router-link></li>
 		        </ul> 
 
 
@@ -54,6 +57,7 @@ export default {
             this.$http.get('api/slideshow').then(result =>{
                 // console.log(result.body);
                 if(result.body.status === 0){
+                    console.log(result.body.message)
                     this.slidelist = result.body.message  //success 
                 }else{
                     Toast('Slide pictures loading faild')

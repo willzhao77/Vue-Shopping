@@ -21,7 +21,9 @@
 						<p class="price">
                             Market Price: <del>${{ goodsinfo.market_price }}</del>&nbsp;&nbsp; Our Price: <span class="now_price">${{ goodsinfo.sell_price }}</span>
                         </p>
-                        <p>Quantity:<numbox @getcount="getSelectedCount" :max="goodsinfo.stock_quantity"></numbox></p>
+                        <p>Quantity:<numbox @getcount="getSelectedCount" :max="goodsinfo.stock_quantity"></numbox>
+                        <button type="button" class="mui-btn mui-btn-warning mui-btn-outlined" @click="addToWatchList"><span class="mui-icon mui-icon mui-icon-star">Watchlist</span></button>
+                         </p>
                         <p>
                             <mt-button type="primary" size="small">Buy It Now</mt-button>
                             <mt-button type="danger" size="small" @click="addToShopCart">Add To Cart</mt-button>
@@ -105,6 +107,14 @@ export default {
             // call mutations from store, save item to cart
             this.$store.commit('addToCart', goodsinfo)
         },
+
+        addToWatchList(){
+            var goodsinfo = { id: this.id }
+
+            // call mutations from store, save item to cart
+            this.$store.commit('addToWatchList', goodsinfo)
+        },
+
 
         beforeEnter(el){
             el.style.transform = "translate(0, 0)"

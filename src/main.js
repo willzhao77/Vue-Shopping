@@ -18,7 +18,8 @@ var cart = JSON.parse(localStorage.getItem('cart') || '[]')
 
 var store = new Vuex.Store({
   state: {  //this.$store.stat..***
-    cart: cart // data from cart.  Like: { id: item ID, count: quantity, price: sale_price, selected: true }
+    cart: [], // data from cart.  Like: { id: item ID, count: quantity, price: sale_price, selected: true }
+    watchList:[],
   },
   mutations: {  // this.$store.commit('***', 'paramiter')
     addToCart(state, goodsinfo){
@@ -46,6 +47,35 @@ var store = new Vuex.Store({
       
     },
 
+
+
+    addToWatchList(state, goodsinfo){
+      // click add list. save item info to list
+      // if already have same item, only need add quantity
+      // if no, push item data to cart.
+
+      //default, no item in cart
+      var flag = false
+      state.watchList.some( item => {
+        if(item.id == goodsinfo.id ){
+          flag = true
+          return true
+        }
+      })
+      
+      //if no same item in cart. Add this item.
+      if(!flag){
+        state.watchList.push(goodsinfo)
+      }
+
+      // save cart to localStorage
+      localStorage.setItem('watchList', JSON.stringify(state.watchList))
+      
+    },
+
+
+
+
     updateGoodsInfo(state, goodsinfo){ //update goods qantity on cart
       // update quantity
       state.cart.some(item=> {
@@ -70,6 +100,21 @@ var store = new Vuex.Store({
       // save cart to localStorage
       localStorage.setItem('cart', JSON.stringify(state.cart))
     },
+
+
+    removeFromWatchList(state, id){  // remove item from store
+      state.watchList.some((item, i) => {
+        if(item.id == id){
+          state.watchList.splice(i, 1)
+          return true;
+        }
+      })
+
+      // save cart to localStorage
+      localStorage.setItem('watchList', JSON.stringify(state.cart))
+    },
+
+
 
     updateGoodsSelected(state, info){
       state.cart.some(item => {
