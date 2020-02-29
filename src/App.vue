@@ -11,9 +11,9 @@
 
 		<!-- center area -->
 		<transition>
-			<keep-alive include="searchComponent">
-			<router-view></router-view>
-			</keep-alive>
+			<!-- <keep-alive include="a"> -->
+				<router-view></router-view>
+			<!-- </keep-alive> -->
 		</transition>
 		
 
@@ -37,7 +37,7 @@
 					<span class="mui-icon mui-icon-search"></span>
 					<span class="mui-tab-label">Search</span>
 				</router-link>
-				<router-link class="mui-tab-item-b" to="/person">
+				<router-link class="mui-tab-item-b" :to= mepage>
 					<span class="mui-icon mui-icon-person"></span>
 					<span class="mui-tab-label">me</span>
 				</router-link>
@@ -50,12 +50,20 @@ export default {
   name: 'page-tabbar',
   data() {
     return {
-	flag : false
+	flag : false,
+	mepage: ''
     }
   },
   
   created(){
 	  this.flag = this.$route.path === '/home' ? false : true
+
+	  if(this.$store.state.token =='' || typeof comment === 'undefined')
+	  {
+		  this.mepage = "/login"
+	  }else{
+		  this.mepage = "/person"
+      }
   },
 
   methods:{
