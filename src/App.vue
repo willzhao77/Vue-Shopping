@@ -39,7 +39,7 @@
 				</router-link>
 				<router-link class="mui-tab-item-b" :to= mepage>
 					<span class="mui-icon mui-icon-person"></span>
-					<span class="mui-tab-label">me</span>
+					<span class="mui-tab-label" @click="loadToken">me</span>
 				</router-link>
 		</nav>
 	</div>
@@ -58,19 +58,45 @@ export default {
   created(){
 	  this.flag = this.$route.path === '/home' ? false : true
 
-	  if(this.$store.state.token =='' || typeof comment === 'undefined')
-	  {
-		  this.mepage = "/login"
-	  }else{
-		  this.mepage = "/person"
-      }
+
+	  this.loadToken()
+// this.$store.commit('getUserToken')
+// console.log(this.$store.state.api_token)
+// 	  if(this.$store.state.api_token =='' || typeof this.$store.state.api_token === 'undefined' || this.$store.state.api_token == null)
+// 	  {
+// 		//   console.log(this.$store.state.api_token)
+// 		  this.mepage = "/login"
+// 		//   console.log("login")
+// 	  }else{
+// 		//   console.log(this.$store.state.api_token)
+// 		//   console.log('to person')
+// 		  this.mepage = "/person"
+//       }
   },
 
   methods:{
 	goBack(){
 		//click go back
 		this.$router.go(-1)
-	}
+	},
+
+	loadToken(){
+		this.$store.commit('getUserToken')
+		console.log(this.$store.state.api_token)
+	  if(this.$store.state.api_token =='' || typeof this.$store.state.api_token === 'undefined' || this.$store.state.api_token == null)
+	  {
+		//   console.log(this.$store.state.api_token)
+		  this.mepage = "/login"
+		//   console.log("login")
+	  }else{
+		//   console.log(this.$store.state.api_token)
+		//   console.log('to person')
+		  this.mepage = "/person"
+      }
+
+	},
+
+
   },
 
   watch:{

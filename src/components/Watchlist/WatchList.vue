@@ -37,6 +37,7 @@ export default {
 
     methods:{
         getGoodsList(){
+            this.$store.commit('getWatchList')
             // get all items' ID
             var idArr = []
             this.$store.state.watchList.forEach( item => idArr.push(item.id))
@@ -69,11 +70,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h3{
-    text-align: center;
-    padding: 10px;
-    color:#1668b5;
-}
 .watchlist-container{
     background-color: #eee;
     overflow: hidden;
@@ -107,5 +103,12 @@ h3{
           font-size: 16px;
       }
     }
+}
+
+
+h3{
+    text-align: center;
+    padding: 10px;
+    color:#1668b5;
 }
 </style>

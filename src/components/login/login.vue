@@ -6,7 +6,10 @@
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="username" class="sr-only">User Name</label>
       <input type="name" id="username" class="form-control" placeholder="username" required autofocus v-model="name">
+
+
       <label for="inputPassword" class="sr-only">Password</label>
+
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
       <div class="checkbox mb-3">
         <label>
@@ -27,40 +30,46 @@ export default {
       return {
         name:'',
         password:'',
-
+        api_token:'',
       }
     },
-
     methods:{
       goRegister(){
         this.$router.push('/register')
       },
-
       login(){
         var formData = new FormData()
             formData.append('name', this.name)
             formData.append('password', this.password)
          
-
         this.$http.post('http://127.0.0.1:8000/api/login', formData)
           .then(response => {
-                console.log(response.body);
+                // console.log(response.body);
             // check user name and password and redirect to related page
             if(response.body.api_token == '' || typeof response.body.api_token == 'undefined')
             {
-              console.log("please Login again.");
-              // Toast('UserName or Password not correct')
-
+              // console.log("please Login again.");
+              // console.error(response.body);
+              Toast('UserName or Password not correct')
             }else{
               // console.log("personal page");
+              console.log(response.body.api_token);
+              this.api_token = response.body.api_token;
+              this.addApiToken();
               this.$router.push('/person')
             }
-
             }, response => {
-              console.error(response.body);
+              // console.error(response.body);
               Toast('UserName or Password not correct')
             });
-      }
+      },
+
+      addApiToken(){
+            var token = { api_token: this.api_token }
+
+            // call mutations from store, save item to cart
+            this.$store.commit('addApiToken', token)
+        },
     }
 }
 </script>

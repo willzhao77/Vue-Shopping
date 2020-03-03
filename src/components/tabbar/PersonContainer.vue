@@ -1,5 +1,7 @@
 <template>
     <div>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
         <h3>Test User</h3>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell"><img src="images\account.jpg" alt=""> Account: Test123</li>
@@ -18,12 +20,46 @@
             </li>
             <li class="mui-table-view-cell"><img src="images\ver.jpg" alt=""> Version: 1.0</li>
         </ul>
+        
+        <mt-button type="primary" size="large" @click="logout">logout</mt-button>
     </div>
 </template>
 
 <script>
 export default {
-    
+
+    data(){
+        return {
+
+        }
+    },
+
+    created(){
+        
+    //      if(this.$store.state.token =='' || this.$store.state.token =='')
+	//   {
+	// 	  console.log('no token')
+	//   }else{
+    //       console.log('has token')
+    //   }
+    },
+
+    methods: {
+        
+        logout(){
+
+            var formData = new FormData()
+            formData.append('api_token', this.$store.state.api_token)
+
+            console.log(this.$store.state.api_token)
+
+            this.$http.post('http://127.0.0.1:8000/api/logout', this.$store.state.api_token)
+          .then(response => {
+              this.$store.commit('removeApiToken')
+              this.$router.push('/login')
+            });
+        }
+    },
 }
 </script>
 

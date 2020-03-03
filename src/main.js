@@ -20,8 +20,20 @@ var store = new Vuex.Store({
   state: {  //this.$store.stat..***
     cart: [], // data from cart.  Like: { id: item ID, count: quantity, price: sale_price, selected: true }
     watchList:[],
+    api_token:'',
   },
   mutations: {  // this.$store.commit('***', 'paramiter')
+
+  getUserToken(state){
+    state.api_token = localStorage.getItem('api_token')
+  },
+
+  getWatchList(state){
+    console.log(localStorage.getItem('watchList'))
+    state.watchList = JSON.parse(localStorage.getItem('watchList'))
+  },
+
+
     addToCart(state, goodsinfo){
       // click add cart. save item info to cart
       // if already have same item, only need add quantity
@@ -74,6 +86,15 @@ var store = new Vuex.Store({
     },
 
 
+    addApiToken(state, token){
+      state.api_token = token;
+      localStorage.setItem('api_token', JSON.stringify(state.api_token))
+    },
+
+    removeApiToken(state, token){
+      state.api_token = '';
+      localStorage.setItem('api_token', '')
+    },
 
 
     updateGoodsInfo(state, goodsinfo){ //update goods qantity on cart
@@ -114,7 +135,7 @@ var store = new Vuex.Store({
       localStorage.setItem('watchList', JSON.stringify(state.cart))
     },
 
-
+    
 
     updateGoodsSelected(state, info){
       state.cart.some(item => {
@@ -129,6 +150,8 @@ var store = new Vuex.Store({
   getters:{ // this.$store.getters.****
             // like computed
             // like filter
+      
+
       getAllCount(state){
         var c = 0;
         state.cart.forEach( item => {
@@ -165,7 +188,7 @@ var store = new Vuex.Store({
           }
         })
         return o
-      }
+      },
 
   }
 })

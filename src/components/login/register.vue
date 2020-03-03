@@ -71,6 +71,7 @@ export default {
         this.$http.post('http://127.0.0.1:8000/api/register', formData)
           .then(response => {
                 console.log(response.body);
+                this.$router.push('/person')
             }, response => {
               console.error(response.body);
             });
