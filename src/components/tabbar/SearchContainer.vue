@@ -1,14 +1,16 @@
 <template>
     <div>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 		
         <form class="search">
-            <div class="d-table-cell w-100">
-                <input class="form-control"  v-model="keyword">
-            </div>
-            <div class="d-table-cell align-middle">
-                <button class="btn btn-primary" @click.prevent="getGoodsList">Search</button>
-            </div>
+           
+
+            <div class=" flex" >
+					<input type="text" class="mui-input" v-model="keyword">
+                    <button type="" class="mui-btn-primary" @click.prevent="getGoodsList">Search</button>
+				</div>
+
+           
         </form>
 
         <div class="searchlist-container">
@@ -36,7 +38,7 @@
 
 <script>
 export default {
-    name: 'searchComponent',
+    name: "aaaaaaa",
     data(){
       return {
           goodslist: [],  // all item data from cart
@@ -111,5 +113,16 @@ button{
     }
 }
 
+.flex {
+    display: flex;
+}
+.flex{
+    .mui-input{
+        height: 40px;
+    }
+    button{
+        height: 40px;
+    }
+}
 
 </style>

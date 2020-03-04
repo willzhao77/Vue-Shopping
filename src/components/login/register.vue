@@ -14,7 +14,7 @@
         <input type="text" id="username" name="username" placeholder="" class="input-xlarge" v-model="name">
       </div>
     </div>
- 
+
     <div class="control-group">
       <!-- E-mail -->
       <label class="control-label" for="email">E-mail</label>
@@ -22,7 +22,7 @@
         <input type="text" id="email" name="email" placeholder="" class="input-xlarge" v-model="email">
       </div>
     </div>
- 
+
     <div class="control-group">
       <!-- Password-->
       <label class="control-label" for="password">Password</label>
@@ -30,7 +30,7 @@
         <input type="password" id="password" name="password" placeholder="" class="input-xlarge" v-model="password">
       </div>
     </div>
- 
+
     <div class="control-group">
       <!-- Password -->
       <label class="control-label"  for="password_confirm">Password (Confirm)</label>
@@ -38,7 +38,7 @@
         <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge" v-model="password_confirmation">
       </div>
     </div>
- 
+
     <div class="control-group">
       <!-- Button -->
       <div class="controls">
@@ -57,7 +57,8 @@ export default {
         name:'',
         email:'',
         password:'',
-        password_confirmation:''
+        password_confirmation:'',
+        api_token:'',
       }
     },
     methods:{
@@ -66,20 +67,29 @@ export default {
             formData.append('name', this.name)
             formData.append('password', this.password)
             formData.append('password_confirmation', this.password_confirmation)
-         
+
 
         this.$http.post('http://127.0.0.1:8000/api/register', formData)
           .then(response => {
                 console.log(response.body);
+                this.api_token = response.body.api_token;
+                this.addApiToken();
+                this.$router.push('/person')
                 this.$router.push('/person')
             }, response => {
               console.error(response.body);
             });
-      }
+      },
+
+      addApiToken(){
+            var token = { api_token: this.api_token }
+
+            // call mutations from store, save item to cart
+            this.$store.commit('addApiToken', token)
+        },
     }
 }
 </script>
 
 <style lang="stylus" scoped>
-
-</style>
+</style> 

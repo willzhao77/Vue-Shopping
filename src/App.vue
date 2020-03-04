@@ -58,7 +58,7 @@ export default {
   created(){
 	  this.flag = this.$route.path === '/home' ? false : true
 
-
+	console.log(this.$route.path)
 	  this.loadToken()
 // this.$store.commit('getUserToken')
 // console.log(this.$store.state.api_token)
@@ -77,7 +77,16 @@ export default {
   methods:{
 	goBack(){
 		//click go back
-		this.$router.go(-1)
+		if(this.$route.path === "/person"){
+			this.$router.push("/")
+		}else{
+			this.$router.go(-1)
+		}
+
+		
+		
+
+		
 	},
 
 	loadToken(){

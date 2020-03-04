@@ -33,7 +33,7 @@ var store = new Vuex.Store({
     state.watchList = JSON.parse(localStorage.getItem('watchList'))
   },
 
-
+ 
     addToCart(state, goodsinfo){
       // click add cart. save item info to cart
       // if already have same item, only need add quantity

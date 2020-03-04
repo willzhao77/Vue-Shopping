@@ -1,16 +1,16 @@
 <template>
     <div>
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+                <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
-        <h3>Test User</h3>
+        <h3>Account: {{ this.account }}</h3>
         <ul class="mui-table-view">
-            <li class="mui-table-view-cell"><img src="images\account.jpg" alt=""> Account: Test123</li>
+            <li class="mui-table-view-cell"><img src="images\account.jpg" alt=""> Name: {{this.name}}</li>
             <li class="mui-table-view-cell">
-                    <a class="mui-navigate-right"><img src="images\address.png" alt="">Address: 123 Test address</a>
+                    <a class="mui-navigate-right"><img src="images\address.png" alt="">Address: {{ this.address }}</a>
             </li>
 
             <li class="mui-table-view-cell">
-                    <a class="mui-navigate-right"><img src="images\mobile.jpg" alt=""> Mobile: 123456789</a>
+                    <a class="mui-navigate-right"><img src="images\mobile.jpg" alt=""> Mobile: {{ this.mobile }}</a>
             </li>
             <li class="mui-table-view-cell">
                     <a class="mui-navigate-right"><img src="images\order.png" alt=""> Order: 00001</a>
@@ -30,7 +30,11 @@ export default {
 
     data(){
         return {
-
+            account:'',
+            email:'',
+            name:'',
+            address:'',
+            mobile:'',
         }
     },
 
@@ -42,6 +46,8 @@ export default {
 	//   }else{
     //       console.log('has token')
     //   }
+    this.getUserDetails()
+
     },
 
     methods: {
@@ -58,6 +64,30 @@ export default {
               this.$store.commit('removeApiToken')
               this.$router.push('/login')
             });
+        },
+
+
+        getUserDetails(){
+            this.$store.commit('getUserToken')
+            // console.log(this.$store.state.api_token)
+            // console.log(this.$store.state.api_token.api_token)
+            
+            // console.log(typeof(JSON.parse(this.$store.state.api_token)))
+            // console.log(JSON.parse(this.$store.state.api_token).api_token)
+            // console.log(this.$store.state.api_token)
+            this.$http.get('http://127.0.0.1:8000/api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
+   
+            userInfo = response.body
+            this.account = userInfo.name
+            this.email = userInfo.email
+            
+            //check if user has details info
+             if(response.body.to_details){
+                this.name = userInfo.to_details.name
+                this.address = userInfo.to_details.address
+                this.mobile = userInfo.to_details.mobile
+             }
+            })
         }
     },
 }
