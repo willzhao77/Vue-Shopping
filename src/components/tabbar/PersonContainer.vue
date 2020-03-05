@@ -4,12 +4,15 @@
 
         <h3>Account: {{ this.account }}</h3>
         <ul class="mui-table-view">
-            <li class="mui-table-view-cell"><img src="images\account.jpg" alt=""> Name: {{this.name}}</li>
-            <li class="mui-table-view-cell">
+            <li class="mui-table-view-cell" @click="details">
+                <a class="mui-navigate-right"><img src="images\account.jpg" alt=""> Name: {{this.name}}</a>
+            </li>
+
+            <li class="mui-table-view-cell" @click="details">
                     <a class="mui-navigate-right"><img src="images\address.png" alt="">Address: {{ this.address }}</a>
             </li>
 
-            <li class="mui-table-view-cell">
+            <li class="mui-table-view-cell" @click="details">
                     <a class="mui-navigate-right"><img src="images\mobile.jpg" alt=""> Mobile: {{ this.mobile }}</a>
             </li>
             <li class="mui-table-view-cell">
@@ -51,6 +54,11 @@ export default {
     },
 
     methods: {
+
+        details(){
+            console.log('todetails')
+            this.$router.push('/details')
+        },
         
         logout(){
 

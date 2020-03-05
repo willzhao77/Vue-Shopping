@@ -22,7 +22,7 @@
                             Market Price: <del>${{ goodsinfo.market_price }}</del>&nbsp;&nbsp; Our Price: <span class="now_price">${{ goodsinfo.sell_price }}</span>
                         </p>
                         <p>Quantity:<numbox @getcount="getSelectedCount" :max="goodsinfo.stock_quantity"></numbox>
-                        <button type="button" class="mui-btn mui-btn-warning mui-btn-outlined" @click="addToWatchList"><span class="mui-icon mui-icon mui-icon-star">Watchlist</span></button>
+                        <button type="button" :class="['mui-btn', 'mui-btn-warning', {'mui-btn-outlined':!flag}]" @click="addToWatchList"><span class="mui-icon mui-icon mui-icon-star">Watchlist</span></button>
                          </p>
                         <p>
                             <mt-button type="primary" size="small">Buy It Now</mt-button>
@@ -61,13 +61,16 @@ export default {
             slide: [], // slide pictures 
             goodsinfo: {},   //item details
             ballFlag: false,  // control ball display
-            selectedCount: 1  // save user selected item's quantity
+            selectedCount: 1,  // save user selected item's quantity
+            flag: false, // check if watched this item
+
         }
     },
 
     created() {
         this.getSlidePictures()
         this.getGoodsInfo()
+        this.ifWatched()
     },
 
     methods:{
@@ -111,8 +114,22 @@ export default {
         addToWatchList(){
             var goodsinfo = { id: this.id }
 
-            // call mutations from store, save item to cart
-            this.$store.commit('addToWatchList', goodsinfo)
+            if(this.flag)
+            {
+                console.log("remove watch list")
+                this.$store.commit('removeFromWatchList', goodsinfo.id)
+                
+                
+
+            }else{
+                // call mutations from store, save item to cart
+                
+                this.$store.commit('addToWatchList', goodsinfo)
+                
+               
+            }
+            this.flag = !this.flag
+            this.ifWatched()
         },
 
 
@@ -143,7 +160,21 @@ export default {
         getSelectedCount(count){
             this.selectedCount = count
             // console.log('get number from sub-component ' + this.selectedCount)
-        }
+        },
+
+        ifWatched(){
+            console.log("before:" + this.$store.state.watchList)
+            this.$store.commit('getWatchList')
+            console.log("after:" +this.$store.state.watchList)
+            // get all items' ID
+            // var idArr = []
+            // let watchData = JSON.parse(this.$store.state.watchList)
+            this.$store.state.watchList.forEach( item => {
+                if(item.id == this.id) {
+                           this.flag = true    
+                }
+            })
+        },
 
 
     },

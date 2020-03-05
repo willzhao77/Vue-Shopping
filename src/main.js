@@ -29,10 +29,17 @@ var store = new Vuex.Store({
   },
 
   getWatchList(state){
-    console.log(localStorage.getItem('watchList'))
-    state.watchList = JSON.parse(localStorage.getItem('watchList'))
+    if(localStorage.getItem('watchList') != null){
+      state.watchList = JSON.parse(localStorage.getItem('watchList'))
+    }
+    
   },
 
+  getShoppingCart(state){
+    if(localStorage.getItem('cart') != null){
+      state.cart = JSON.parse(localStorage.getItem('cart'))
+    }
+  },
  
     addToCart(state, goodsinfo){
       // click add cart. save item info to cart
@@ -111,6 +118,7 @@ var store = new Vuex.Store({
     },
 
     removeFromCart(state, id){  // remove item from store
+      console.log(typeof(state.cart))
       state.cart.some((item, i) => {
         if(item.id == id){
           state.cart.splice(i, 1)
@@ -124,15 +132,19 @@ var store = new Vuex.Store({
 
 
     removeFromWatchList(state, id){  // remove item from store
+      console.log(state.watchList)
       state.watchList.some((item, i) => {
         if(item.id == id){
+     
           state.watchList.splice(i, 1)
+         
+
           return true;
         }
       })
 
       // save cart to localStorage
-      localStorage.setItem('watchList', JSON.stringify(state.cart))
+      localStorage.setItem('watchList', JSON.stringify(state.watchList))
     },
 
     

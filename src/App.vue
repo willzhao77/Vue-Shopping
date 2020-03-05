@@ -57,7 +57,7 @@ export default {
   
   created(){
 	  this.flag = this.$route.path === '/home' ? false : true
-
+		this.$store.commit('getShoppingCart')
 	console.log(this.$route.path)
 	  this.loadToken()
 // this.$store.commit('getUserToken')

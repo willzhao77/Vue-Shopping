@@ -38,12 +38,20 @@ export default {
     methods:{
         getGoodsList(){
             this.$store.commit('getWatchList')
+           console.log(this.$store.state.watchList )
+
+
             // get all items' ID
             var idArr = []
             this.$store.state.watchList.forEach( item => idArr.push(item.id))
+            console.log(idArr.length )
             if(idArr.length <= 0) {
                 return
             }
+
+
+
+
 
             this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
                 if(result.body.status === 0 ){
@@ -53,6 +61,7 @@ export default {
         },
 
         remove(id, index){  // use ID remove store,  use index, remove goodslist
+        console.log(typeof(this.goodslist))
             this.goodslist.splice(index, 1)
             this.$store.commit('removeFromWatchList', id)
         },

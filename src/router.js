@@ -19,6 +19,7 @@ import ContactUs from './components/contact/ContactUs.vue'
 import WatchList from './components/watchlist/WatchList.vue'
 import login from './components/login/login.vue'
 import register from './components/login/register.vue'
+import details from './components/person/details.vue'
 
 // 3. 创建路由对象
 var router = new VueRouter({
@@ -41,6 +42,7 @@ var router = new VueRouter({
     {path: '/home/watchlist', component: WatchList},
     {path: '/login', component: login},
     {path: '/register', component: register},
+    {path: '/details', component: details},
   ],
   linkActiveClass:'mui-active' //replace active link class
 })
