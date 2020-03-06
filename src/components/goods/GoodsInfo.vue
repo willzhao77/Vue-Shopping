@@ -106,9 +106,26 @@ export default {
             // { id: item ID, count: quantity, price: sale_price, selected: true }
             // create an obj to save in Store -- cart
             var goodsinfo = { id: this.id, count: this.selectedCount, price: this.goodsinfo.sell_price, selected: true }
-
+           
             // call mutations from store, save item to cart
             this.$store.commit('addToCart', goodsinfo)
+
+
+            //prepare data to save cart item to server.
+            var goodstoarray=[];
+            goodstoarray.push(goodsinfo);   
+
+             let data = {
+                items : JSON.stringify(goodstoarray),
+            }
+
+
+
+            //add cart items to server
+            this.$http.put('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
+            console.log(response)
+                // this.$router.push('/person')
+            })
         },
 
         addToWatchList(){

@@ -20,6 +20,8 @@ import WatchList from './components/watchlist/WatchList.vue'
 import login from './components/login/login.vue'
 import register from './components/login/register.vue'
 import details from './components/person/details.vue'
+import checkout from './components/shopping/checkout.vue'
+import confirm from './components/shopping/confirm.vue'
 
 // 3. 创建路由对象
 var router = new VueRouter({
@@ -43,6 +45,9 @@ var router = new VueRouter({
     {path: '/login', component: login},
     {path: '/register', component: register},
     {path: '/details', component: details},
+    {path: '/shopping/checkout', component: checkout},
+    {path: '/shopping/confirm', component: confirm},
+
   ],
   linkActiveClass:'mui-active' //replace active link class
 })
