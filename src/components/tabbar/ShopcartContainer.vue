@@ -5,7 +5,8 @@
             <div class="mui-card" v-for="(item, i) in goodslist" :key=item.id>
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<mt-switch v-model="$store.getters.getGoodsSelected[item.id]"
+						<!-- <mt-switch v-model="$store.getters.getGoodsSelected[item.id]" -->
+                        <mt-switch v-model="selected[item.id]"
                             @change="selectedChanged(item.id, $store.getters.getGoodsSelected[item.id])"
                         ></mt-switch>
                         <img :src="item.img" alt="">
@@ -13,7 +14,8 @@
                             <h1>{{ item.title }}</h1>
                             <p>
                                 <span class="price">${{ item.sell_price }}</span>
-                                <numbox :initcount="$store.getters.getGoodsCount[item.id]" :goodsid="item.id"></numbox>
+                                <!-- <numbox :initcount="$store.getters.getGoodsCount[item.id]" :goodsid="item.id"></numbox> -->
+                                <numbox :initcount="quantity[item.id]" :goodsid="item.id"></numbox>
                                 <a href="" @click.prevent="remove(item.id, i)">Del</a>
                             </p>
                         </div>
@@ -43,7 +45,9 @@ import numbox from '../subcomponents/shopcart_numbox.vue'
 export default {
     data(){
       return {
-          goodslist: []  // all item data from cart
+          goodslist: [],  // all item data from cart
+          selected: [],    // if item selected
+          quantity:[],  //item quantity
       }
     },
 
@@ -52,28 +56,101 @@ export default {
     }, 
 
     methods:{
+        
+        
         getGoodsList(){
+            
+            
+            if(!this.$store.state.api_token ) 
+            {
+                console.log('no token')
+                //no user token found
+                this.$store.commit('getShoppingCart')
+                    // get all items' ID
+                    var idArr = []
+                    // console.log(this.$store.state.cart)
+                    this.$store.state.cart.forEach( item => idArr.push(item.id))
 
-            this.$store.commit('getShoppingCart')
-            // get all items' ID
-            var idArr = []
-            this.$store.state.cart.forEach( item => idArr.push(item.id))
-            console.log(idArr.length )
-            if(idArr.length <= 0) {
-                return
+                    if(idArr.length <= 0) {
+                        return
+                    }
+
+                    this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
+                        if(result.body.status === 0 ){
+                            this.goodslist = result.body.message
+                        }
+                    })
+                
+            }else{
+                console.log('has token')
+                // user has token. use online shopping cart
+                this.$http.get('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
+                let cartItems = JSON.parse(response.bodyText)
+                var idArr = []
+                
+                cartItems.forEach(item => {
+                    idArr.push(item.item_id)
+                    this.selected[item.item_id] = (item.selected = 1  ? true : false )
+                    this.quantity[item.item_id] = item.quantity
+                })
+
+                
+                // console.log(this.selected[1])
+
+                
+                
+                if(idArr.length <= 0) {
+                    return
+                }
+                this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
+                    if(result.body.status === 0 ){
+                        this.goodslist = result.body.message
+                        // console.log(this.goodslist)
+                    }
+                })
+            })
+                
             }
 
-            this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
-                if(result.body.status === 0 ){
-                    this.goodslist = result.body.message
-                }
-            })
+
+            
+
+
+
+
+
+
+
+
+                    
         },
 
         remove(id, index){  // use ID remove store,  use index, remove goodslist
-            console.log(typeof(this.goodslist))
-            this.goodslist.splice(index, 1)
-            this.$store.commit('removeFromCart', id)
+            if(!this.$store.state.api_token ) 
+            {
+                //no user token found
+                console.log(typeof(this.goodslist))
+                this.goodslist.splice(index, 1)
+                this.$store.commit('removeFromCart', id)
+            }else{
+                // user has token. use online shopping cart
+                console.log("delete item")
+
+                let data = {
+                itemID : id,
+            }
+
+                this.$http.delete('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, {body: data}).then(response => {
+                    // console.log(response.body)
+                    // this.getGoodsList()
+
+                })
+            }
+
+
+
+
+            
         },
 
         selectedChanged(id, val){  //sync switch status to store
