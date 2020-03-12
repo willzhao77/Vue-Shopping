@@ -117,6 +117,7 @@ export default {
 
              let data = {
                 items : JSON.stringify(goodstoarray),
+                opt: 'add', //  add opt as flag. if user click, will add related item to cart.
             }
 
 

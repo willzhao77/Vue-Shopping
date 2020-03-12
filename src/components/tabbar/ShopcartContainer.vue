@@ -89,8 +89,8 @@ export default {
                 var idArr = []
                 
                 cartItems.forEach(item => {
-                    idArr.push(item.item_id)
-                    this.selected[item.item_id] = (item.selected = 1  ? true : false )
+                    idArr.push(item.item_id)                    
+                    this.selected[item.item_id] = (item.selected == 1  ? true : false )
                     this.quantity[item.item_id] = item.quantity
                 })
 
@@ -156,6 +156,17 @@ export default {
         selectedChanged(id, val){  //sync switch status to store
             // console.log( id + '------' + val)
             this.$store.commit('updateGoodsSelected', {id, selected:val})
+
+            let goodInfo = [{"id": id, "selected": val}]
+            let data = {
+                    items : JSON.stringify(goodInfo),
+                    opt: 'select', //  add opt as flag. if user click, will add related item to cart.
+                }
+            this.$http.put('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
+            console.log(response)
+                // this.$router.push('/person')
+            })
+
         }
     },
 
