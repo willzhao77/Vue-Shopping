@@ -104,29 +104,36 @@ export default {
         addToShopCart(){
             this.ballFlag = !this.ballFlag
             // { id: item ID, count: quantity, price: sale_price, selected: true }
-            // create an obj to save in Store -- cart
-            var goodsinfo = { id: this.id, count: this.selectedCount, price: this.goodsinfo.sell_price, selected: true }
-           
-            // call mutations from store, save item to cart
-            this.$store.commit('addToCart', goodsinfo)
-
+           var goodsinfo = { id: this.id, count: this.selectedCount, price: this.goodsinfo.sell_price, selected: true }
 
             //prepare data to save cart item to server.
             var goodstoarray=[];
             goodstoarray.push(goodsinfo);   
+
 
              let data = {
                 items : JSON.stringify(goodstoarray),
                 opt: 'add', //  add opt as flag. if user click, will add related item to cart.
             }
 
+            if(this.$store.state.api_token )  // if has token
+            {
 
-
-            //add cart items to server
-            this.$http.put('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
-            console.log(response)
-                // this.$router.push('/person')
-            })
+                //add cart items to server
+                this.$http.put('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
+                console.log(response)
+                    // this.$router.push('/person')
+                })
+                this.$store.commit('addToCart', goodsinfo)
+            }else{// if no token
+                 // create an obj to save in Store -- cart
+                var goodsinfo = { id: this.id, count: this.selectedCount, price: this.goodsinfo.sell_price, selected: true }
+            
+                // call mutations from store, save item to cart
+                this.$store.commit('addToCart', goodsinfo)
+        
+            }
+ 
         },
 
         addToWatchList(){

@@ -19,6 +19,7 @@ var cart = JSON.parse(localStorage.getItem('cart') || '[]')
 var store = new Vuex.Store({
   state: {  //this.$store.stat..***
     cart: [], // data from cart.  Like: { id: item ID, count: quantity, price: sale_price, selected: true }
+    usercart: [], // data for online cart items
     watchList:[],
     api_token:'',
   },
@@ -42,27 +43,55 @@ var store = new Vuex.Store({
   },
  
     addToCart(state, goodsinfo){
-      // click add cart. save item info to cart
-      // if already have same item, only need add quantity
-      // if no, push item data to cart.
+      // console.log(state.api_token)
+      if(!state.api_token )  // if no token
+      {
 
-      //default, no item in cart
-      var flag = false
-      state.cart.some( item => {
-        if(item.id == goodsinfo.id ){
-          item.count += parseInt(goodsinfo.count)
-          flag = true
-          return true
+        // click add cart. save item info to cart
+        // if already have same item, only need add quantity
+        // if no, push item data to cart.
+
+        //default, no item in cart
+        var flag = false
+        state.cart.some( item => {
+          if(item.id == goodsinfo.id ){
+            item.count += parseInt(goodsinfo.count)
+            flag = true
+            return true
+          }
+        })
+        
+        //if no same item in cart. Add this item.
+        if(!flag){
+          state.cart.push(goodsinfo)
         }
-      })
-      
-      //if no same item in cart. Add this item.
-      if(!flag){
-        state.cart.push(goodsinfo)
+
+        // save cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(state.cart))
+      }else{  // if found token
+        // usercart used save online cart item
+        console.log(state.usercart)
+        var flag = false
+        state.usercart.some( item => {
+          if(item.id == goodsinfo.id ){
+            item.count += parseInt(goodsinfo.count)
+            flag = true
+            console.log(item.id + "------" + goodsinfo.id)
+            return true
+          }
+        })
+        
+        //if no same item in cart. Add this item.
+        if(!flag){
+          console.log(goodsinfo)
+          state.usercart.push(goodsinfo)
+        }
+
+        // save cart to localStorage
+        localStorage.setItem('usercart', JSON.stringify(state.usercart))
       }
 
-      // save cart to localStorage
-      localStorage.setItem('cart', JSON.stringify(state.cart))
+      
       
     },
 
@@ -105,16 +134,43 @@ var store = new Vuex.Store({
 
 
     updateGoodsInfo(state, goodsinfo){ //update goods qantity on cart
-      // update quantity
-      state.cart.some(item=> {
-        if(item.id == goodsinfo.id) {
-          item.count = parseInt(goodsinfo.count)
-          return true
-        }
-      })
+      
+      if(!state.api_token )  // if no token
+      {
+        // update quantity
+        state.cart.some(item=> {
+          if(item.id == goodsinfo.id) {
+            item.count = parseInt(goodsinfo.count)
+            return true
+          }
+        })
 
-      // update quantity, save data to localStorage
-      localStorage.setItem('cart', JSON.stringify(state.cart))
+        // update quantity, save data to localStorage
+        localStorage.setItem('cart', JSON.stringify(state.cart))
+      }else{// if has token
+        // update quantity
+        state.usercart.some(item=> {
+          if(item.id == goodsinfo.id) {
+            item.count = parseInt(goodsinfo.count)
+            return true
+          }
+        })
+
+        // update quantity, save data to localStorage
+        localStorage.setItem('usercart', JSON.stringify(state.usercart))
+      }
+      
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     },
 
     removeFromCart(state, id){  // remove item from store
@@ -150,13 +206,31 @@ var store = new Vuex.Store({
     
 
     updateGoodsSelected(state, info){
-      state.cart.some(item => {
-        if(item.id == info.id){
-          item.selected = info.selected
-        }
-      })
-      // update status, save data to localStorage
-      localStorage.setItem('cart', JSON.stringify(state.cart))
+
+      if(!state.api_token )  // if no token
+      {
+        state.cart.some(item => {
+          if(item.id == info.id){
+            item.selected = info.selected
+          }
+        })
+        // update status, save data to localStorage
+        localStorage.setItem('cart', JSON.stringify(state.cart))
+
+      }else{// if has token
+        state.usercart.some(item => {
+          if(item.id == info.id){
+            item.selected = info.selected
+          }
+        })
+        // update status, save data to localStorage
+        localStorage.setItem('usercart', JSON.stringify(state.usercart))
+      }
+
+
+
+
+
     }
   },
   getters:{ // this.$store.getters.****
@@ -165,11 +239,29 @@ var store = new Vuex.Store({
       
 
       getAllCount(state){
+
+        if(!state.api_token )  // if no token
+      {
         var c = 0;
         state.cart.forEach( item => {
           c += item.count
         })
         return c
+      }else{// if has token 
+        var c = 0;
+        state.usercart.forEach( item => {
+          c += item.count
+        })
+        return c
+      }
+
+
+
+        
+
+
+
+
       },
 
       getGoodsCount(state){
@@ -189,6 +281,9 @@ var store = new Vuex.Store({
       },
 
       getGoodsCountAndAmount(state){
+        
+      if(!state.api_token )  // if no token
+      {
         var o = {
           count: 0,   // selected quantity
           amount: 0   // totoal price
@@ -200,6 +295,25 @@ var store = new Vuex.Store({
           }
         })
         return o
+      }else{// if has token 
+        var o = {
+          count: 0,   // selected quantity
+          amount: 0   // totoal price
+        }
+        state.usercart.forEach( item=> {
+          if(item.selected){
+            o.count += item.count
+            o.amount += item.price * item.count
+          }
+        })
+        return o
+      }
+        
+
+
+
+
+
       },
 
   }

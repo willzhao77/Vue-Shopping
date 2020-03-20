@@ -37,6 +37,12 @@ export default {
                 console.log(response)
                     // this.$router.push('/person')
                 })
+
+                this.$store.commit('updateGoodsInfo', {
+                id: this.goodsid,
+                count: this.$refs.numbox.value
+                })
+
             }
             
             
