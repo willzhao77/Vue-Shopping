@@ -3,50 +3,18 @@
         <h2>Check Out</h2>
 
         <ul class="mui-table-view"> 
-        <li class="mui-table-view-cell mui-collapse">
+        <li class="mui-table-view-cell mui-collapse mui-active">
             <a class="mui-navigate-right" href="#">Items</a>
             <div class="mui-collapse-content">
             
             <!-- items -->
-            <div class="items">
-                <img src="http://localhost:8000/img/shop/1581476430iphonea.jpg" alt=""> 
-                <p class="title">AppleiPhoneiPhoneiPhone iPhone11111 111111111 iPhoneiPhone iPhone11111</p>
-                <p class="price">$5633.00</p>
-                <p class="quantity"> x3</p>
+            <div class="items" v-for="(item, i) in goodslist" :key=item.id >
+                <img src="item.img" alt=""> 
+                <p class="title">{{ item.title }}</p>
+                <p class="price">{{ item.sell_price }}</p>
+                <p class="quantity"> X{{ goodsquantity[item.id] }}</p>
             </div>
-
-            <div class="items">
-                <img src="http://localhost:8000/img/shop/1581476430iphonea.jpg" alt=""> 
-                <p class="title">苹果Apple iPhone iPhone iPhone iPhone</p>
-                <p class="price">$5633.00</p>
-                <p class="quantity"> x3</p>
-            </div>
-
-            <div class="items">
-                <img src="http://localhost:8000/img/shop/1581476430iphonea.jpg" alt=""> 
-                <p class="title">苹果Apple iPhone iPhone iPhone iPhone</p>
-                <p class="price">$5633.00</p>
-                <p class="quantity"> x3</p>
-            </div>
-
-            <div class="items">
-                <img src="http://localhost:8000/img/shop/1581476430iphonea.jpg" alt=""> 
-                <p class="title">苹果Apple iPhone iPhone iPhone iPhone</p>
-                <p class="price">$5633.00</p>
-                <p class="quantity"> x3</p>
-            </div>
-
-            <div class="items">
-                <img src="http://localhost:8000/img/shop/1581476430iphonea.jpg" alt=""> 
-                <p class="title">苹果Apple </p>
-                <p class="price">$5633.00</p>
-                <p class="quantity"> x3</p>
-            </div>
-
-
-
-
-                
+    
             </div>
         </li>
     </ul>
@@ -72,7 +40,7 @@
             <div class="mui-card-content">
                 <div class="mui-card-content-inner checkout">
                     <div class="left">
-                        <p>Total Price: <span class="red">$100</span></p>
+                        <p>Total Price: <span class="red">${{ TotalPrice }}</span></p>
                     </div>
                     <mt-button type="danger" @click="goConfirm">Confirm</mt-button>
                 </div>
@@ -83,6 +51,14 @@
 
 <script>
 export default {
+    data(){
+      return {
+          goodslist: [],  // all item data from cart
+          goodsquantity: [],  // save item quantity
+          TotalPrice:0 //total items
+
+      }
+    },
 
     created() {
         this.getGoodsList()
@@ -94,8 +70,13 @@ export default {
             this.$store.commit('getShoppingCart')
             // get all items' ID
             var idArr = []
-            this.$store.state.cart.forEach( item => idArr.push(item.id))
-            console.log(idArr.length )
+            this.$store.state.cart.forEach( item => 
+                {   
+                    idArr.push(item.id)
+                    this.goodsquantity[item.id] = item.count // get item quantity
+                })
+            // console.log(idArr )
+            // console.log(this.goodsquantity[1] )
             if(idArr.length <= 0) {
                 return
             }
@@ -103,8 +84,19 @@ export default {
             this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
                 if(result.body.status === 0 ){
                     this.goodslist = result.body.message
+                    console.log(this.goodslist )
+                    this.checkTotalPrice()
                 }
             })
+        },
+
+        checkTotalPrice(){
+            var sum = 0
+            for ( item of this.goodslist){
+                sum += item.sell_price * this.goodsquantity[item.id]
+                console.log(this.goodsquantity[item.id])
+            }
+            this.TotalPrice = sum
         },
 
         goConfirm(){

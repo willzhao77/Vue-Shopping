@@ -34,7 +34,7 @@
                         <!-- <p>Selected <span class="red">{{ totalItem }}</span>  -->
                         Items. Totoal price: <span class="red">${{ $store.getters.getGoodsCountAndAmount.amount }}</span></p>
                     </div>
-                    <mt-button type="danger">Checkout</mt-button>
+                    <mt-button type="danger" @click="goCheckout">Checkout</mt-button>
                 </div>
             </div>
 		</div>
@@ -59,7 +59,9 @@ export default {
     }, 
 
     methods:{
-
+        goCheckout(){
+            this.$router.push( {name: "checkout"})
+        },
         
         
         getGoodsList(){
