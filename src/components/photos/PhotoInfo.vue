@@ -74,6 +74,17 @@ export default {
 </script>
 
 <style lang="scss">
+.pswp__img{
+    height:auto !important; // fix share detail picture resolution
+    margin: 0 !important;  // display big picture no margin
+}
+
+.pswp__zoom-wrap{
+    transform: translate3d(0px, 100px, 0px) !important;
+}
+
+
+
 .photoinfo-container{
     padding: 3px;
     h3{
