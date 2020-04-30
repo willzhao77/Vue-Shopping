@@ -16,7 +16,7 @@
         <div class="searchlist-container">
         <div class="search-list">
             <!-- item list -->
-            <div class="mui-card" v-for="(item, i) in goodslist" :key=item.id @click="goDetail(item.id)">
+            <div class="mui-card" v-for="(item) in goodslist" :key=item.id @click="goDetail(item.id)">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
 
@@ -55,7 +55,7 @@ export default {
             // get all items' ID
 
             // this.$http.get('api/getshopcartlist/' + 1)).then(result => {
-            this.$http.get('http://localhost:8000/api/searchlist/' + this.keyword ).then(result => {
+            this.$http.get('api/searchlist/' + this.keyword ).then(result => {
                 if(result.body.status === 0 ){
                     this.goodslist = result.body.message
                 }

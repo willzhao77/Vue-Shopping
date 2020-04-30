@@ -8,8 +8,8 @@
             <div class="mui-collapse-content">
             
             <!-- items -->
-            <div class="items" v-for="(item, i) in goodslist" :key=item.id >
-                <img src="item.img" alt=""> 
+            <div class="items" v-for="(item) in goodslist" :key=item.id >
+                <img :src=item.img  alt=""> 
                 <p class="title">{{ item.title }}</p>
                 <p class="price">{{ item.sell_price }}</p>
                 <p class="quantity"> X{{ goodsquantity[item.id] }}</p>
