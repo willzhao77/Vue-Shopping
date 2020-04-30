@@ -1,23 +1,34 @@
 <template>
     <div>
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+                <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
-  <form class="form-signin">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="username" class="sr-only">User Name</label>
-      <input type="name" id="username" class="form-control" placeholder="username" required autofocus v-model="name">
+  <form class="container">
+      <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
 
 
-      <label for="inputPassword" class="sr-only">Password</label>
+ 
 
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+
+      <label for="username" class="labels">User Name</label>
+      <div class="inputbox">
+        <input type="text" id="username" class=""  required  v-model="name" autofocus>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" @click.prevent = login>Sign in</button>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" @click="goRegister">register</button>
+      
+
+      
+
+      <label for="inputPassword" class="">Password</label>
+      <div class="inputbox">
+        <input type="password" id="inputPassword" class=""  required v-model="password">
+      </div>
+      
+      
+      <div class="buttons">
+        <button class="mui-btn-primary" type="submit" @click.prevent = login>Sign in</button>
+        <button class="mui-btn-danger" type="submit" @click="goRegister">register</button>
+      </div>
+
+      
     </form>
     </div>
 </template>
@@ -75,5 +86,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h3{
+  text-align:center;
+  margin: 20px 0;
+}
+
+.container{
+  margin: 10px;
+
+}
+
+.buttons{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+
+  button{
+    margin: 5px;
+  }
+}
+
+.inputbox{
+  margin: 10px 0;
+}
+
+
 
 </style>
