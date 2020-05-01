@@ -50,7 +50,7 @@ export default {
 
         update(){
            
-          this.$http.put('http://127.0.0.1:8000/api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
+          this.$http.put('api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
               console.log(response)
 
           })
@@ -68,7 +68,7 @@ export default {
             // console.log(typeof(JSON.parse(this.$store.state.api_token)))
             // console.log(JSON.parse(this.$store.state.api_token).api_token)
             // console.log(this.$store.state.api_token)
-            this.$http.get('http://127.0.0.1:8000/api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
+            this.$http.get('api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
    
             userInfo = response.body
             this.account = userInfo.name

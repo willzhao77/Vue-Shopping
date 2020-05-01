@@ -67,7 +67,7 @@ export default {
 
             console.log(this.$store.state.api_token)
 
-            this.$http.post('http://127.0.0.1:8000/api/logout', this.$store.state.api_token)
+            this.$http.post('api/logout', this.$store.state.api_token)
           .then(response => {
               this.$store.commit('removeApiToken')
               this.$router.push('/login')
@@ -83,8 +83,8 @@ export default {
             // console.log(typeof(JSON.parse(this.$store.state.api_token)))
             // console.log(JSON.parse(this.$store.state.api_token).api_token)
             // console.log(this.$store.state.api_token)
-            this.$http.get('http://127.0.0.1:8000/api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
-   
+            this.$http.get('api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
+            console.log(response.body)
             userInfo = response.body
             this.account = userInfo.name
             this.email = userInfo.email

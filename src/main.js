@@ -13,6 +13,9 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+
 var cart = JSON.parse(localStorage.getItem('cart') || '[]')
 
 

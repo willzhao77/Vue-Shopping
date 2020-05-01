@@ -30,6 +30,7 @@
 
       
     </form>
+    
     </div>
 </template>
 
@@ -53,7 +54,7 @@ export default {
             formData.append('name', this.name)
             formData.append('password', this.password)
          
-        this.$http.post('http://127.0.0.1:8000/api/login', formData)
+        this.$http.post('api/login', formData)
           .then(response => {
                 // console.log(response.body);
             // check user name and password and redirect to related page
