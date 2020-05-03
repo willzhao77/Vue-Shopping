@@ -20,7 +20,7 @@
 
 
 		<!-- bottom -->
-		<nav class="mui-bar mui-bar-tab">
+		<nav class="mui-bar mui-bar-tab" @click="loadToken">
 				<router-link class="mui-tab-item-b" to="/home">
 					<span class="mui-icon mui-icon-home"></span>
 					<span class="mui-tab-label">Home</span>
@@ -39,7 +39,7 @@
 				</router-link>
 				<router-link class="mui-tab-item-b" :to= mepage>
 					<span class="mui-icon mui-icon-person"></span>
-					<span class="mui-tab-label" @click="loadToken">me</span>
+					<span class="mui-tab-label" >me</span>
 				</router-link>
 		</nav>
 	</div>

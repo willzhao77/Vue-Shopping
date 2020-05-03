@@ -97,7 +97,7 @@ export default {
             }else{
                 console.log('has token1')
                 // user has token. use online shopping cart
-                this.$http.get('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
+                this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
                 let cartItems = JSON.parse(response.bodyText)
 
 

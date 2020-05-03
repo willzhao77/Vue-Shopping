@@ -120,7 +120,7 @@ export default {
             {
 
                 //add cart items to server
-                this.$http.put('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
+                this.$http.put('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
                 console.log(response)
                     // this.$router.push('/person')
                 })
