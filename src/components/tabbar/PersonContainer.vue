@@ -50,6 +50,7 @@ export default {
     //       console.log('has token')
     //   }
     this.getUserDetails()
+    this.loadCartItem()
 
     },
 
@@ -96,6 +97,32 @@ export default {
                 this.mobile = userInfo.to_details.mobile
              }
             })
+        },
+
+        loadCartItem(){
+            this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
+                let cartItems = JSON.parse(response.bodyText)
+
+
+                var cartGoods = []  // save goods from shopping cart
+                cartItems.forEach(item => {
+  
+
+                    let o = {}
+                    o.id = item.item_id
+                    o.count = item.quantity
+                    o.selected = (item.selected == 1  ? true : false )
+                    o.price = ''
+                    cartGoods.push(o)
+                })
+                console.log(cartGoods)
+                console.log(JSON.stringify(cartGoods))
+                this.$store.state.usercart = cartGoods   // sync data to VUEX
+                localStorage.setItem('usercart', JSON.stringify(cartGoods))
+            })
+            
+            
+
         }
     },
 }

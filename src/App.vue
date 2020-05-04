@@ -98,9 +98,22 @@ export default {
 		  this.mepage = "/login"
 		//   console.log("login")
 	  }else{
+		  this.$http.get('api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
+			if( !response.body){
+				// console.log("Token not avaiable")
+				 this.mepage = "/login"
+
+			}else{
+				// console.log("Token avaiable")
+				this.mepage = "/person"
+			}
+
+		  })
+
+
 		//   console.log(this.$store.state.api_token)
 		//   console.log('to person')
-		  this.mepage = "/person"
+		  
       }
 
 	},
