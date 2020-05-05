@@ -1,28 +1,24 @@
 <template>
     <div>
-        <form class="form-signin">
+        <form class="">
         <h1 class="h3 mb-3 font-weight-normal">Personal Details</h1>
-            <div>
-                <label for="username" class="">Name</label>
-                <input type="name" id="username" class="" placeholder=""  autofocus v-model="name">
-            </div>
-                
-            
 
-            <div>
-                <label for="username" class="">Address</label>
-                <input type="name" id="username" class="" placeholder=""   v-model="address">
+            <div class="">
+                <label for="username">Name:</label>
+                <input type="text" id="username" style="margin: 10px 0px;" name="name" v-model="name">
             </div>
-            
-
-           <div>
-                <label for="username" class="">Mobile</label>
-                <input type="name" id="username" class="" placeholder=""   v-model="mobile">
+            <div class="">
+                <label for="address">Address:</label>
+                <input type="text" id="address" style="margin: 10px 0px;" name="address" v-model="address">
+            </div>
+            <div class="">
+                <label for="mobile">Mobile:</label>
+                <input type="text" id="mobile" style="margin: 10px 0px;" name="mobile" v-model="mobile">
             </div>
 
             <div class="buttons">
-                <button class="mui-btn mui-btn-primary buttonitem" type="submit" @click = "update">Update</button>
-                <button class="mui-btn mui-btn-danger buttonitem" type="submit" @click= "cancel">Cancel</button>
+                <button class="mui-btn mui-btn-primary buttonitem" type="submit" @click.prevent = "update">Update</button>
+                <button class="mui-btn mui-btn-danger buttonitem" type="submit" @click.prevent= "cancel">Cancel</button>
             </div>
             
         </form>
@@ -30,6 +26,7 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui'
 export default {
     data(){
         return{
@@ -49,11 +46,22 @@ export default {
         
 
         update(){
-           
-          this.$http.put('api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
-              console.log(response)
 
-          })
+            var data1 = {
+                name : this.name,
+                address : this.address,
+                mobile : this.mobile
+            }
+                    
+           
+            this.$http.put('api/userdetails/' +  JSON.parse(this.$store.state.api_token).api_token, data1).then( response=> {
+                if(response.bodyText == "saved")
+                {
+                    this.$router.push("/person")
+                }else{
+                    Toast('Save details failed.')
+                }
+            })
            },
 
         cancel(){
