@@ -23,7 +23,8 @@ var store = new Vuex.Store({
   state: {  //this.$store.stat..***
     cart: [], // data from cart.  Like: { id: item ID, count: quantity, price: sale_price, selected: true }
     usercart: [], // data for online cart items
-    watchList:[],
+    watchList:[], // used to save user's watchlist
+    // userWatchList:[], // used to save login user's watch list
     api_token:'',
   },
   mutations: {  // this.$store.commit('***', 'paramiter')
@@ -33,8 +34,18 @@ var store = new Vuex.Store({
   },
 
   getWatchList(state){
-    if(localStorage.getItem('watchList') != null){
-      state.watchList = JSON.parse(localStorage.getItem('watchList'))
+
+    var currentList = 'watchList'
+ 
+    if(state.api_token )  // if has token
+      {
+        console.log('main has token for userWatchList')
+        currentList = 'userWatchList'
+      }
+      
+
+    if(localStorage.getItem(currentList) != null){
+      state.watchList = JSON.parse(localStorage.getItem(currentList))
     }
     
   },
@@ -107,21 +118,37 @@ var store = new Vuex.Store({
 
       //default, no item in cart
       var flag = false
-      state.watchList.some( item => {
+      state.watchList.some( item => {  //check if item already in cart
         if(item.id == goodsinfo.id ){
           flag = true
           return true
         }
       })
       
+
       //if no same item in cart. Add this item.
       if(!flag){
-        state.watchList.push(goodsinfo)
-      }
+        if(!state.api_token )  // if no token
+        {
+          console.log("main no token part")
+          state.watchList.push(goodsinfo)
 
-      // save cart to localStorage
-      localStorage.setItem('watchList', JSON.stringify(state.watchList))
-      
+          // save cart to localStorage
+          localStorage.setItem('watchList', JSON.stringify(state.watchList))
+        }else{    // if has token
+          console.log("main has token part")
+          state.watchList.push(goodsinfo)
+
+
+          // save cart to localStorage
+          localStorage.setItem('userWatchList', JSON.stringify(state.watchList))
+        }
+
+
+
+
+        
+      }
     },
 
 
@@ -191,19 +218,42 @@ var store = new Vuex.Store({
 
 
     removeFromWatchList(state, id){  // remove item from store
-      console.log(state.watchList)
-      state.watchList.some((item, i) => {
-        if(item.id == id){
-     
-          state.watchList.splice(i, 1)
-         
 
-          return true;
-        }
-      })
+      if(!state.api_token )  // if no token
+      {
 
-      // save cart to localStorage
-      localStorage.setItem('watchList', JSON.stringify(state.watchList))
+        console.log(state.watchList)
+        state.watchList.some((item, i) => {
+          if(item.id == id){
+      
+            state.watchList.splice(i, 1)
+          
+
+            return true;
+          }
+        })
+
+        // save cart to localStorage
+        localStorage.setItem('watchList', JSON.stringify(state.watchList))
+      }else{
+        state.watchList.some((item, i) => {
+          if(item.id == id){
+      
+            state.watchList.splice(i, 1)
+          
+
+            return true;
+          }
+        })
+
+        // save cart to localStorage
+        localStorage.setItem('userWatchList', JSON.stringify(state.watchList))
+      }
+
+
+
+
+
     },
 
     

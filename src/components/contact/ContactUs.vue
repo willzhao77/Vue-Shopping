@@ -51,7 +51,7 @@ export default {
                 formData.append('title', this.title)
                 formData.append('message', this.message)
 
-            this.$http.post('http://127.0.0.1:8000/api/contactus', formData)
+            this.$http.post('api/contactus', formData)
             .then(response => {
                     if (response.bodyText === 'sent'){
                         Toast('You succesfully sent message.')
