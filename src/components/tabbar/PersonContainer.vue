@@ -51,6 +51,7 @@ export default {
     //   }
     this.getUserDetails()
     this.loadCartItem()
+    this.loadWatchList()
 
     },
 
@@ -99,10 +100,25 @@ export default {
             })
         },
 
+        loadWatchList(){
+            this.$http.get('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
+                console.log(JSON.parse(response.bodyText))
+                let watchListIds = JSON.parse(response.bodyText)
+                var watchList = []  // save goods from shopping cart
+                watchListIds.forEach(val => {
+                    let o = {}
+                    o.id = val
+                    watchList.push(o)
+                })
+                console.log(JSON.stringify(watchList))
+                this.$store.state.userWatchList = watchList   // sync data to VUEX
+                localStorage.setItem('userWatchList', JSON.stringify(watchList))
+            })
+        },
+
         loadCartItem(){
             this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
                 let cartItems = JSON.parse(response.bodyText)
-
 
                 var cartGoods = []  // save goods from shopping cart
                 cartItems.forEach(item => {

@@ -24,7 +24,7 @@ var store = new Vuex.Store({
     cart: [], // data from cart.  Like: { id: item ID, count: quantity, price: sale_price, selected: true }
     usercart: [], // data for online cart items
     watchList:[], // used to save user's watchlist
-    // userWatchList:[], // used to save login user's watch list
+    userWatchList:[], // used to save login user's watch list
     api_token:'',
   },
   mutations: {  // this.$store.commit('***', 'paramiter')
@@ -35,12 +35,12 @@ var store = new Vuex.Store({
 
   getWatchList(state){
 
-    var currentList = 'watchList'
+    var currentList = 'watchList'     //set default, get local watchlist
  
     if(state.api_token )  // if has token
       {
         console.log('main has token for userWatchList')
-        currentList = 'userWatchList'
+        currentList = 'userWatchList'   // if has token, get userWatchList
       }
       
 

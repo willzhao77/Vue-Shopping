@@ -162,9 +162,15 @@ export default {
             }else{
                 // call mutations from store, save item to cart
                 if(this.$store.state.api_token )  // if has token
-                {
+                {   
+                    this.$http.put('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
+                    console.log(response)
+                        // this.$router.push('/person')
+                    })
+
+
                     console.log("has token part")
-                    this.$store.commit('addToWatchList', goodsinfo)
+                    // this.$store.commit('addToWatchList', goodsinfo)
                 }else{
                     console.log("No token part")
                     this.$store.commit('addToWatchList', goodsinfo)
