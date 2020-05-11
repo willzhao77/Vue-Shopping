@@ -159,6 +159,7 @@ export default {
                 
 
             }else{
+                this.$store.commit('addToWatchList', goodsinfo)
                 goodsinfo.opt = 'add'
                 // call mutations from store, save item to cart
                 if(this.$store.state.api_token )  // if has token
@@ -170,10 +171,10 @@ export default {
 
 
                     console.log("has token part")
-                    this.$store.commit('addToWatchList', goodsinfo)
+
                 }else{
                     console.log("No token part")
-                    this.$store.commit('addToWatchList', goodsinfo)
+                    
                 }
                
             }
