@@ -138,18 +138,17 @@ export default {
 
         addToWatchList(){
             var goodsinfo = { id: this.id }
-
             if(this.flag)    //remove item from list
             {
-
+                goodsinfo.opt = 'remove'
                 if(this.$store.state.api_token )  // if has token
                 {
                     console.log("has token part")
 
                     //add cart items to server
-                    // this.$http.put('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
-                    // console.log(response)
-                    // })
+                    this.$http.put('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
+                    console.log(response)
+                    })
                     this.$store.commit('removeFromWatchList', goodsinfo.id)
                 }else{// if no token
                     console.log("No token part")
@@ -160,6 +159,7 @@ export default {
                 
 
             }else{
+                goodsinfo.opt = 'add'
                 // call mutations from store, save item to cart
                 if(this.$store.state.api_token )  // if has token
                 {   
@@ -170,7 +170,7 @@ export default {
 
 
                     console.log("has token part")
-                    // this.$store.commit('addToWatchList', goodsinfo)
+                    this.$store.commit('addToWatchList', goodsinfo)
                 }else{
                     console.log("No token part")
                     this.$store.commit('addToWatchList', goodsinfo)

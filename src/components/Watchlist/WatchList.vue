@@ -61,7 +61,15 @@ export default {
         },
 
         remove(id, index){  // use ID remove store,  use index, remove goodslist
-        console.log(typeof(this.goodslist))
+            // console.log(typeof(this.goodslist))
+            //remove item from user's watch list
+
+            var goodsinfo = { id: id, opt: "remove" }
+            this.$http.put('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
+                    console.log(response)
+                    })
+
+
             this.goodslist.splice(index, 1)
             this.$store.commit('removeFromWatchList', id)
         },

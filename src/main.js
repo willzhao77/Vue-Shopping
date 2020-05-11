@@ -40,7 +40,7 @@ var store = new Vuex.Store({
     if(state.api_token )  // if has token
       {
         console.log('main has token for userWatchList')
-        currentList = 'userWatchList'   // if has token, get userWatchList
+        currentList = 'userWatchList'   // if has token, get user
       }
       
 
