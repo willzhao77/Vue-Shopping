@@ -9,10 +9,10 @@
 
                         <img :src="item.img" alt="">
                         <div class="info">
-                            <h1>{{ item.title }}</h1>
+                            <div class="title">{{ item.title }}</div>
                             <p>
                                 <span class="price">${{ item.sell_price }}</span>
-                                <a href="" @click.prevent="remove(item.id, i)">Del</a>
+                                <button class="button button2" @click="remove(item.id, i)">Remove</button>
                             </p>
                         </div>
 					</div>
@@ -64,14 +64,19 @@ export default {
             // console.log(typeof(this.goodslist))
             //remove item from user's watch list
 
-            var goodsinfo = { id: id, opt: "remove" }
-            this.$http.put('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
-                    console.log(response)
-                    })
-
-
+            if(this.$store.state.api_token )  // if has token
+            {
+                var goodsinfo = { id: id, opt: "remove" }
+                this.$http.put('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
+                        // console.log(response)
+                        })
+            }else{
+                
+            }
             this.goodslist.splice(index, 1)
             this.$store.commit('removeFromWatchList', id)
+
+
         },
 
         selectedChanged(id, val){  //sync switch status to store
@@ -128,4 +133,20 @@ h3{
     padding: 10px;
     color:#1668b5;
 }
+
+.button2 {
+    border-radius: 4px;
+    background-color: #EF4F4F;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.42;
+    cursor: pointer;
+    float:right;
+    }
+.info{
+    width: 100%;
+}
+
 </style>
