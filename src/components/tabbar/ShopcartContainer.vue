@@ -97,13 +97,18 @@ export default {
             }else{
                 console.log('has token1')
                 // user has token. use online shopping cart
+                console.log(JSON.parse(this.$store.state.api_token).api_token)
                 this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
-                let cartItems = JSON.parse(response.bodyText)
-
-
-                var idArr = []
-                var cartGoods = []  // save goods from shopping cart
-                cartItems.forEach(item => {
+                
+                    console.log(response)
+                    if(response.bodyText == 0){ //if not find user by this token
+                        this.$store.commit('removeApiToken')   //remove token
+                        return
+                    }
+                    let cartItems = JSON.parse(response.bodyText)
+                    var idArr = []
+                    var cartGoods = []  // save goods from shopping cart
+                    cartItems.forEach(item => {
                     idArr.push(item.item_id)                    
                     this.selected[item.item_id] = (item.selected == 1  ? true : false )
                     this.quantity[item.item_id] = item.quantity
