@@ -45,14 +45,19 @@ export default {
     data(){
         return{  
            page: 1, // by default, display first page
-           goodslist: []  // save items array.
+           goodslist: [],  // save items array.
+           showFoot:true, //show footbar 
         }
     },
 
     created(){
         this.getGoodsList()
+        this.sendDataToParent()
     },
     methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         getGoodsList(){
             // get item list
             this.$http.get("api/shoplist?page=" + this.page).then(result => {

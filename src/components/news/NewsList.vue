@@ -25,13 +25,18 @@ import { Toast } from "mint-ui";
 export default {
     data(){
         return {
-            newslist: [] //news List
+            newslist: [], //news List
+            showFoot:true, //show footbar 
         };
     },
     created(){
         this.getNewsList()
+        this.sendDataToParent()
     },
     methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         getNewsList(){ //get news list
             this.$http.get('api/newslist').then(result => {
                 if(result.body.status === 0){

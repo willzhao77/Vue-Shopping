@@ -6,7 +6,22 @@
 
 <script>
 export default {
-    
+    data(){
+      return {
+          showFoot:true, //show footbar 
+
+      }
+    },
+
+    created() {
+        this.sendDataToParent()
+    }, 
+
+    methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
+    }
 }
 </script>
 

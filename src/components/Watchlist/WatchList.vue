@@ -27,15 +27,20 @@ import numbox from '../subcomponents/shopcart_numbox.vue'
 export default {
     data(){
       return {
-          goodslist: []  // all item data from cart
+          goodslist: [],  // all item data from cart
+          showFoot:true, //show footbar
       }
     },
 
     created() {
         this.getGoodsList()
+        this.sendDataToParent()
     }, 
 
     methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         getGoodsList(){
             this.$store.commit('getWatchList')
            console.log(this.$store.state.watchList )

@@ -33,17 +33,21 @@ export default {
             name:"",
             address:"",
             mobile:"",
+            showFoot:false, //show footbar 
 
         }
     },
 
     created(){
             this.getUserDetails()
+            this.sendDataToParent()
         },
 
     methods:{
 
-        
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
 
         update(){
 

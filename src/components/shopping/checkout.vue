@@ -55,17 +55,21 @@ export default {
       return {
           goodslist: [],  // all item data from cart
           goodsquantity: [],  // save item quantity
-          TotalPrice:0 //total items
+          TotalPrice:0, //total items
+          showFoot:true, //show footbar 
 
       }
     },
 
     created() {
         this.getGoodsList()
+        this.sendDataToParent()
     }, 
 
     methods:{
-
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         getGoodsList(){
             this.$store.commit('getShoppingCart')
             // get all items' ID

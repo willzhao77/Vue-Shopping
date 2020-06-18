@@ -71,6 +71,7 @@ export default {
         password:'',
         password_confirmation:'',
         api_token:'',
+        showFoot:false //Do Not show footbar 
       }
     },
 
@@ -101,7 +102,14 @@ export default {
       },
     },
 
+    created(){
+        this.sendDataToParent();
+    },
+
     methods:{
+      sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
       createAccount(){
 
         this.$v.$touch()

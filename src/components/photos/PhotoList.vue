@@ -35,7 +35,8 @@ export default {
     data(){
 			return{
 				cates: [],  // category list
-				list: []  // photo list
+				list: [],  // photo list
+				showFoot:true, //show footbar 
 			}
 		},
 
@@ -43,6 +44,7 @@ export default {
 			this.getAllCategory();
 			//request all photos by default. 0 means all in category.
 			this.getPhotoListByCateId(0);
+			this.sendDataToParent()
 		},
 		
 		mounted(){
@@ -53,6 +55,9 @@ export default {
 		});
 		},
     methods:{
+		sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
 		getAllCategory(){
 			this.$http.get("api/sharecategory").then(result => {
 				if(result.body.status === 0 ){

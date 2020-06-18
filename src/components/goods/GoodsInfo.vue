@@ -63,6 +63,7 @@ export default {
             ballFlag: false,  // control ball display
             selectedCount: 1,  // save user selected item's quantity
             flag: false, // check if watched this item
+            showFoot:true, //show footbar 
 
         }
     },
@@ -71,9 +72,13 @@ export default {
         this.getSlidePictures()
         this.getGoodsInfo()
         this.ifWatched()
+        this.sendDataToParent()
     },
 
     methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         getSlidePictures(){
             this.$http.get("api/shopitemimgs/" + this.id).then(result => {
                 if(result.body.status === 0 ){

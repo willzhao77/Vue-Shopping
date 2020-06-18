@@ -41,9 +41,17 @@ export default {
         email:'',
         title:'',
         message:'',
+        showFoot:false //Do Not show footbar 
       }
     },
+
+    created(){
+        this.sendDataToParent();
+    },
     methods:{
+        sendDataToParent(){ //send value if show footer
+            this.$emit('footerStatus',this.showFoot)
+        },
         SendMessage(){
             var formData = new FormData()
                 formData.append('name', this.name)

@@ -14,15 +14,20 @@ export default {
         return{
             info: {},  // item datails
             test:'',
+            showFoot:true //show footbar 
 
         }
     },
 
     created(){
         this.getGoodsDesc();
+        this.sendDataToParent();
     },
 
     methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         getGoodsDesc(){
             this.$http.get('api/shopitemdetails/' + this.$route.params.id).then(result => {
                 if(result.body.status === 0 ){

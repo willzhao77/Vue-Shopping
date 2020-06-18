@@ -43,9 +43,17 @@ export default {
         name:'',
         password:'',
         api_token:'',
+        showFoot:false //Do Not show footbar 
       }
     },
+
+    created(){
+        this.sendDataToParent();
+    },
     methods:{
+      sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
       goRegister(){
         this.$router.push('/register')
       },

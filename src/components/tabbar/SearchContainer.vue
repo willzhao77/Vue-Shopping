@@ -42,13 +42,18 @@ export default {
     data(){
       return {
           goodslist: [],  // all item data from cart
-          keyword: [], // user type keyword
+          keyword: [], // user type keyword,
+          showFoot:false
       }
     },
 
     // created() {
     //     this.getGoodsList()
     // }, 
+
+    created() {
+        this.sendDataToParent()
+    }, 
 
     methods:{
         getGoodsList(){
@@ -61,6 +66,13 @@ export default {
                 }
             })
         },
+
+        sendDataToParent(){
+            //$emit（even,value）even 是一个函数，value 是传给父组件的值
+            this.$emit('footerStatus',this.showFoot)
+        },
+
+
 
         goDetail(id){
             // use JS route

@@ -29,14 +29,19 @@ export default {
         return {
             id: this.$route.params.id, // get ID from URL
             photoinfo: {}, //picture detail
-            slide1: [] // preview picture array
+            slide1: [], // preview picture array
+            showFoot:false //Do Not show footbar 
         }
     },
     created(){
-       this.getPhotoInfo();
-       this.getThumbs(); 
+       this.getPhotoInfo()
+       this.getThumbs() 
+       this.sendDataToParent()
     },
     methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         getPhotoInfo(){ //get picture detail
             this.$http.get('api/shareitem/' + this.id).then(result => {
                 if(result.body.status === 0 ){

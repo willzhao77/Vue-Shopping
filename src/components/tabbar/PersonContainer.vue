@@ -38,6 +38,7 @@ export default {
             name:'',
             address:'',
             mobile:'',
+            showFoot:true, //show footbar
         }
     },
 
@@ -52,11 +53,14 @@ export default {
     this.getUserDetails()
     this.loadCartItem()
     this.loadWatchList()
+    this.sendDataToParent()
 
     },
 
     methods: {
-
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         details(){
             console.log('todetails')
             this.$router.push('/details')

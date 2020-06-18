@@ -12,7 +12,7 @@
 		<!-- center area -->
 		<transition>
 			<!-- <keep-alive include="a"> -->
-				<router-view></router-view>
+				<router-view v-on:footerStatus = "ifShowFooter"></router-view>
 			<!-- </keep-alive> -->
 		</transition>
 		
@@ -20,7 +20,7 @@
 
 
 		<!-- bottom -->
-		<nav class="mui-bar mui-bar-tab" @click="loadToken">
+		<nav class="mui-bar mui-bar-tab" @click="loadToken" v-show="isShow">
 				<router-link class="mui-tab-item-b" to="/home">
 					<span class="mui-icon mui-icon-home"></span>
 					<span class="mui-tab-label">Home</span>
@@ -51,7 +51,8 @@ export default {
   data() {
     return {
 	flag : false,
-	mepage: ''
+	mepage: '',
+	isShow:true,
     }
   },
   
@@ -87,6 +88,14 @@ export default {
 		
 
 		
+	},
+
+	ifShowFooter(val){   //check if show footer from child component
+			this.isShow = val
+        },
+
+	isFootShow(data){
+		this.isShow = data
 	},
 
 	loadToken(){
@@ -137,6 +146,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .mint-header{
 	z-index: 99;
 }

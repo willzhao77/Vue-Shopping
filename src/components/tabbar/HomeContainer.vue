@@ -46,13 +46,19 @@ import { Toast } from 'mint-ui'
 export default {
     data(){
         return{
-            slidelist:[] // save slide pictures
+            slidelist:[], // save slide pictures
+            showFoot:true //show footbar 
         }
     },
     created(){
         this.getSlidePictures();
+        this.sendDataToParent();
     },
     methods:{
+        sendDataToParent(){
+            //$emit（even,value）even 是一个函数，value 是传给父组件的值
+            this.$emit('footerStatus',this.showFoot)
+        },
         getSlidePictures(){ //get pictures for slides
             this.$http.get('api/slideshow').then(result =>{
                 // console.log(result.body);

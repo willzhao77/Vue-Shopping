@@ -50,15 +50,20 @@ export default {
           selected: [],    // if item selected
           quantity:[],  //item quantity
           totalItem: 0, // total items quantity
-          sum: 0        // total amount
+          sum: 0,        // total amount
+          showFoot:true, //show footbar 
       }
     },
 
     created() {
         this.getGoodsList()
+        this.sendDataToParent()
     }, 
 
     methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         goCheckout(){
             this.$router.push( {name: "checkout"})
         },

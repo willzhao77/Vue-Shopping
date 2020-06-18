@@ -26,13 +26,18 @@ export default {
         return{
             id: this.$route.params.id,  //save URL's ID to Data. 
             newsinfo: {},    // news object
+            showFoot:false //Do Not show footbar 
         }
     },
     created(){
         this.getNewsInfo()
+        this.sendDataToParent()
     },
 
     methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
         getNewsInfo(){  //get news details
             this.$http.get('api/newsinfo/' + this.id).then(result => {
                 if(result.body.status === 0 ){

@@ -9,7 +9,22 @@ import cmtbox from '../subcomponents/comment.vue'
 export default {
     components:{
         cmtbox
-    } 
+    },
+
+    data(){
+      return 
+        showFoot:false //Do Not show footbar 
+      },
+     created(){
+        this.sendDataToParent();
+    },
+    methods:{
+        sendDataToParent(){
+            this.$emit('footerStatus',this.showFoot)
+        },
+    }
+
+
 }
 </script>
 
