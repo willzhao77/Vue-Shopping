@@ -50,6 +50,7 @@ export default {
 	//   }else{
     //       console.log('has token')
     //   }
+    this.checkToken()
     this.getUserDetails()
     this.loadCartItem()
     this.loadWatchList()
@@ -58,15 +59,25 @@ export default {
     },
 
     methods: {
-        sendDataToParent(){
+        sendDataToParent(){    // send if show footerStatus value to parent component
             this.$emit('footerStatus',this.showFoot)
         },
+
+        checkToken(){ // check if Token is available
+            if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
+                this.$router.push('/home')
+            }
+        },
+
         details(){
             console.log('todetails')
             this.$router.push('/details')
         },
         
         logout(){
+            if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
+                return
+            }
 
             var formData = new FormData()
             formData.append('api_token', this.$store.state.api_token)
@@ -82,6 +93,9 @@ export default {
 
 
         getUserDetails(){
+            if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
+                return
+            }
             this.$store.commit('getUserToken')
             // console.log(this.$store.state.api_token)
             // console.log(this.$store.state.api_token.api_token)
@@ -105,6 +119,9 @@ export default {
         },
 
         loadWatchList(){
+            if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
+                return
+            }
             this.$http.get('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
                 console.log(JSON.parse(response.bodyText))
                 let watchListIds = JSON.parse(response.bodyText)
@@ -121,6 +138,9 @@ export default {
         },
 
         loadCartItem(){
+            if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
+                return
+            }
             this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
                 let cartItems = JSON.parse(response.bodyText)
 
