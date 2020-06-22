@@ -37,7 +37,7 @@
 					<span class="mui-icon mui-icon-search"></span>
 					<span class="mui-tab-label">Search</span>
 				</router-link>
-				<router-link class="mui-tab-item-b" :to= mepage>
+				<router-link class="mui-tab-item-b" to= "/person">
 					<span class="mui-icon mui-icon-person"></span>
 					<span class="mui-tab-label" >me</span>
 				</router-link>
@@ -78,7 +78,7 @@ export default {
   methods:{
 	goBack(){
 		//click go back
-		if(this.$route.path === "/person"){
+		if(this.$route.path === "/login"){
 			this.$router.push("/")
 		}else{
 			this.$router.go(-1)

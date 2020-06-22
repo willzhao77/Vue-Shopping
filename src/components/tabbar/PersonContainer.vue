@@ -63,9 +63,9 @@ export default {
             this.$emit('footerStatus',this.showFoot)
         },
 
-        checkToken(){ // check if Token is available
+        checkToken(){ // check if Token is unavailable
             if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
-                this.$router.push('/home')
+                this.$router.replace('/login')
             }
         },
 
