@@ -78,7 +78,7 @@ export default {
   methods:{
 	goBack(){
 		//click go back
-		if(this.$route.path === "/login"){
+		if(this.$route.path === "/login" || this.$route.path === "/person"){
 			this.$router.push("/")
 		}else{
 			this.$router.go(-1)
