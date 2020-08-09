@@ -9,7 +9,7 @@
 
 <script>
 import mui from '../../lib/mui/js/mui.min.js';
-export default { 
+export default {
     mounted(){
         mui(".mui-numbox").numbox();
         // console.log(this.max)
@@ -33,7 +33,7 @@ export default {
                     items : JSON.stringify(goodInfo),
                     opt: '', //  add opt as flag. if user click, will add related item to cart.
                 }
-                this.$http.put('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
+                this.$http.put('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
                 console.log(response)
                     // this.$router.push('/person')
                 })
@@ -44,8 +44,8 @@ export default {
                 })
 
             }
-            
-            
+
+
         }
     },
 

@@ -30,7 +30,7 @@
                 <div class="mui-card-content-inner checkout">
                     <div class="left">
                         <p>Shopping cart</p>
-                        <p>Selected <span class="red">{{ $store.getters.getGoodsCountAndAmount.count }}</span> 
+                        <p>Selected <span class="red">{{ $store.getters.getGoodsCountAndAmount.count }}</span>
                         <!-- <p>Selected <span class="red">{{ totalItem }}</span>  -->
                         Items. Totoal price: <span class="red">${{ $store.getters.getGoodsCountAndAmount.amount }}</span></p>
                     </div>
@@ -51,14 +51,14 @@ export default {
           quantity:[],  //item quantity
           totalItem: 0, // total items quantity
           sum: 0,        // total amount
-          showFoot:true, //show footbar 
+          showFoot:true, //show footbar
       }
     },
 
     created() {
         this.getGoodsList()
         this.sendDataToParent()
-    }, 
+    },
 
     methods:{
         sendDataToParent(){
@@ -67,12 +67,12 @@ export default {
         goCheckout(){
             this.$router.push( {name: "checkout"})
         },
-        
-        
+
+
         getGoodsList(){
-            
-            
-            if(!this.$store.state.api_token ) 
+
+
+            if(!this.$store.state.api_token )
             {
                 console.log('no token')
                 //no user token found
@@ -95,16 +95,16 @@ export default {
                     this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
                         if(result.body.status === 0 ){
                             this.goodslist = result.body.message
-                           
+
                         }
                     })
-                
+
             }else{
                 console.log('has token1')
                 // user has token. use online shopping cart
                 console.log(JSON.parse(this.$store.state.api_token).api_token)
                 this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
-                
+
                     console.log(response)
                     if(response.bodyText == 0){ //if not find user by this token
                         this.$store.commit('removeApiToken')   //remove token
@@ -114,7 +114,7 @@ export default {
                     var idArr = []
                     var cartGoods = []  // save goods from shopping cart
                     cartItems.forEach(item => {
-                    idArr.push(item.item_id)                    
+                    idArr.push(item.item_id)
                     this.selected[item.item_id] = (item.selected == 1  ? true : false )
                     this.quantity[item.item_id] = item.quantity
                     this.totalItem += item.quantity
@@ -129,16 +129,16 @@ export default {
                 })
                 console.log(cartGoods)
                 console.log(JSON.stringify(cartGoods))
-                
-               
 
 
 
-                
+
+
+
                 // console.log(this.selected[1])
 
-                
-                
+
+
                 if(idArr.length <= 0) {
                     return
                 }
@@ -149,7 +149,7 @@ export default {
                         this.goodslist.forEach(item => {
 
                             cartGoods.forEach(good =>{
-                                
+
                                 if(good.id == item.id)
                                 {
                                     good.price = item.sell_price   // get item price and save to list object
@@ -166,7 +166,7 @@ export default {
                 this.$store.state.usercart = cartGoods   // sync data to VUEX
                 localStorage.setItem('usercart', JSON.stringify(cartGoods))
             })
-                
+
 
 
 
@@ -174,11 +174,11 @@ export default {
 
 
             }
-                
+
         },
 
         remove(id, index){  // use ID remove store,  use index, remove goodslist
-            if(!this.$store.state.api_token ) 
+            if(!this.$store.state.api_token )
             {
                 //no user token found
                 console.log(typeof(this.goodslist))
@@ -192,7 +192,7 @@ export default {
                 itemID : id,
             }
 
-                this.$http.delete('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, {body: data}).then(response => {
+                this.$http.delete('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, {body: data}).then(response => {
                     // console.log(response.body)
                     // this.getGoodsList()
                     this.goodslist.splice(index, 1)
@@ -202,12 +202,12 @@ export default {
 
 
 
-            
+
         },
 
         selectedChanged(id, val){  //sync switch status to store
             // console.log( id + '------' + val)
-            if(!this.$store.state.api_token ) 
+            if(!this.$store.state.api_token )
             {
                 console.log('no token')
                 console.log(val)
@@ -219,7 +219,7 @@ export default {
                     items : JSON.stringify(goodInfo),
                     opt: 'select', //  add opt as flag. if user click, will add related item to cart.
                 }
-                this.$http.put('http://127.0.0.1:8000/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
+                this.$http.put('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
                 console.log(response)
                     // this.$router.push('/person')
                 })
