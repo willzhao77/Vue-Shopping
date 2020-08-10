@@ -23,7 +23,7 @@
             </li>
             <li class="mui-table-view-cell"><img src="images\ver.jpg" alt=""> Version: 1.0</li>
         </ul>
-        
+
         <mt-button type="primary" size="large" @click="logout">logout</mt-button>
     </div>
 </template>
@@ -43,7 +43,7 @@ export default {
     },
 
     created(){
-        
+
     //      if(this.$store.state.token =='' || this.$store.state.token =='')
 	//   {
 	// 	  console.log('no token')
@@ -73,7 +73,7 @@ export default {
             console.log('todetails')
             this.$router.push('/details')
         },
-        
+
         logout(){
             if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
                 return
@@ -87,8 +87,9 @@ export default {
             this.$http.post('api/logout', this.$store.state.api_token)
           .then(response => {
               this.$store.commit('removeApiToken')
+              // console.log(response)
               this.$router.push('/login')
-            });
+            }).catch(function () {});
         },
 
 
@@ -99,7 +100,7 @@ export default {
             this.$store.commit('getUserToken')
             // console.log(this.$store.state.api_token)
             // console.log(this.$store.state.api_token.api_token)
-            
+
             // console.log(typeof(JSON.parse(this.$store.state.api_token)))
             // console.log(JSON.parse(this.$store.state.api_token).api_token)
             // console.log(this.$store.state.api_token)
@@ -108,7 +109,7 @@ export default {
             userInfo = response.body
             this.account = userInfo.name
             this.email = userInfo.email
-            
+
             //check if user has details info
              if(response.body.to_details){
                 this.name = userInfo.to_details.name
@@ -124,6 +125,11 @@ export default {
             }
             this.$http.get('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
                 console.log(JSON.parse(response.bodyText))
+                if(response.bodyText == 0){ //if not find user by this token
+                    this.$store.commit('removeApiToken')   //remove token
+                    return
+                }
+
                 let watchListIds = JSON.parse(response.bodyText)
                 var watchList = []  // save goods from shopping cart
                 watchListIds.forEach(val => {
@@ -143,10 +149,13 @@ export default {
             }
             this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
                 let cartItems = JSON.parse(response.bodyText)
-
+                if(response.bodyText == 0){ //if not find user by this token
+                    this.$store.commit('removeApiToken')   //remove token
+                    return
+                }
                 var cartGoods = []  // save goods from shopping cart
                 cartItems.forEach(item => {
-  
+
 
                     let o = {}
                     o.id = item.item_id
@@ -160,8 +169,8 @@ export default {
                 this.$store.state.usercart = cartGoods   // sync data to VUEX
                 localStorage.setItem('usercart', JSON.stringify(cartGoods))
             })
-            
-            
+
+
 
         }
     },
