@@ -4,45 +4,45 @@
         <h3>Create Account</h3>
 
         <form class="container" action='' method="POST">
-          
+
 
             <!-- Username -->
-            
+
             <div class="form-group" :class="{ 'form-group--error': $v.name.$error }">
               <label class="form__label"  for="username">Username</label>
               <input class="form__input" type="text" id="username" name="username" placeholder="" v-model.trim="$v.name.$model"/>
             </div>
-            
+
             <div class="error" v-if="!$v.name.required">Field is required.</div>
             <div class="error" v-if="!$v.name.minLength">Name must have at least {{$v.name.$params.minLength.min}} letters.</div>
             <div class="error" v-if="!$v.name.maxLength">Name must have less than {{$v.name.$params.maxLength.min}} letters.</div>
 
             <!-- E-mail -->
-            
+
              <div class="form-group" :class="{ 'form-group--error': $v.email.$error }">
               <label class="form__label"  for="username">email</label>
               <input class="form__input" type="text" id="email" name="email" placeholder="" v-model.trim="$v.email.$model"/>
             </div>
             <div class="error" v-if="!$v.email.required">Field is required.</div>
             <div class="error" v-if="!$v.email.email">Please enter your Email address.</div>
- 
 
-   
-         
+
+
+
 
             <!-- Password-->
-            
+
             <div class="" :class="{ 'form-group--error': $v.password.$error }">
               <label class="" for="password">Password</label>
               <input class="form__input" type="password" id="password" name="password" placeholder="" v-model.trim="$v.password.$model"/>
               <div class="error" v-if="!$v.password.required">Field is required.</div>
               <div class="error" v-if="!$v.password.minLength">Name must have at least {{$v.password.$params.minLength.min}} letters.</div>
               <div class="error" v-if="!$v.password.maxLength">Name must have less than {{$v.password.$params.maxLength.min}} letters.</div>
-            
+
             </div>
 
             <!-- Password -->
-            
+
             <div class="" :class="{ 'form-group--error': $v.password_confirmation.$error }">
               <label class=""  for="password_confirmation">Password (Confirm)</label>
               <input class="form__input" type="password" id="password_confirmation" name="password_confirmation" placeholder="" v-model.trim="$v.password_confirmation.$model"/>
@@ -71,7 +71,7 @@ export default {
         password:'',
         password_confirmation:'',
         api_token:'',
-        showFoot:false //Do Not show footbar 
+        showFoot:false //Do Not show footbar
       }
     },
 
@@ -124,7 +124,7 @@ export default {
             formData.append('password_confirmation', this.password_confirmation)
 
 
-        this.$http.post('api/register', formData)
+        this.$http.post('https://shoppingserver.willin.xyz/api/register', formData)
           .then(response => {
                 console.log(response.body);
                 this.api_token = response.body.api_token;
@@ -137,7 +137,7 @@ export default {
       }
 
 
-        
+
       },
 
       cancel(){
@@ -189,4 +189,4 @@ h3{
   text-align: right;
   font-size: 12px;
 }
-</style> 
+</style>

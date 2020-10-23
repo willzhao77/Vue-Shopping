@@ -3,7 +3,7 @@
         <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
             <div class="ball" v-show="ballFlag" ref="ball"></div>
         </transition>
-        
+
         <!-- slide pictures -->
         <div class="mui-card">
             <div class="mui-card-content">
@@ -58,12 +58,12 @@ export default {
     data(){
         return{
             id: this.$route.params.id, // save item id
-            slide: [], // slide pictures 
+            slide: [], // slide pictures
             goodsinfo: {},   //item details
             ballFlag: false,  // control ball display
             selectedCount: 1,  // save user selected item's quantity
             flag: false, // check if watched this item
-            showFoot:true, //show footbar 
+            showFoot:true, //show footbar
 
         }
     },
@@ -80,7 +80,7 @@ export default {
             this.$emit('footerStatus',this.showFoot)
         },
         getSlidePictures(){
-            this.$http.get("api/shopitemimgs/" + this.id).then(result => {
+            this.$http.get("https://shoppingserver.willin.xyz/api/shopitemimgs/" + this.id).then(result => {
                 if(result.body.status === 0 ){
                     result.body.message.forEach( item => {
                         item.img = item.src
@@ -91,7 +91,7 @@ export default {
         },
 
         getGoodsInfo(){
-            this.$http.get('api/shopitem/' + this.id).then(result => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/shopitem/' + this.id).then(result => {
                 if(result.body.status === 0 ){
                     this.goodsinfo = result.body.message
                 }
@@ -113,7 +113,7 @@ export default {
 
             //prepare data to save cart item to server.
             var goodstoarray=[];
-            goodstoarray.push(goodsinfo);   
+            goodstoarray.push(goodsinfo);
 
 
              let data = {
@@ -125,7 +125,7 @@ export default {
             {
 
                 //add cart items to server
-                this.$http.put('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
+                this.$http.put('https://shoppingserver.willin.xyz/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
                 console.log(response)
                     // this.$router.push('/person')
                 })
@@ -133,12 +133,12 @@ export default {
             }else{// if no token
                  // create an obj to save in Store -- cart
                 var goodsinfo = { id: this.id, count: this.selectedCount, price: this.goodsinfo.sell_price, selected: true }
-            
+
                 // call mutations from store, save item to cart
                 this.$store.commit('addToCart', goodsinfo)
-        
+
             }
- 
+
         },
 
         addToWatchList(){
@@ -151,7 +151,7 @@ export default {
                     console.log("has token part")
 
                     //add cart items to server
-                    this.$http.put('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
+                    this.$http.put('https://shoppingserver.willin.xyz/api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
                     console.log(response)
                     })
                     this.$store.commit('removeFromWatchList', goodsinfo.id)
@@ -159,17 +159,17 @@ export default {
                     console.log("No token part")
                     this.$store.commit('removeFromWatchList', goodsinfo.id)
                 }
- 
-                
-                
+
+
+
 
             }else{
                 this.$store.commit('addToWatchList', goodsinfo)
                 goodsinfo.opt = 'add'
                 // call mutations from store, save item to cart
                 if(this.$store.state.api_token )  // if has token
-                {   
-                    this.$http.put('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
+                {
+                    this.$http.put('https://shoppingserver.willin.xyz/api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
                     console.log(response)
                         // this.$router.push('/person')
                     })
@@ -179,9 +179,9 @@ export default {
 
                 }else{
                     console.log("No token part")
-                    
+
                 }
-               
+
             }
             this.flag = !this.flag
             this.ifWatched()
@@ -226,7 +226,7 @@ export default {
             // let watchData = JSON.parse(this.$store.state.watchList)
             this.$store.state.watchList.forEach( item => {
                 if(item.id == this.id) {
-                           this.flag = true    
+                           this.flag = true
                 }
             })
         },

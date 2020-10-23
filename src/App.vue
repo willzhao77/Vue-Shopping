@@ -7,7 +7,7 @@
 					<mt-button icon="back">Back</mt-button>
 				</span>
 			</mt-header>
-			
+
 
 		<!-- center area -->
 		<transition>
@@ -15,7 +15,7 @@
 				<router-view v-on:footerStatus = "ifShowFooter"></router-view>
 			<!-- </keep-alive> -->
 		</transition>
-		
+
 
 
 
@@ -55,7 +55,7 @@ export default {
 	isShow:true,
     }
   },
-  
+
   created(){
 	  this.flag = this.$route.path === '/home' ? false : true
 		this.$store.commit('getShoppingCart')
@@ -84,10 +84,10 @@ export default {
 			this.$router.go(-1)
 		}
 
-		
-		
 
-		
+
+
+
 	},
 
 	ifShowFooter(val){   //check if show footer from child component
@@ -107,7 +107,7 @@ export default {
 		  this.mepage = "/login"
 		//   console.log("login")
 	  }else{
-		  this.$http.get('api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
+		  this.$http.get('https://shoppingserver.willin.xyz/api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
 			if( !response.body){
 				// console.log("Token not avaiable")
 				 this.mepage = "/login"
@@ -122,7 +122,7 @@ export default {
 
 		//   console.log(this.$store.state.api_token)
 		//   console.log('to person')
-		  
+
       }
 
 	},

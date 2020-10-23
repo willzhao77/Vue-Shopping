@@ -1,7 +1,7 @@
 <template>
     <div>
         <form class="contactus">
-            
+
             <div class="">
                 <label>Name:</label>
                 <input type="text" placeholder="" style="margin: 10px 0px;" name="name" v-model="name">
@@ -41,7 +41,7 @@ export default {
         email:'',
         title:'',
         message:'',
-        showFoot:false //Do Not show footbar 
+        showFoot:false //Do Not show footbar
       }
     },
 
@@ -59,7 +59,7 @@ export default {
                 formData.append('title', this.title)
                 formData.append('message', this.message)
 
-            this.$http.post('api/contactus', formData)
+            this.$http.post('https://shoppingserver.willin.xyz/api/contactus', formData)
             .then(response => {
                     if (response.bodyText === 'sent'){
                         Toast('You succesfully sent message.')
@@ -67,7 +67,7 @@ export default {
                         this.email=''
                         this.title =''
                         this.message =''
-                        
+
                     }
 
                 }, response => {

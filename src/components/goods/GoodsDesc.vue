@@ -14,7 +14,7 @@ export default {
         return{
             info: {},  // item datails
             test:'',
-            showFoot:true //show footbar 
+            showFoot:true //show footbar
 
         }
     },
@@ -29,11 +29,11 @@ export default {
             this.$emit('footerStatus',this.showFoot)
         },
         getGoodsDesc(){
-            this.$http.get('api/shopitemdetails/' + this.$route.params.id).then(result => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/shopitemdetails/' + this.$route.params.id).then(result => {
                 if(result.body.status === 0 ){
                     this.info = result.body.message
-                   
-                    
+
+
                     console.log(this.info.content)
                     console.log(this.test)
                 }

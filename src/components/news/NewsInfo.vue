@@ -24,9 +24,9 @@ import comment from '../subcomponents/comment.vue'
 export default {
     data(){
         return{
-            id: this.$route.params.id,  //save URL's ID to Data. 
+            id: this.$route.params.id,  //save URL's ID to Data.
             newsinfo: {},    // news object
-            showFoot:false //Do Not show footbar 
+            showFoot:false //Do Not show footbar
         }
     },
     created(){
@@ -39,7 +39,7 @@ export default {
             this.$emit('footerStatus',this.showFoot)
         },
         getNewsInfo(){  //get news details
-            this.$http.get('api/newsinfo/' + this.id).then(result => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/newsinfo/' + this.id).then(result => {
                 if(result.body.status === 0 ){
                     this.newsinfo = result.body.message;
                 }else{
@@ -52,7 +52,7 @@ export default {
     components:{
         'comment-box': comment
     }
-    
+
 }
 </script>
 

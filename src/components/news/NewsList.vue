@@ -13,7 +13,7 @@
 						</div>
 					</router-link>
 				</li>
-		
+
 
 			</ul>
     </div>
@@ -26,7 +26,7 @@ export default {
     data(){
         return {
             newslist: [], //news List
-            showFoot:true, //show footbar 
+            showFoot:true, //show footbar
         };
     },
     created(){
@@ -38,7 +38,7 @@ export default {
             this.$emit('footerStatus',this.showFoot)
         },
         getNewsList(){ //get news list
-            this.$http.get('api/newslist').then(result => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/newslist').then(result => {
                 if(result.body.status === 0){
                     //if get data from server, save data
                     this.newslist = result.body.message;
@@ -48,7 +48,7 @@ export default {
             })
         }
     }
-    
+
 }
 </script>
 

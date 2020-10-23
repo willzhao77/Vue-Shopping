@@ -2,30 +2,30 @@
     <div class="checkout-container">
         <h2>Check Out</h2>
 
-        <ul class="mui-table-view"> 
+        <ul class="mui-table-view">
         <li class="mui-table-view-cell mui-collapse mui-active">
             <a class="mui-navigate-right" href="#">Items</a>
             <div class="mui-collapse-content">
-            
+
             <!-- items -->
             <div class="items" v-for="(item) in goodslist" :key=item.id >
-                <img :src=item.img  alt=""> 
+                <img :src=item.img  alt="">
                 <p class="title">{{ item.title }}</p>
                 <p class="price">{{ item.sell_price }}</p>
                 <p class="quantity"> X{{ goodsquantity[item.id] }}</p>
             </div>
-    
+
             </div>
         </li>
     </ul>
 
-         
+
 
         <!-- delivery -->
         <div class="mui-card">
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-                    <h4>Delivery to:</h4> 
+                    <h4>Delivery to:</h4>
                     <p>Test UserName</p>
                     <p>No 1 Bigtown street, Nice block, NZ</p>
                     <P>Mobile: 123456789</P>
@@ -56,7 +56,7 @@ export default {
           goodslist: [],  // all item data from cart
           goodsquantity: [],  // save item quantity
           TotalPrice:0, //total items
-          showFoot:true, //show footbar 
+          showFoot:true, //show footbar
 
       }
     },
@@ -64,7 +64,7 @@ export default {
     created() {
         this.getGoodsList()
         this.sendDataToParent()
-    }, 
+    },
 
     methods:{
         sendDataToParent(){
@@ -74,8 +74,8 @@ export default {
             this.$store.commit('getShoppingCart')
             // get all items' ID
             var idArr = []
-            this.$store.state.cart.forEach( item => 
-                {   
+            this.$store.state.cart.forEach( item =>
+                {
                     idArr.push(item.id)
                     this.goodsquantity[item.id] = item.count // get item quantity
                 })
@@ -85,7 +85,7 @@ export default {
                 return
             }
 
-            this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/getshopcartlist/' + idArr.join(",")).then(result => {
                 if(result.body.status === 0 ){
                     this.goodslist = result.body.message
                     console.log(this.goodslist )
@@ -130,7 +130,7 @@ export default {
         justify-content: space-between;
         align-items:center;
         margin: 10px 0;
-    }   
+    }
     .checkout{
         display: flex;
         justify-content: space-between;
@@ -145,7 +145,7 @@ export default {
 
     .title{
         width: 50%;
-        
+
     }
     .price{
         width: 20%;

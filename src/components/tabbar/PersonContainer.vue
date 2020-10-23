@@ -84,7 +84,7 @@ export default {
 
             console.log(this.$store.state.api_token)
 
-            this.$http.post('api/logout', this.$store.state.api_token)
+            this.$http.post('https://shoppingserver.willin.xyz/api/logout', this.$store.state.api_token)
           .then(response => {
               this.$store.commit('removeApiToken')
               // console.log(response)
@@ -104,7 +104,7 @@ export default {
             // console.log(typeof(JSON.parse(this.$store.state.api_token)))
             // console.log(JSON.parse(this.$store.state.api_token).api_token)
             // console.log(this.$store.state.api_token)
-            this.$http.get('api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
+            this.$http.get('https://shoppingserver.willin.xyz/api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
             console.log(response.body)
             userInfo = response.body
             this.account = userInfo.name
@@ -123,7 +123,7 @@ export default {
             if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
                 return
             }
-            this.$http.get('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
                 console.log(JSON.parse(response.bodyText))
                 if(response.bodyText == 0){ //if not find user by this token
                     this.$store.commit('removeApiToken')   //remove token
@@ -147,7 +147,7 @@ export default {
             if(this.$store.state.api_token == null || this.$store.state.api_token == ''){
                 return
             }
-            this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
                 let cartItems = JSON.parse(response.bodyText)
                 if(response.bodyText == 0){ //if not find user by this token
                     this.$store.commit('removeApiToken')   //remove token

@@ -6,31 +6,31 @@
       <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
 
 
- 
+
 
 
       <label for="username" class="labels">User Name</label>
       <div class="inputbox">
         <input type="text" id="username" class=""  required  v-model="name" autofocus>
       </div>
-      
 
-      
+
+
 
       <label for="inputPassword" class="">Password</label>
       <div class="inputbox">
         <input type="password" id="inputPassword" class=""  required v-model="password">
       </div>
-      
-      
+
+
       <div class="buttons">
         <button class="mui-btn-primary" type="submit" @click.prevent = login>Sign in</button>
         <button class="mui-btn-danger" type="submit" @click="goRegister">register</button>
       </div>
 
-      
+
     </form>
-    
+
     </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
         name:'',
         password:'',
         api_token:'',
-        showFoot:false //Do Not show footbar 
+        showFoot:false //Do Not show footbar
       }
     },
 
@@ -61,8 +61,8 @@ export default {
         var formData = new FormData()
             formData.append('name', this.name)
             formData.append('password', this.password)
-         
-        this.$http.post('api/login', formData)
+
+        this.$http.post('https://shoppingserver.willin.xyz/api/login', formData)
           .then(response => {
                 // console.log(response.body);
             // check user name and password and redirect to related page

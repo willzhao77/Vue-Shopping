@@ -36,18 +36,18 @@ var store = new Vuex.Store({
   getWatchList(state){
 
     var currentList = 'watchList'     //set default, get local watchlist
- 
+
     if(state.api_token )  // if has token
       {
         console.log('main has token for userWatchList')
         currentList = 'userWatchList'   // if has token, get user
       }
-      
+
 
     if(localStorage.getItem(currentList) != null){
       state.watchList = JSON.parse(localStorage.getItem(currentList))
     }
-    
+
   },
 
   getShoppingCart(state){
@@ -55,7 +55,7 @@ var store = new Vuex.Store({
       state.cart = JSON.parse(localStorage.getItem('cart'))
     }
   },
- 
+
     addToCart(state, goodsinfo){
       // console.log(state.api_token)
       if(!state.api_token )  // if no token
@@ -74,7 +74,7 @@ var store = new Vuex.Store({
             return true
           }
         })
-        
+
         //if no same item in cart. Add this item.
         if(!flag){
           state.cart.push(goodsinfo)
@@ -94,7 +94,7 @@ var store = new Vuex.Store({
             return true
           }
         })
-        
+
         //if no same item in cart. Add this item.
         if(!flag){
           console.log(goodsinfo)
@@ -105,8 +105,8 @@ var store = new Vuex.Store({
         localStorage.setItem('usercart', JSON.stringify(state.usercart))
       }
 
-      
-      
+
+
     },
 
 
@@ -124,7 +124,7 @@ var store = new Vuex.Store({
           return true
         }
       })
-      
+
 
       //if no same item in cart. Add this item.
       if(!flag){
@@ -147,7 +147,7 @@ var store = new Vuex.Store({
 
 
 
-        
+
       }
     },
 
@@ -164,7 +164,7 @@ var store = new Vuex.Store({
 
 
     updateGoodsInfo(state, goodsinfo){ //update goods qantity on cart
-      
+
       if(!state.api_token )  // if no token
       {
         // update quantity
@@ -189,18 +189,18 @@ var store = new Vuex.Store({
         // update quantity, save data to localStorage
         localStorage.setItem('usercart', JSON.stringify(state.usercart))
       }
-      
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     },
 
     removeFromCart(state, id){  // remove item from store
@@ -225,9 +225,9 @@ var store = new Vuex.Store({
         console.log(state.watchList)
         state.watchList.some((item, i) => {
           if(item.id == id){
-      
+
             state.watchList.splice(i, 1)
-          
+
 
             return true;
           }
@@ -238,9 +238,9 @@ var store = new Vuex.Store({
       }else{
         state.watchList.some((item, i) => {
           if(item.id == id){
-      
+
             state.watchList.splice(i, 1)
-          
+
 
             return true;
           }
@@ -256,7 +256,7 @@ var store = new Vuex.Store({
 
     },
 
-    
+
 
     updateGoodsSelected(state, info){
 
@@ -289,7 +289,7 @@ var store = new Vuex.Store({
   getters:{ // this.$store.getters.****
             // like computed
             // like filter
-      
+
 
       getAllCount(state){
 
@@ -300,7 +300,7 @@ var store = new Vuex.Store({
           c += item.count
         })
         return c
-      }else{// if has token 
+      }else{// if has token
         var c = 0;
         state.usercart.forEach( item => {
           c += item.count
@@ -310,7 +310,7 @@ var store = new Vuex.Store({
 
 
 
-        
+
 
 
 
@@ -334,7 +334,7 @@ var store = new Vuex.Store({
       },
 
       getGoodsCountAndAmount(state){
-        
+
       if(!state.api_token )  // if no token
       {
         var o = {
@@ -348,7 +348,7 @@ var store = new Vuex.Store({
           }
         })
         return o
-      }else{// if has token 
+      }else{// if has token
         var o = {
           count: 0,   // selected quantity
           amount: 0   // totoal price
@@ -361,7 +361,7 @@ var store = new Vuex.Store({
         })
         return o
       }
-        
+
 
 
 
@@ -378,7 +378,7 @@ var store = new Vuex.Store({
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
 
-//import 
+//import
 import 'mint-ui/lib/style.css'
 
 

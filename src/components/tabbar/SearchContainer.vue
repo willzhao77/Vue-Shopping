@@ -1,16 +1,16 @@
 <template>
     <div>
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-		
+
         <form class="search">
-           
+
 
             <div class=" flex" >
 					<input type="text" class="mui-input" v-model="keyword">
                     <button type="" class="mui-btn-primary" @click.prevent="getGoodsList">Search</button>
 				</div>
 
-           
+
         </form>
 
         <div class="searchlist-container">
@@ -49,18 +49,18 @@ export default {
 
     // created() {
     //     this.getGoodsList()
-    // }, 
+    // },
 
     created() {
         this.sendDataToParent()
-    }, 
+    },
 
     methods:{
         getGoodsList(){
             // get all items' ID
 
-            // this.$http.get('api/getshopcartlist/' + 1)).then(result => {
-            this.$http.get('api/searchlist/' + this.keyword ).then(result => {
+            // this.$http.get('https://shoppingserver.willin.xyz/api/getshopcartlist/' + 1)).then(result => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/searchlist/' + this.keyword ).then(result => {
                 if(result.body.status === 0 ){
                     this.goodslist = result.body.message
                 }

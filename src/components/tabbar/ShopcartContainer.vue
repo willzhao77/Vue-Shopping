@@ -92,7 +92,7 @@ export default {
                         return
                     }
 
-                    this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
+                    this.$http.get('https://shoppingserver.willin.xyz/api/getshopcartlist/' + idArr.join(",")).then(result => {
                         if(result.body.status === 0 ){
                             this.goodslist = result.body.message
 
@@ -103,7 +103,7 @@ export default {
                 console.log('has token1')
                 // user has token. use online shopping cart
                 console.log(JSON.parse(this.$store.state.api_token).api_token)
-                this.$http.get('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
+                this.$http.get('https://shoppingserver.willin.xyz/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token).then(response => {
 
                     console.log(response)
                     if(response.bodyText == 0){ //if not find user by this token
@@ -142,7 +142,7 @@ export default {
                 if(idArr.length <= 0) {
                     return
                 }
-                this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
+                this.$http.get('https://shoppingserver.willin.xyz/api/getshopcartlist/' + idArr.join(",")).then(result => {
                     if(result.body.status === 0 ){
                         this.goodslist = result.body.message
                         console.log(result.body.message)
@@ -192,7 +192,7 @@ export default {
                 itemID : id,
             }
 
-                this.$http.delete('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, {body: data}).then(response => {
+                this.$http.delete('https://shoppingserver.willin.xyz/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, {body: data}).then(response => {
                     // console.log(response.body)
                     // this.getGoodsList()
                     this.goodslist.splice(index, 1)
@@ -219,7 +219,7 @@ export default {
                     items : JSON.stringify(goodInfo),
                     opt: 'select', //  add opt as flag. if user click, will add related item to cart.
                 }
-                this.$http.put('api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
+                this.$http.put('https://shoppingserver.willin.xyz/api/usercart/' + JSON.parse(this.$store.state.api_token).api_token, data).then( response=> {
                 console.log(response)
                     // this.$router.push('/person')
                 })

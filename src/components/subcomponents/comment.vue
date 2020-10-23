@@ -4,7 +4,7 @@
     <textarea placeholder="Please enter your comment (max 100)" maxlength="100" v-model="msg"></textarea>
     <mt-button type="primary" size="large" @click="postComment">Send Comment</mt-button>
 
-    
+
 
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item, i) in comments" :key="item.add_time">
@@ -35,7 +35,7 @@ export default {
   },
   methods:{
     getComments(){  //get comments
-      this.$http.get("api/" + this.whichcomment + "/"+this.id+"?page=" + this.page).then(result => {
+      this.$http.get("https://shoppingserver.willin.xyz/api/" + this.whichcomment + "/"+this.id+"?page=" + this.page).then(result => {
         if(result.body.status === 0){
           // this.comments = result.body.message
           //keep old comment when click 'more'
@@ -60,9 +60,9 @@ export default {
       //parameter 1: URL
       //parameter 2: object to server { content: this.msg }
       //parameter 3: format for form { emulateJSON:true }
-      this.$http.post('api/' + this.whichcomment, {id: this.id, name:"none", content:this.msg.trim()}).then(function(result){
+      this.$http.post('https://shoppingserver.willin.xyz/api/' + this.whichcomment, {id: this.id, name:"none", content:this.msg.trim()}).then(function(result){
         if(result.status === 200){
-          
+
           // create a new comment object
           var cmt = {
             user_name: 'None',
@@ -95,7 +95,7 @@ export default {
       .cmt-title{
         line-height: 30px;
         background: #ccc;
-        
+
       }
       .cmt-body{
         line-height: 35px;

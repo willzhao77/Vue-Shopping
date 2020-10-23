@@ -20,7 +20,7 @@
                 <button class="mui-btn mui-btn-primary buttonitem" type="submit" @click.prevent = "update">Update</button>
                 <button class="mui-btn mui-btn-danger buttonitem" type="submit" @click.prevent= "cancel">Cancel</button>
             </div>
-            
+
         </form>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default {
             name:"",
             address:"",
             mobile:"",
-            showFoot:false, //show footbar 
+            showFoot:false, //show footbar
 
         }
     },
@@ -56,9 +56,9 @@ export default {
                 address : this.address,
                 mobile : this.mobile
             }
-                    
-           
-            this.$http.put('api/userdetails/' +  JSON.parse(this.$store.state.api_token).api_token, data1).then( response=> {
+
+
+            this.$http.put('https://shoppingserver.willin.xyz/api/userdetails/' +  JSON.parse(this.$store.state.api_token).api_token, data1).then( response=> {
                 if(response.bodyText == "saved")
                 {
                     this.$router.push("/person")
@@ -76,16 +76,16 @@ export default {
             this.$store.commit('getUserToken')
             // console.log(this.$store.state.api_token)
             // console.log(this.$store.state.api_token.api_token)
-            
+
             // console.log(typeof(JSON.parse(this.$store.state.api_token)))
             // console.log(JSON.parse(this.$store.state.api_token).api_token)
             // console.log(this.$store.state.api_token)
-            this.$http.get('api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
-   
+            this.$http.get('https://shoppingserver.willin.xyz/api/userdetails/' + JSON.parse(this.$store.state.api_token).api_token).then( response=> {
+
             userInfo = response.body
             this.account = userInfo.name
             this.email = userInfo.email
-            
+
             //check if user has details info
              if(response.body.to_details){
                 this.name = userInfo.to_details.name
@@ -114,8 +114,8 @@ form{
 
 .buttons{
     margin-top: 15px;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
 }
 .buttonitem{
     margin: 5px

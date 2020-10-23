@@ -30,12 +30,12 @@ export default {
             id: this.$route.params.id, // get ID from URL
             photoinfo: {}, //picture detail
             slide1: [], // preview picture array
-            showFoot:false //Do Not show footbar 
+            showFoot:false //Do Not show footbar
         }
     },
     created(){
        this.getPhotoInfo()
-       this.getThumbs() 
+       this.getThumbs()
        this.sendDataToParent()
     },
     methods:{
@@ -43,7 +43,7 @@ export default {
             this.$emit('footerStatus',this.showFoot)
         },
         getPhotoInfo(){ //get picture detail
-            this.$http.get('api/shareitem/' + this.id).then(result => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/shareitem/' + this.id).then(result => {
                 if(result.body.status === 0 ){
                     this.photoinfo = result.body.message
                 }
@@ -51,7 +51,7 @@ export default {
         },
 
         getThumbs(){
-            this.$http.get('api/shareitemimgs/' + this.id).then(result =>{
+            this.$http.get('https://shoppingserver.willin.xyz/api/shareitemimgs/' + this.id).then(result =>{
                 if(result.body.status === 0 ){
                     //loop all pictures and all w and h
                     result.body.message.forEach(item => {
@@ -98,7 +98,7 @@ export default {
         text-align: center;
         margin: 15px 0 ;
     }
-    
+
     .subtitle{
         display: flex;
         justify-content: space-between;
@@ -113,14 +113,14 @@ export default {
     img {
         height: 80px;
         margin: 10px;
-        
+
         box-shadow: 0 0 8px #999;
     }
 
    figure{
        display: inline-block;
        margin: 0;
-     
+
    }
 
 }

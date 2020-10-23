@@ -4,11 +4,11 @@
         <div id="slider" class="mui-slider">
 				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<div class="mui-scroll">
-						<a :class="['mui-control-item', item.id == 0 ? 'mui-active' : '']" v-for="item in cates" 
+						<a :class="['mui-control-item', item.id == 0 ? 'mui-active' : '']" v-for="item in cates"
 						:key=item.id @click="getPhotoListByCateId(item.id)">
 							{{ item.title }}
 						</a>
-						
+
 					</div>
 				</div>
 		</div>
@@ -36,7 +36,7 @@ export default {
 			return{
 				cates: [],  // category list
 				list: [],  // photo list
-				showFoot:true, //show footbar 
+				showFoot:true, //show footbar
 			}
 		},
 
@@ -46,9 +46,9 @@ export default {
 			this.getPhotoListByCateId(0);
 			this.sendDataToParent()
 		},
-		
+
 		mounted(){
-			// init 
+			// init
 			// if need control element, it is better control at this moment. the DOM is the newest.
 			mui('.mui-scroll-wrapper').scroll({
 			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
@@ -59,7 +59,7 @@ export default {
             this.$emit('footerStatus',this.showFoot)
         },
 		getAllCategory(){
-			this.$http.get("api/sharecategory").then(result => {
+			this.$http.get("https://shoppingserver.willin.xyz/api/sharecategory").then(result => {
 				if(result.body.status === 0 ){
 					//manually create a full category list
 					result.body.message.unshift({ title: "All", id: 0 })
@@ -70,7 +70,7 @@ export default {
 
 		getPhotoListByCateId(cateId){
 			//get photo list by category ID
-			this.$http.get('api/sharelist/' + cateId).then(result => {
+			this.$http.get('https://shoppingserver.willin.xyz/api/sharelist/' + cateId).then(result => {
 				if(result.body.status === 0 )
 				this.list = result.body.message
 			})

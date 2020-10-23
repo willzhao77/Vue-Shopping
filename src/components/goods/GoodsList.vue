@@ -1,5 +1,5 @@
 <template>
-    
+
     <div class="goods-list">
         <!-- <router-link class="goods-item" v-for="item in goodslist" :key=item.id :to="'/home/goodsinfo/' + item.id" tag="div">
             <img :src="item.img_url" alt="">
@@ -36,17 +36,17 @@
 
         <mt-button type="danger" size="large" @click="getMore">Show More...</mt-button>
     </div>
-    
+
 
 </template>
 
 <script>
 export default {
     data(){
-        return{  
+        return{
            page: 1, // by default, display first page
            goodslist: [],  // save items array.
-           showFoot:true, //show footbar 
+           showFoot:true, //show footbar
         }
     },
 
@@ -60,7 +60,7 @@ export default {
         },
         getGoodsList(){
             // get item list
-            this.$http.get("api/shoplist?page=" + this.page).then(result => {
+            this.$http.get("https://shoppingserver.willin.xyz/api/shoplist?page=" + this.page).then(result => {
                 if(result.body.status === 0 ){
                     this.goodslist = this.goodslist.concat(result.body.message.data)
                 }

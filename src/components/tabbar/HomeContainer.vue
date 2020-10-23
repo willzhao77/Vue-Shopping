@@ -5,7 +5,7 @@
                 <img :src="item.img" alt="">
             </mt-swipe-item>
         </mt-swipe> -->
-        <SlideShow :slidelist="slidelist" :isfull="true"></SlideShow>     
+        <SlideShow :slidelist="slidelist" :isfull="true"></SlideShow>
 
         <!-- gride  -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -33,7 +33,7 @@
                         <router-link to="/home/contactus">
 		                    <img  src="/images/menu6.png" alt="">
 		                    <div class="mui-media-body">Contact us</div></router-link></li>
-		        </ul> 
+		        </ul>
 
 
     </div>
@@ -47,7 +47,7 @@ export default {
     data(){
         return{
             slidelist:[], // save slide pictures
-            showFoot:true //show footbar 
+            showFoot:true //show footbar
         }
     },
     created(){
@@ -60,15 +60,19 @@ export default {
             this.$emit('footerStatus',this.showFoot)
         },
         getSlidePictures(){ //get pictures for slides
-            this.$http.get('api/slideshow').then(result =>{
+
+
+
+            this.$http.get('https://shoppingserver.willin.xyz/api/slideshow').then(result =>{
                 // console.log(result.body);
                 if(result.body.status === 0){
                     console.log(result.body.message)
-                    this.slidelist = result.body.message  //success 
+                    this.slidelist = result.body.message  //success
                 }else{
                     Toast('Slide pictures loading faild')
                 }
             })
+
         }
     },
 

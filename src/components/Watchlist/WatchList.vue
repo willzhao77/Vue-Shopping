@@ -35,7 +35,7 @@ export default {
     created() {
         this.getGoodsList()
         this.sendDataToParent()
-    }, 
+    },
 
     methods:{
         sendDataToParent(){
@@ -58,7 +58,7 @@ export default {
 
 
 
-            this.$http.get('api/getshopcartlist/' + idArr.join(",")).then(result => {
+            this.$http.get('https://shoppingserver.willin.xyz/api/getshopcartlist/' + idArr.join(",")).then(result => {
                 if(result.body.status === 0 ){
                     this.goodslist = result.body.message
                 }
@@ -72,11 +72,11 @@ export default {
             if(this.$store.state.api_token )  // if has token
             {
                 var goodsinfo = { id: id, opt: "remove" }
-                this.$http.put('api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
+                this.$http.put('https://shoppingserver.willin.xyz/api/userwatchlist/' + JSON.parse(this.$store.state.api_token).api_token, goodsinfo).then( response=> {
                         // console.log(response)
                         })
             }else{
-                
+
             }
             this.goodslist.splice(index, 1)
             this.$store.commit('removeFromWatchList', id)
